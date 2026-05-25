@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>于一凡 · AI 产品经理 · 简历</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   VIEWPORT FITTING — mandatory base (frontend-slides)
+   ========================================================= */
+html,body{height:100%;overflow-x:hidden}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.slide{width:100vw;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;display:flex;flex-direction:column;position:relative}
+:root{
+  --slide-padding:clamp(1rem,4vw,4rem);
+  /* —— D1 设计 token —— */
+  --side:#1c3a47;--side2:#15303b;--sink:#e9f1f3;--squiet:#9fb9c1;
+  --bg:#f6f8f9;--paper:#ffffff;--ink:#16222b;--muted:#637079;
+  --accent:#36a9bf;--accent-d:#2a8aa0;--gold:#e0a23c;
+  --line:#e2e8ec;--cardline:#e7edf0;
+  --serif:"Fraunces","Noto Serif SC",serif;
+  --body:"Hanken Grotesk","Noto Sans SC",sans-serif;
+  --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+
+/* =========================================================
+   通用:双栏 deck / 主栏 / 序号徽章 / 指标卡 / 列表
+   ========================================================= */
+.deck{flex:1;display:grid;min-height:0}
+.deck.cover{grid-template-columns:clamp(240px,30vw,360px) 1fr}
+.deck.body{grid-template-columns:clamp(66px,7vw,104px) 1fr}
+
+/* —— 深色侧栏(封面) —— */
+.sidebar{background:linear-gradient(165deg,var(--side),var(--side2));color:var(--sink);
+  padding:clamp(1.6rem,3vw,2.8rem);display:flex;flex-direction:column;gap:clamp(1rem,2.6vh,1.8rem);
+  position:relative;overflow:hidden}
+.sidebar::after{content:"";position:absolute;right:-40px;top:-40px;width:190px;height:190px;border-radius:50%;border:1px solid rgba(255,255,255,.07)}
+.sidebar::before{content:"";position:absolute;left:-60px;bottom:-60px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(54,169,191,.12)}
+.mono-badge{width:clamp(48px,5vw,64px);height:clamp(48px,5vw,64px);border-radius:15px;
+  background:var(--accent);color:#06222a;display:grid;place-items:center;
+  font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,2.3vw,1.7rem);
+  box-shadow:0 10px 26px rgba(54,169,191,.4);position:relative;z-index:1}
+.nm{font-family:var(--serif);font-weight:600;font-size:clamp(1.45rem,2.6vw,2.1rem);line-height:1.05;position:relative;z-index:1}
+.rl{color:var(--accent);font-weight:700;font-size:clamp(.82rem,1.3vw,.98rem);margin-top:.35rem;position:relative;z-index:1}
+.sb-blk{position:relative;z-index:1}
+.slabel{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--squiet);margin-bottom:.5rem}
+.srow{font-size:clamp(.74rem,1.1vw,.86rem);line-height:1.85;color:var(--sink)}
+.srow .q{color:var(--squiet)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tags span{font-family:var(--mono);font-size:.63rem;border:1px solid rgba(255,255,255,.2);padding:.24rem .52rem;border-radius:6px;color:var(--sink)}
+
+/* —— 细 rail(内容页) —— */
+.rail{background:linear-gradient(165deg,var(--side),var(--side2));color:var(--sink);
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  padding:clamp(1.2rem,2.4vh,2rem) 0;position:relative;overflow:hidden}
+.rail .mb{width:clamp(34px,3.4vw,46px);height:clamp(34px,3.4vw,46px);border-radius:11px;
+  background:var(--accent);color:#06222a;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:clamp(1rem,1.7vw,1.3rem)}
+.rail .vlabel{writing-mode:vertical-rl;text-orientation:mixed;font-family:var(--mono);
+  font-size:clamp(.62rem,.95vw,.76rem);letter-spacing:.32em;text-transform:uppercase;color:var(--squiet)}
+.rail .pg{font-family:var(--mono);font-size:.66rem;color:var(--accent);font-weight:700}
+.rail .pg small{color:var(--squiet);font-weight:500}
+
+/* —— 主栏 —— */
+.main{padding:clamp(1.6rem,3.4vw,3.2rem);display:flex;flex-direction:column;justify-content:center;gap:clamp(.85rem,2.1vh,1.5rem);min-width:0}
+.s-head{display:flex;align-items:center;gap:.85rem}
+.num{flex:none;width:clamp(28px,3vw,38px);height:clamp(28px,3vw,38px);border-radius:9px;background:var(--ink);color:#fff;
+  display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:clamp(.74rem,1.1vw,.86rem)}
+.s-title{font-family:var(--serif);font-weight:600;font-size:clamp(1.2rem,2.4vw,1.75rem);line-height:1.1}
+.s-sub{font-family:var(--mono);font-size:clamp(.66rem,1vw,.8rem);color:var(--muted);margin-top:.4rem;margin-left:.2rem}
+.s-sub .co{color:var(--accent-d);font-weight:700}
+
+/* 指标卡 */
+.cards{display:grid;gap:clamp(.55rem,1.3vw,.95rem)}
+.cards.c4{grid-template-columns:repeat(4,1fr)}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--paper);border:1px solid var(--cardline);border-radius:14px;
+  padding:clamp(.75rem,1.5vw,1.15rem);box-shadow:0 6px 18px rgba(22,34,43,.05);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(22,34,43,.13)}
+.card .v{font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,2.8vw,2.1rem);color:var(--accent);line-height:1;letter-spacing:-.01em}
+.card .v.g{color:var(--gold)}
+.card .l{font-size:clamp(.64rem,.98vw,.76rem);color:var(--muted);margin-top:.4rem;line-height:1.4}
+
+/* 优势 / 经历 列表 */
+ul.pts{list-style:none;display:flex;flex-direction:column;gap:clamp(.45rem,1.1vh,.8rem)}
+ul.pts li{padding-left:1.15rem;position:relative;font-size:clamp(.8rem,1.25vw,.96rem);line-height:1.55;color:var(--ink)}
+ul.pts li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+ul.pts li b{font-weight:700;color:var(--ink)}
+.m{color:var(--accent-d);font-weight:700}
+
+/* 经历分组(天旦 / 华讯) */
+.job{display:flex;flex-direction:column;gap:.4rem}
+.job .jh{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+.job .jt{font-family:var(--serif);font-weight:600;font-size:clamp(.98rem,1.6vw,1.18rem)}
+.job .jd{font-family:var(--mono);font-size:.64rem;color:var(--muted)}
+.divider{height:1px;background:var(--line);margin:.1rem 0}
+
+/* 教育 / 技能 行 */
+.kv{display:flex;flex-direction:column;gap:.6rem}
+.kv .item{display:flex;gap:.7rem;align-items:baseline}
+.kv .ic{flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);transform:translateY(.45em)}
+.kv .it{font-size:clamp(.8rem,1.25vw,.95rem);line-height:1.55}
+.kv .it b{color:var(--ink);font-weight:700}
+.kv .it .d{font-family:var(--mono);font-size:.66rem;color:var(--muted);margin-right:.4rem}
+
+/* CTA — landing 链接 */
+.cta{display:inline-flex;align-items:center;gap:.6rem;align-self:flex-start;
+  background:var(--accent);color:#06222a;font-weight:700;font-size:clamp(.78rem,1.2vw,.92rem);
+  padding:.6rem 1.1rem;border-radius:10px;text-decoration:none;
+  box-shadow:0 8px 22px rgba(54,169,191,.3);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+.cta:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(54,169,191,.45)}
+.cta .ar{transition:transform .3s}
+.cta:hover .ar{transform:translateX(4px)}
+.cta.ghost{background:transparent;color:var(--accent-d);border:1.5px solid var(--accent);box-shadow:none}
+.cta.ghost:hover{background:rgba(54,169,191,.08)}
+
+.lede{font-family:var(--serif);font-weight:500;font-size:clamp(1.15rem,2.5vw,1.9rem);line-height:1.45;max-width:22ch;color:var(--ink)}
+.lede em{font-style:normal;color:var(--accent-d);font-weight:600}
+.foot{font-family:var(--mono);font-size:clamp(.64rem,.95vw,.76rem);color:var(--muted);display:flex;gap:1.2rem;flex-wrap:wrap}
+
+/* =========================================================
+   入场动效 + 交互
+   ========================================================= */
+.reveal{opacity:0;transform:translateY(24px);
+  transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1);
+  transition-delay:calc(var(--i,0)*.085s)}
+.slide.in .reveal{opacity:1;transform:none}
+.rail .draw{width:1px;background:linear-gradient(var(--accent),transparent);height:0;transition:height 1.1s ease .35s}
+.slide.in .rail .draw{height:clamp(28px,6vh,64px)}
+
+/* 导航点 + 进度条 */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:50;transition:width .25s ease}
+.dots{position:fixed;right:clamp(.7rem,1.6vw,1.4rem);top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:.65rem;z-index:50}
+.dots button{width:9px;height:9px;border-radius:50%;border:0;background:#c3ccd2;cursor:pointer;padding:0;transition:all .3s}
+.dots button.on{background:var(--accent);transform:scale(1.45)}
+.hint{position:fixed;left:50%;bottom:.8rem;transform:translateX(-50%);font-family:var(--mono);
+  font-size:.62rem;color:var(--muted);z-index:50;opacity:.7}
+
+@media(max-height:600px){.dots,.hint{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="dots" id="dots"></div>
+<div class="hint">↓ 滚动 / 方向键翻页</div>
+
+<!-- ============ 01 · 封面 ============ -->
+<section class="slide">
+  <div class="deck cover">
+    <aside class="sidebar">
+      <div class="mono-badge reveal" style="--i:0">于</div>
+      <div class="sb-blk reveal" style="--i:1"><div class="nm">于一凡</div><div class="rl">AI 产品经理 / 资深产品负责人</div></div>
+      <div class="sb-blk reveal" style="--i:2"><div class="slabel">Contact</div>
+        <div class="srow">135-6482-1599<br>y.e.yyf@163.com<br><span class="q">上海 · 期望薪资 面议</span></div></div>
+      <div class="sb-blk reveal" style="--i:3"><div class="slabel">Skills</div>
+        <div class="tags"><span>RAG</span><span>Agent</span><span>多模态</span><span>0→1</span><span>云原生</span><span>eBPF</span><span>AIOps</span></div></div>
+      <div class="sb-blk reveal" style="--i:4"><div class="slabel">Education</div>
+        <div class="srow">波士顿大学 · 硕士<br><span class="q">复旦大学 · 学士</span></div></div>
+    </aside>
+    <main class="main">
+      <div class="lede reveal" style="--i:1">10 年企业级产品 × 深度 AI 落地，已<em>独立做出一款被真实用户每日使用的 AI 产品</em>。</div>
+      <div class="cards c4 reveal" style="--i:2">
+        <div class="card"><div class="v g" data-count="16000" data-thousands="1" data-suffix="+">0</div><div class="l">Hunter 候选人库 · 每日重度使用</div></div>
+        <div class="card"><div class="v" data-count="30" data-prefix="Top ">0</div><div class="l">1000+ 简历 2–3 分钟筛出</div></div>
+        <div class="card"><div class="v" data-count="260" data-suffix=" 亿笔">0</div><div class="l">天旦日均监控交易</div></div>
+        <div class="card"><div class="v" data-count="10" data-suffix=" 年">0</div><div class="l">企业级产品经验</div></div>
+      </div>
+      <a class="cta reveal" style="--i:3" href="https://yyf870423.github.io/hunter/" target="_blank" rel="noopener">查看 Hunter 产品主页<span class="ar">→</span></a>
+    </main>
+  </div>
+</section>
+
+<!-- ============ 02 · 核心优势 ============ -->
+<section class="slide">
+  <div class="deck body">
+    <div class="rail">
+      <div class="mb reveal" style="--i:0">于</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">CORE STRENGTHS</div><span class="draw"></span></div>
+      <div class="pg">01<small>/05</small></div>
+    </div>
+    <main class="main">
+      <div class="s-head reveal" style="--i:0"><span class="num">01</span><span class="s-title">核心优势</span></div>
+      <ul class="pts">
+        <li class="reveal" style="--i:1"><b>10 年企业级产品 + 一线 AI 落地</b>：4 年研发起步、6 年产品负责人，主导过服务 <span class="m">Top 150 银行</span>、字节跳动云原生的核心产品；近一年全职深耕 AI，已<span class="m">独立做出一款被真实用户每日使用的 AI 产品</span>。</li>
+        <li class="reveal" style="--i:2"><b>能把 AI 真正产品化，不止于 Demo</b>：掌握 RAG 全流程、Agent 架构与多模态系统设计，并已落地为产品能力（候选人-岗位智能匹配、自动寻访、本地优先架构）。</li>
+        <li class="reveal" style="--i:3"><b>0→1 全链路操盘</b>：从用户研究、市场验证（主导问卷调研 <span class="m">61 份</span>、<span class="m">70%</span> 目标用户表达试用意向），到敏捷交付与商业化，独立跑通完整闭环。</li>
+        <li class="reveal" style="--i:4"><b>强技术同理心 + 跨方协同</b>：研发出身，擅长与研发 / 运维 / 客户 / 高管对齐诉求，在复杂约束下定义可行的产品路径。</li>
+      </ul>
+    </main>
+  </div>
+</section>
+
+<!-- ============ 03 · 旗舰项目 Hunter ============ -->
+<section class="slide">
+  <div class="deck body">
+    <div class="rail">
+      <div class="mb reveal" style="--i:0">于</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">FLAGSHIP · HUNTER</div><span class="draw"></span></div>
+      <div class="pg">02<small>/05</small></div>
+    </div>
+    <main class="main">
+      <div class="reveal" style="--i:0"><div class="s-head"><span class="num">02</span><span class="s-title">旗舰项目 · Hunter</span></div>
+        <div class="s-sub">2024.09 – 至今　<span class="co">独立 AI 产品开发 · 产品负责人 + 全栈（AI 辅助）</span></div></div>
+      <div class="cards c4 reveal" style="--i:1">
+        <div class="card"><div class="v g" data-count="16000" data-thousands="1" data-suffix="+">0</div><div class="l">候选人 · 30+ 在跟岗位</div></div>
+        <div class="card"><div class="v" data-count="30" data-prefix="Top ">0</div><div class="l">1000+ 简历 2–3 分钟筛出</div></div>
+        <div class="card"><div class="v" data-count="61" data-suffix=" 份">0</div><div class="l">市场问卷有效回收</div></div>
+        <div class="card"><div class="v" data-count="70" data-suffix="%">0</div><div class="l">目标用户表达意向</div></div>
+      </div>
+      <ul class="pts">
+        <li class="reveal" style="--i:2"><b>0→1 打造 AI 招聘工作台 Hunter</b>：端到端覆盖「找人 → AI 匹配 → 推进看板 → 人才地图 → 候选人库沉淀」，核心差异化为<span class="m">「数据本地存储 + AI 秒级匹配」</span>。</li>
+        <li class="reveal" style="--i:3"><b>RAG 候选人-岗位匹配引擎</b>：对 1000+ 简历在 <span class="m">2–3 分钟内输出 Top 30</span> 候选人及强弱项点评，含多源解析（PDF / DOCX / URL）、向量检索与结果后处理。</li>
+        <li class="reveal" style="--i:4"><b>真实使用验证</b>：一名资深猎头<span class="m">每日重度使用</span>，库内 16,000+ 候选人、24 万+ 论文 / 专利信息，支持自动寻访与信息自动补全。</li>
+      </ul>
+      <a class="cta ghost reveal" style="--i:5" href="https://yyf870423.github.io/hunter/" target="_blank" rel="noopener">Hunter 产品主页 · yyf870423.github.io/hunter<span class="ar">→</span></a>
+    </main>
+  </div>
+</section>
+
+<!-- ============ 04 · 字节跳动 ============ -->
+<section class="slide">
+  <div class="deck body">
+    <div class="rail">
+      <div class="mb reveal" style="--i:0">于</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">BYTEDANCE · CLOUD</div><span class="draw"></span></div>
+      <div class="pg">03<small>/05</small></div>
+    </div>
+    <main class="main">
+      <div class="reveal" style="--i:0"><div class="s-head"><span class="num">03</span><span class="s-title">字节跳动 · 云原生可观测</span></div>
+        <div class="s-sub">2022.11 – 2024.08　<span class="co">云原生可观测产品经理</span></div></div>
+      <div class="cards c3 reveal" style="--i:1">
+        <div class="card"><div class="v" data-count="40" data-prefix="+" data-suffix="%">0</div><div class="l">全链路观测效率</div></div>
+        <div class="card"><div class="v g" data-count="60" data-prefix="−" data-suffix="%">0</div><div class="l">用户操作步骤</div></div>
+        <div class="card"><div class="v" data-count="70" data-prefix="+" data-suffix="%">0</div><div class="l">AI 训练 GPU 运维效率</div></div>
+      </div>
+      <ul class="pts">
+        <li class="reveal" style="--i:2"><b>全链路可观测性整合</b>（基础设施 / 网络 / 应用层）：模块化配置上线后 <span class="m">观测效率 +40%</span>、<span class="m">用户操作步骤 −60%</span>。</li>
+        <li class="reveal" style="--i:3"><b>基于 eBPF 无侵入式容器监控</b>：实现网络与应用性能实时追踪，并协同日志团队完成商业化闭环。</li>
+        <li class="reveal" style="--i:4"><b>AIOps</b>：打造集群智能巡检系统提升故障自动检测率；为 AI 云原生方案设计 GPU 故障自愈，<span class="m">GPU 运维效率 +70%</span>。</li>
+        <li class="reveal" style="--i:5"><b>LLM 智能助手</b>：自然语言意图识别、故障根因分析、日志释义。</li>
+      </ul>
+    </main>
+  </div>
+</section>
+
+<!-- ============ 05 · 天旦 + 华讯 ============ -->
+<section class="slide">
+  <div class="deck body">
+    <div class="rail">
+      <div class="mb reveal" style="--i:0">于</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">TENDCLOUD · HUASUN</div><span class="draw"></span></div>
+      <div class="pg">04<small>/05</small></div>
+    </div>
+    <main class="main">
+      <div class="s-head reveal" style="--i:0"><span class="num">04</span><span class="s-title">应用可观测 · 早期产品 / 研发</span></div>
+      <div class="cards c3 reveal" style="--i:1">
+        <div class="card"><div class="v g" data-count="260" data-suffix=" 亿笔">0</div><div class="l">天旦 BPC 日均监控交易</div></div>
+        <div class="card"><div class="v" data-count="150" data-prefix="Top ">0</div><div class="l">银行客户 · Top 30 券商</div></div>
+        <div class="card"><div class="v" data-count="1.5" data-decimals="1" data-suffix=" 万/秒">0</div><div class="l">双十一 / 618 峰值交易</div></div>
+      </div>
+      <div class="job reveal" style="--i:2">
+        <div class="jh"><span class="jt">上海天旦网络 · 应用可观测性产品负责人</span><span class="jd">2017.08 – 2022.11</span></div>
+        <ul class="pts">
+          <li>统筹旗舰产品《BPC》迭代，服务 <span class="m">Top 150 银行及 Top 30 券商，日均监控交易 260 亿笔</span>。</li>
+          <li><b>0→1</b> 设计《Cloud Probe Manager》，集成云上流量采集与网络数据解码，落地银联云、浙商银行等标杆客户，成为产品生态核心底座。</li>
+          <li>主导《业务大屏 TeamVision》，支撑双十一 / 618 峰值交易（<span class="m">1.5 万笔 / 秒</span>）实时可视化。</li>
+        </ul>
+      </div>
+      <div class="divider reveal" style="--i:3"></div>
+      <div class="job reveal" style="--i:4">
+        <div class="jh"><span class="jt">上海华讯网络 · 软件工程师 → 产品经理</span><span class="jd">2010.12 – 2017.08</span></div>
+        <ul class="pts">
+          <li>主导自研运维管理软件全生命周期管理；联合 NetScout、Splunk 等头部厂商设计端到端监控方案；基于 Java / Spring 开发 B/S 架构通信管理软件。</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</section>
+
+<!-- ============ 06 · 教育 & 技能 ============ -->
+<section class="slide">
+  <div class="deck body">
+    <div class="rail">
+      <div class="mb reveal" style="--i:0">于</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">EDUCATION · SKILLS</div><span class="draw"></span></div>
+      <div class="pg">05<small>/05</small></div>
+    </div>
+    <main class="main">
+      <div class="s-head reveal" style="--i:0"><span class="num">05</span><span class="s-title">教育 & 技能</span></div>
+      <div class="kv reveal" style="--i:1">
+        <div class="item"><span class="ic"></span><div class="it"><span class="d">2009.09 – 2010.08</span><b>波士顿大学</b>（全日制） — 图像处理 · 硕士</div></div>
+        <div class="item"><span class="ic"></span><div class="it"><span class="d">2005.09 – 2009.06</span><b>复旦大学</b> — 通信工程 · 学士</div></div>
+      </div>
+      <div class="divider reveal" style="--i:2"></div>
+      <div class="kv reveal" style="--i:3">
+        <div class="item"><span class="ic"></span><div class="it"><b>AI</b>：RAG 全流程、Agent 架构（反思型 / 多 Agent 协作）、多模态系统、LLM 应用落地；熟练使用 Claude / GPT / Cursor / Copilot。</div></div>
+        <div class="item"><span class="ic"></span><div class="it"><b>产品</b>：价值主张设计、用户故事地图、精益画布；Axure、xMind；PRD / 竞品分析 / AI 技术方案。</div></div>
+        <div class="item"><span class="ic"></span><div class="it"><b>技术</b>：云原生（K8s / Docker）、eBPF、AIOps、Prometheus / Grafana。</div></div>
+      </div>
+      <a class="cta reveal" style="--i:4" href="https://yyf870423.github.io/hunter/" target="_blank" rel="noopener">在线体验 Hunter · yyf870423.github.io/hunter<span class="ar">→</span></a>
+      <div class="foot reveal" style="--i:5"><span>135-6482-1599</span><span>y.e.yyf@163.com</span><span>上海 · 期望薪资 面议</span></div>
+    </main>
+  </div>
+</section>
+
+<script>
+/* === 导航点 + 进度条 === */
+const slides=[...document.querySelectorAll('.slide')];
+const dots=document.getElementById('dots');
+const progress=document.getElementById('progress');
+slides.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','第 '+(i+1)+' 页');
+  b.onclick=()=>s.scrollIntoView({behavior:'smooth'});dots.appendChild(b);});
+const dotBtns=[...dots.children];
+
+/* === 数字滚动 count-up === */
+function countUp(el){
+  if(el.dataset.done)return; el.dataset.done='1';
+  const target=parseFloat(el.dataset.count),dec=parseInt(el.dataset.decimals||'0'),
+    thou=el.dataset.thousands==='1',pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  const fmt=n=>{let s=dec?n.toFixed(dec):Math.round(n).toString();if(thou)s=Number(s).toLocaleString('en-US');return pre+s+suf;};
+  const dur=1200,t0=performance.now();
+  (function tick(now){const p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);
+    el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(tick);else el.textContent=fmt(target);})(t0);
+}
+
+/* === 进入视口:入场动效 + count-up + 激活导航点 === */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    const i=slides.indexOf(en.target);
+    if(en.isIntersecting){
+      en.target.classList.add('in');
+      en.target.querySelectorAll('[data-count]').forEach(countUp);
+      dotBtns.forEach((d,k)=>d.classList.toggle('on',k===i));
+      progress.style.width=((i+1)/slides.length*100)+'%';
+    }
+  });
+},{threshold:.55});
+slides.forEach(s=>io.observe(s));
+
+/* === 键盘翻页 === */
+let cur=0;
+function go(n){cur=Math.max(0,Math.min(slides.length-1,n));slides[cur].scrollIntoView({behavior:'smooth'});}
+addEventListener('keydown',e=>{
+  if(['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();go(cur+1);}
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1);}
+});
+addEventListener('scroll',()=>{cur=Math.round(window.scrollY/window.innerHeight);},{passive:true});
+</script>
+</body>
+</html>
