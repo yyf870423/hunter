@@ -256,8 +256,10 @@ img { max-width: 100%; display: block; }
   padding: var(--space-10) 0 var(--space-9);
   overflow: hidden;
   background:
-    radial-gradient(800px 400px at 20% 0%, rgba(37,99,235,0.06), transparent 70%),
-    radial-gradient(600px 360px at 80% 10%, rgba(96,165,250,0.05), transparent 70%);
+    radial-gradient(1000px 500px at 15% 10%, rgba(37,99,235,0.12), transparent 60%),
+    radial-gradient(800px 460px at 85% 20%, rgba(124,58,237,0.11), transparent 60%),
+    radial-gradient(700px 400px at 50% 90%, rgba(99,102,241,0.08), transparent 60%),
+    linear-gradient(180deg, #FAFBFF 0%, #F5F3FF 100%);
 }
 .hero__content {
   text-align: center;
@@ -362,9 +364,21 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
-  border: 1px solid var(--color-border);
+  box-shadow:
+    0 30px 80px rgba(37, 99, 235, 0.18),
+    0 12px 36px rgba(124, 58, 237, 0.15),
+    0 0 0 1px rgba(15, 23, 42, 0.08);
+  border: none;
   background: var(--color-white);
+}
+.hero__visual::after {
+  /* 渐变 highlight 在右下角，模拟反光 */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, transparent 60%, rgba(124, 58, 237, 0.06));
+  pointer-events: none;
 }
 .hero__visual img {
   width: 100%;
@@ -646,26 +660,58 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-direction: column;
   transition: all 0.3s var(--ease);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
 }
 .cap-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.12), 0 6px 20px rgba(37, 99, 235, 0.08);
   border-color: transparent;
 }
 .cap-card__image {
-  background: var(--color-surface);
+  background: linear-gradient(180deg, #ECEFF4 0%, #E2E8F0 28px, #F1F5F9 28px, #F8FAFC 100%);
   padding: 0;
-  border-top: 1px solid var(--color-border-soft);
-  aspect-ratio: 16 / 10;
+  border-top: 1px solid var(--color-border);
+  aspect-ratio: 16 / 11;
   overflow: hidden;
   margin-top: auto;
+  position: relative;
+}
+.cap-card__image::before {
+  /* Mac chrome 三个圆点 */
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 12px;
+  width: 46px;
+  height: 12px;
+  background:
+    radial-gradient(circle 5px at 6px 6px, #FF5F57 0 5px, transparent 5.5px),
+    radial-gradient(circle 5px at 22px 6px, #FFBD2E 0 5px, transparent 5.5px),
+    radial-gradient(circle 5px at 38px 6px, #28C940 0 5px, transparent 5.5px);
+  background-repeat: no-repeat;
+  z-index: 3;
+  pointer-events: none;
+}
+.cap-card__image::after {
+  /* Chrome bar 底部分隔线 */
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(15, 23, 42, 0.08);
+  z-index: 3;
+  pointer-events: none;
 }
 .cap-card__image img {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 28px);
+  margin-top: 28px;
   object-fit: cover;
   object-position: top center;
   transition: transform 0.4s var(--ease);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
 .cap-card:hover .cap-card__image img {
   transform: scale(1.03);
@@ -703,25 +749,62 @@ img { max-width: 100%; display: block; }
 .flow {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-5);
   position: relative;
 }
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
+  .flow { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
   .flow { grid-template-columns: 1fr; }
 }
 .flow-step {
   text-align: center;
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+.flow-step::before {
+  /* 顶部 hairline 蓝紫渐变 */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--brand-gradient);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.flow-step:not(:last-child)::after {
+  /* 步骤之间的 arrow（桌面 5 列时显示） */
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: calc(-1 * var(--space-5) / 2 - 6px);
+  transform: translate(50%, -50%);
+  color: var(--color-faint);
+  font-size: 18px;
+  font-weight: 600;
+  z-index: 2;
+  pointer-events: none;
+  transition: color 0.4s var(--ease);
+}
+@media (max-width: 1000px) {
+  .flow-step:not(:last-child)::after { display: none; }
 }
 .flow-step__circle {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
-  background: var(--color-white);
-  border: 2px solid var(--color-primary);
+  border-radius: 16px;
+  background: var(--color-primary-soft);
+  border: 1px solid var(--color-primary-light);
   color: var(--color-primary);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -729,31 +812,38 @@ img { max-width: 100%; display: block; }
   margin: 0 auto var(--space-4);
   position: relative;
   z-index: 1;
+  transition: all 0.5s var(--ease);
 }
 .flow-step__title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--color-ink);
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.01em;
 }
 .flow-step__desc {
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--color-muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
-.flow-step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: calc(var(--space-5) + 28px);
-  left: calc(50% + 30px);
-  right: calc(-50% + 30px);
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-border));
-  z-index: 0;
+.flow-step.is-active {
+  background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(124,58,237,0.04));
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.08);
 }
-
-@media (max-width: 900px) {
-  .flow-step:not(:last-child)::after { display: none; }
+.flow-step.is-active::before {
+  opacity: 1;
+}
+.flow-step.is-active:not(:last-child)::after {
+  color: var(--color-accent);
+}
+.flow-step.is-active .flow-step__circle {
+  background: var(--brand-gradient);
+  border-color: transparent;
+  color: var(--color-white);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+  transform: scale(1.06) rotate(-3deg);
 }
 
 /* ===========================================================
@@ -1135,13 +1225,26 @@ img { max-width: 100%; display: block; }
   margin-top: var(--space-5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(124,58,237,0.04));
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8F5FF 100%);
   overflow: hidden;
   transition: all 0.3s var(--ease);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
+  position: relative;
+}
+.cap-card--wide::before {
+  /* 左侧蓝紫渐变 hairline 强调 */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--brand-gradient);
+  z-index: 1;
 }
 .cap-card--wide:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.14), 0 6px 20px rgba(37, 99, 235, 0.10);
 }
 .cap-card--wide .cap-card__body {
   padding: var(--space-7) var(--space-7);
@@ -1159,11 +1262,12 @@ img { max-width: 100%; display: block; }
   height: 100%;
   margin-top: 0;
   border-top: none;
-  border-left: 1px solid var(--color-border-soft);
+  border-left: 1px solid var(--color-border);
 }
 .cap-card--wide .cap-card__image img {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 28px);
+  margin-top: 28px;
   object-fit: cover;
   object-position: top left;
 }
@@ -1229,10 +1333,10 @@ img { max-width: 100%; display: block; }
 
 .section--bg {
   background:
-    radial-gradient(at 20% 20%, rgba(37, 99, 235, 0.04) 0%, transparent 50%),
-    radial-gradient(at 80% 30%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
-    radial-gradient(at 50% 80%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
-    var(--color-surface);
+    radial-gradient(at 15% 15%, rgba(37, 99, 235, 0.10) 0%, transparent 45%),
+    radial-gradient(at 85% 25%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+    radial-gradient(at 50% 85%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #EEF2FF 0%, #F5F3FF 100%);
   position: relative;
 }
 .section--bg::before {
@@ -1240,8 +1344,8 @@ img { max-width: 100%; display: block; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(at 70% 70%, rgba(124, 58, 237, 0.025) 0%, transparent 50%),
-    radial-gradient(at 30% 50%, rgba(37, 99, 235, 0.025) 0%, transparent 50%);
+    radial-gradient(at 70% 70%, rgba(124, 58, 237, 0.07) 0%, transparent 45%),
+    radial-gradient(at 30% 50%, rgba(37, 99, 235, 0.07) 0%, transparent 45%);
   animation: mesh-flow 18s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 0;
@@ -1253,64 +1357,9 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   ▶ V8 — Workflow 光带 + scroll 激活依次点亮
+   ▶ V8 — Workflow scroll 激活（光带已并入新 flow-step 卡片设计）
    ============================================================ */
-
-.flow {
-  position: relative;
-}
-.flow::before {
-  content: "";
-  position: absolute;
-  top: 30px;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-border) 0%, var(--color-border) 100%);
-  z-index: 0;
-}
-.flow::after {
-  content: "";
-  position: absolute;
-  top: 29px;
-  left: 8%;
-  height: 4px;
-  width: 0;
-  background: var(--brand-gradient-flow);
-  background-size: 200% 100%;
-  box-shadow: 0 0 16px rgba(124, 58, 237, 0.45);
-  z-index: 1;
-  transition: width 1.6s var(--ease);
-  border-radius: 2px;
-}
-.flow.is-flowing::after {
-  width: 84%;
-  animation: flow-beam 3s ease-in-out infinite;
-}
-@keyframes flow-beam {
-  0%, 100% { background-position: 0% 0; }
-  50% { background-position: 100% 0; }
-}
-.flow-step {
-  position: relative;
-  z-index: 2;
-}
-.flow-step__circle {
-  transition: all 0.5s var(--ease);
-  background: var(--color-white);
-  border: 2px solid var(--color-border);
-  color: var(--color-muted);
-}
-.flow-step.is-active .flow-step__circle {
-  background: var(--brand-gradient);
-  border-color: transparent;
-  color: var(--color-white);
-  box-shadow: var(--brand-glow);
-  transform: scale(1.08);
-}
-.flow-step.is-active .flow-step__title {
-  color: var(--color-ink);
-}
+/* 新设计在 §7 Workflow 主样式区，is-active 控制激活；这里不再追加 */
 
 /* ============================================================
    ▶ V9 — Persona 头像光环 + 引用块渐变左边
