@@ -167,15 +167,16 @@ img { max-width: 100%; display: block; }
    滚动 reveal
    =========================================================== */
 
-/* V2 滚动入场：Blur-to-focus + Stagger 波浪式 */
+/* 全局滚动入场: Linear 同款 Blur-to-focus + 慢速 stagger
+   曲线 cubic-bezier(0.16, 1, 0.3, 1), 时长 1.2s, 大幅 stagger */
 .reveal {
   opacity: 0;
-  transform: translateY(24px) scale(0.96);
+  transform: translateY(28px);
   filter: blur(6px);
   transition:
-    opacity 0.7s var(--ease),
-    transform 0.7s var(--ease),
-    filter 0.7s var(--ease);
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 .reveal.is-visible {
@@ -183,9 +184,11 @@ img { max-width: 100%; display: block; }
   transform: none;
   filter: blur(0);
 }
-.reveal-delay-1.is-visible { transition-delay: 0.08s; }
-.reveal-delay-2.is-visible { transition-delay: 0.16s; }
-.reveal-delay-3.is-visible { transition-delay: 0.24s; }
+.reveal-delay-1.is-visible { transition-delay: 0.15s; }
+.reveal-delay-2.is-visible { transition-delay: 0.30s; }
+.reveal-delay-3.is-visible { transition-delay: 0.45s; }
+.reveal-delay-4.is-visible { transition-delay: 0.60s; }
+.reveal-delay-5.is-visible { transition-delay: 0.75s; }
 
 /* ===========================================================
    Nav
@@ -322,8 +325,8 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   Linear 风 Hero 入场 stagger fade + blur-to-focus
-   pill → slogan → subtitle → CTA → screenshot (各 ~130-160ms 间隔)
+   Linear 风 Hero 入场 stagger fade + blur-to-focus (整体放慢)
+   pill → slogan → subtitle → CTA → screenshot (各 ~240-280ms 间隔)
    ============================================================ */
 .hero__pill,
 .hero__slogan,
@@ -331,23 +334,23 @@ img { max-width: 100%; display: block; }
 .hero__cta-row {
   opacity: 0;
   will-change: opacity, transform, filter;
-  animation: heroIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: heroIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.hero__pill     { animation-delay: 0.05s; }
-.hero__slogan   { animation-delay: 0.18s; animation-duration: 1.05s; }
-.hero__subtitle { animation-delay: 0.34s; }
-.hero__cta-row  { animation-delay: 0.50s; }
+.hero__pill     { animation-delay: 0.10s; }
+.hero__slogan   { animation-delay: 0.32s; animation-duration: 1.55s; }
+.hero__subtitle { animation-delay: 0.60s; }
+.hero__cta-row  { animation-delay: 0.90s; }
 
 .hero__visual {
   opacity: 0;
   will-change: opacity, transform, filter;
-  animation: heroInImage 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.68s forwards;
+  animation: heroInImage 1.7s cubic-bezier(0.16, 1, 0.3, 1) 1.20s forwards;
 }
 
 @keyframes heroIn {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
     filter: blur(6px);
   }
   to {
@@ -359,7 +362,7 @@ img { max-width: 100%; display: block; }
 @keyframes heroInImage {
   from {
     opacity: 0;
-    transform: translateY(40px) scale(0.97);
+    transform: translateY(44px) scale(0.97);
     filter: blur(10px);
   }
   to {
