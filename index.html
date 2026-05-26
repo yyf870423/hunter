@@ -260,6 +260,71 @@ img { max-width: 100%; display: block; }
     radial-gradient(800px 460px at 85% 20%, rgba(124,58,237,0.11), transparent 60%),
     radial-gradient(700px 400px at 50% 90%, rgba(99,102,241,0.08), transparent 60%),
     linear-gradient(180deg, #FAFBFF 0%, #F5F3FF 100%);
+  perspective: 1400px;
+  perspective-origin: 50% 35%;
+}
+.hero > .container {
+  position: relative;
+  z-index: 2;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+/* 旋转 conic gradient 云层（远处底纹）*/
+.hero__conic {
+  position: absolute;
+  inset: -25%;
+  background: conic-gradient(from 0deg at 50% 50%,
+    transparent 0deg,
+    rgba(37,99,235,.12) 50deg,
+    transparent 110deg,
+    rgba(124,58,237,.14) 170deg,
+    transparent 230deg,
+    rgba(99,102,241,.10) 290deg,
+    transparent 360deg);
+  filter: blur(50px);
+  transform: rotateX(62deg) translateZ(-200px);
+  transform-origin: center;
+  animation: conicSpin 28s linear infinite;
+  opacity: .85;
+}
+@keyframes conicSpin {
+  from { transform: rotateX(62deg) translateZ(-200px) rotate(0deg); }
+  to   { transform: rotateX(62deg) translateZ(-200px) rotate(360deg); }
+}
+
+/* SVG 人才流线（倾斜地板感 - rotateX）*/
+.hero__streams {
+  position: absolute;
+  inset: -10% -5%;
+  width: 110%;
+  height: 120%;
+  pointer-events: none;
+  transform: rotateX(38deg) scale(1.25);
+  transform-origin: center bottom;
+  opacity: .9;
+}
+.hero__streams .stream {
+  fill: none;
+  stroke: url(#streamG);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 4 18;
+  animation: streamDash 9s linear infinite;
+}
+.hero__streams .stream--1 { stroke-width: 2.2; animation-duration: 8s; }
+.hero__streams .stream--2 { stroke-width: 1.6; animation-duration: 12s; animation-direction: reverse; opacity: .75; }
+.hero__streams .stream--3 { stroke-width: 1.4; animation-duration: 16s; animation-delay: -4s; opacity: .65; }
+.hero__streams .stream--4 { stroke-width: 1.8; animation-duration: 10s; animation-direction: reverse; animation-delay: -2s; opacity: .8; }
+@keyframes streamDash {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -440; }
 }
 .hero__content {
   text-align: center;
@@ -1124,24 +1189,19 @@ img { max-width: 100%; display: block; }
    ▶ V1 — Hero 粒子网格 + 鼠标光晕 (canvas + spotlight)
    ============================================================ */
 
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
 .hero__particles {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.55;
+  opacity: 0.45;
+  z-index: 2;
 }
 .hero__spotlight {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 3;
   background:
     radial-gradient(
       600px circle at var(--mx, 50%) var(--my, 30%),
@@ -1151,7 +1211,6 @@ img { max-width: 100%; display: block; }
     );
   transition: background 0.25s var(--ease);
 }
-.hero > .container { position: relative; z-index: 1; }
 
 /* ============================================================
    ▶ V3 — 卡片 spotlight 跟随 + Gradient border glow
@@ -1495,8 +1554,23 @@ img { max-width: 100%; display: block; }
      §1 HERO
      ════════════════════════════════════════════════════════════ -->
 <header class="hero" id="top">
-  <!-- V1: 粒子网格 + 鼠标光晕背景 -->
+  <!-- V1: 粒子网格 + 鼠标光晕背景 + 人才流动曲线 -->
   <div class="hero__bg" aria-hidden="true">
+    <div class="hero__conic"></div>
+    <svg class="hero__streams" viewBox="0 0 1200 600" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="streamG" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#2563EB" stop-opacity="0"/>
+          <stop offset="35%" stop-color="#6366F1" stop-opacity=".55"/>
+          <stop offset="65%" stop-color="#7C3AED" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="stream stream--1" d="M -50,120 Q 280,40 580,220 T 1250,90" />
+      <path class="stream stream--2" d="M -50,360 Q 360,210 720,440 T 1250,310" />
+      <path class="stream stream--3" d="M -50,500 Q 220,330 620,560 T 1250,440" />
+      <path class="stream stream--4" d="M -50,250 Q 360,420 720,140 T 1250,330" />
+    </svg>
     <canvas class="hero__particles" id="heroParticles"></canvas>
     <div class="hero__spotlight" id="heroSpotlight"></div>
   </div>
