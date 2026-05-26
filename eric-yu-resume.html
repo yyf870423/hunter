@@ -138,6 +138,44 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:
 ul.pts li b{font-weight:700;color:var(--ink)}
 .m{color:var(--accent-d);font-weight:700}
 
+/* 核心优势卡片网格 (slide 02 重点强化) */
+.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.7rem,1.5vw,1.15rem)}
+@media(max-width:720px){.adv-grid{grid-template-columns:1fr}}
+.adv{background:var(--paper);border:1px solid var(--cardline);border-radius:14px;
+  padding:clamp(.85rem,1.7vw,1.3rem);display:flex;flex-direction:column;gap:.55rem;
+  position:relative;isolation:isolate;overflow:hidden;
+  box-shadow:0 6px 18px rgba(22,34,43,.05);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
+.adv::before{content:"";position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(240px circle at var(--card-mx,50%) var(--card-my,50%),
+    rgba(99,102,241,.10),rgba(54,169,191,.06) 40%,transparent 70%);
+  opacity:0;transition:opacity .4s ease;pointer-events:none;z-index:-1}
+.adv:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(99,102,241,.12)}
+.adv:hover::before{opacity:1}
+.adv-head{display:flex;align-items:center;gap:.7rem}
+.adv-ic{position:relative;width:clamp(40px,4vw,52px);height:clamp(40px,4vw,52px);border-radius:12px;
+  background:var(--brand-gradient);color:#fff;font-family:var(--mono);font-weight:700;
+  font-size:clamp(.85rem,1.3vw,1rem);display:grid;place-items:center;flex-shrink:0;
+  box-shadow:0 6px 16px rgba(99,102,241,.35);letter-spacing:-.01em}
+.adv-ic::before{content:"";position:absolute;inset:-4px;border-radius:inherit;
+  background:var(--brand-gradient);filter:blur(8px);opacity:.32;z-index:-1;
+  animation:adv-glow 3.4s ease-in-out infinite}
+@keyframes adv-glow{
+  0%,100%{opacity:.32;transform:scale(1)}
+  50%    {opacity:.55;transform:scale(1.08)}
+}
+.adv-ic small{font-size:.62em;margin-left:1px;opacity:.85;font-weight:600}
+.adv-t{font-family:var(--serif);font-weight:600;font-size:clamp(.95rem,1.4vw,1.12rem);color:var(--ink);line-height:1.25}
+.adv-d{font-size:clamp(.76rem,1.15vw,.88rem);color:var(--muted);line-height:1.55;flex:1}
+.adv-d b{color:var(--ink);font-weight:700}
+.adv-d .m{color:var(--accent2-d)}
+.adv-chips{display:flex;flex-wrap:wrap;gap:.32rem;margin-top:.15rem}
+.adv-chips span{font-family:var(--mono);font-size:clamp(.56rem,.86vw,.66rem);
+  padding:.26rem .55rem;background:var(--brand-gradient-soft);color:var(--accent2-d);
+  border-radius:999px;letter-spacing:.04em;font-weight:600;
+  border:1px solid rgba(99,102,241,.18);transition:transform .25s ease}
+.adv:hover .adv-chips span{transform:translateY(-1px)}
+
 /* 经历分组(天旦 / 华讯) */
 .job{display:flex;flex-direction:column;gap:.4rem}
 .job .jh{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
@@ -229,24 +267,40 @@ ul.pts li b{font-weight:700;color:var(--ink)}
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
       <ol class="tl reveal" style="--i:1">
-        <li><span class="dot"></span><span class="yr">09</span></li>
-        <li><span class="dot"></span><span class="yr">10</span></li>
-        <li><span class="dot"></span><span class="yr">11</span></li>
-        <li><span class="dot"></span><span class="yr">17</span></li>
-        <li><span class="dot"></span><span class="yr">22</span></li>
-        <li class="is-current"><span class="dot"></span><span class="yr">24</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">2024</span></li>
+        <li><span class="dot"></span><span class="yr">2022</span></li>
+        <li><span class="dot"></span><span class="yr">2017</span></li>
+        <li><span class="dot"></span><span class="yr">2011</span></li>
+        <li><span class="dot"></span><span class="yr">2010</span></li>
+        <li><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
       <div class="pg">01<small>/05</small></div>
       <div class="note">// 14 yrs · 4 eng + 10 pm</div>
     </div>
     <main class="main">
       <div class="s-head reveal" style="--i:0"><span class="num">01</span><span class="s-title">核心优势</span></div>
-      <ul class="pts">
-        <li class="reveal" style="--i:1"><b>10 年企业级产品 + 一线 AI 落地</b>：4 年研发起步、6 年产品负责人，主导过服务 <span class="m">Top 150 银行</span>、字节跳动云原生的核心产品；近一年全职深耕 AI，已<span class="m">独立做出一款被真实用户每日使用的 AI 产品</span>。</li>
-        <li class="reveal" style="--i:2"><b>能把 AI 真正产品化，不止于 Demo</b>：掌握 RAG 全流程、Agent 架构与多模态系统设计，并已落地为产品能力（候选人-岗位智能匹配、自动寻访、本地优先架构）。</li>
-        <li class="reveal" style="--i:3"><b>0→1 全链路操盘</b>：从用户研究、市场验证（主导问卷调研 <span class="m">61 份</span>、<span class="m">70%</span> 目标用户表达试用意向），到敏捷交付与商业化，独立跑通完整闭环。</li>
-        <li class="reveal" style="--i:4"><b>强技术同理心 + 跨方协同</b>：研发出身，擅长与研发 / 运维 / 客户 / 高管对齐诉求，在复杂约束下定义可行的产品路径。</li>
-      </ul>
+      <div class="adv-grid">
+        <article class="adv reveal" style="--i:1">
+          <div class="adv-head"><div class="adv-ic">14<small>y</small></div><h3 class="adv-t">10 年企业级 × 一线 AI 落地</h3></div>
+          <p class="adv-d">4 年研发起步、6 年产品负责人，主导服务 <b>Top 150 银行</b> / 字节跳动云原生核心产品；近一年全职深耕 AI，<b class="m">独立做出每日被用的 AI 产品</b>。</p>
+          <div class="adv-chips"><span>Top 150 银行</span><span>字节云原生</span><span>独立 AI</span></div>
+        </article>
+        <article class="adv reveal" style="--i:2">
+          <div class="adv-head"><div class="adv-ic">AI</div><h3 class="adv-t">不止 Demo，能产品化</h3></div>
+          <p class="adv-d">掌握 <b>RAG 全流程 / Agent 架构 / 多模态系统设计</b>，已落地为候选人-岗位智能匹配、自动寻访、本地优先架构等真实产品能力。</p>
+          <div class="adv-chips"><span>RAG</span><span>Agent</span><span>多模态</span><span>本地优先</span></div>
+        </article>
+        <article class="adv reveal" style="--i:3">
+          <div class="adv-head"><div class="adv-ic">0<small>→</small>1</div><h3 class="adv-t">0→1 全链路操盘</h3></div>
+          <p class="adv-d">从用户研究、市场验证（问卷 <b class="m">61 份</b>、<b class="m">70%</b> 试用意向、9 位深度访谈），到敏捷交付与商业化，独立跑通完整闭环。</p>
+          <div class="adv-chips"><span>61 份问卷</span><span>70% 意向</span><span>9 位深访</span></div>
+        </article>
+        <article class="adv reveal" style="--i:4">
+          <div class="adv-head"><div class="adv-ic">↔</div><h3 class="adv-t">技术同理心 + 跨方协同</h3></div>
+          <p class="adv-d">研发出身，擅长与<b>研发 / 运维 / 客户 / 高管</b>对齐诉求，在复杂约束下定义可行的产品路径。</p>
+          <div class="adv-chips"><span>研发</span><span>运维</span><span>客户</span><span>高管</span></div>
+        </article>
+      </div>
     </main>
   </div>
 </section>
@@ -257,12 +311,12 @@ ul.pts li b{font-weight:700;color:var(--ink)}
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
       <ol class="tl reveal" style="--i:1">
-        <li><span class="dot"></span><span class="yr">09</span></li>
-        <li><span class="dot"></span><span class="yr">10</span></li>
-        <li><span class="dot"></span><span class="yr">11</span></li>
-        <li><span class="dot"></span><span class="yr">17</span></li>
-        <li><span class="dot"></span><span class="yr">22</span></li>
-        <li class="is-current"><span class="dot"></span><span class="yr">24</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">2024</span></li>
+        <li><span class="dot"></span><span class="yr">2022</span></li>
+        <li><span class="dot"></span><span class="yr">2017</span></li>
+        <li><span class="dot"></span><span class="yr">2011</span></li>
+        <li><span class="dot"></span><span class="yr">2010</span></li>
+        <li><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
       <div class="pg">02<small>/05</small></div>
       <div class="note">// indie · 0→1 · daily users</div>
@@ -292,12 +346,12 @@ ul.pts li b{font-weight:700;color:var(--ink)}
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
       <ol class="tl reveal" style="--i:1">
-        <li><span class="dot"></span><span class="yr">09</span></li>
-        <li><span class="dot"></span><span class="yr">10</span></li>
-        <li><span class="dot"></span><span class="yr">11</span></li>
-        <li><span class="dot"></span><span class="yr">17</span></li>
-        <li class="is-current"><span class="dot"></span><span class="yr">22</span></li>
-        <li><span class="dot"></span><span class="yr">24</span></li>
+        <li><span class="dot"></span><span class="yr">2024</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">2022</span></li>
+        <li><span class="dot"></span><span class="yr">2017</span></li>
+        <li><span class="dot"></span><span class="yr">2011</span></li>
+        <li><span class="dot"></span><span class="yr">2010</span></li>
+        <li><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
       <div class="pg">03<small>/05</small></div>
       <div class="note">// cloud native · eBPF · AIOps</div>
@@ -326,12 +380,12 @@ ul.pts li b{font-weight:700;color:var(--ink)}
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
       <ol class="tl reveal" style="--i:1">
-        <li><span class="dot"></span><span class="yr">09</span></li>
-        <li><span class="dot"></span><span class="yr">10</span></li>
-        <li class="is-current"><span class="dot"></span><span class="yr">11</span></li>
-        <li class="is-current"><span class="dot"></span><span class="yr">17</span></li>
-        <li><span class="dot"></span><span class="yr">22</span></li>
-        <li><span class="dot"></span><span class="yr">24</span></li>
+        <li><span class="dot"></span><span class="yr">2024</span></li>
+        <li><span class="dot"></span><span class="yr">2022</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">2017</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">2011</span></li>
+        <li><span class="dot"></span><span class="yr">2010</span></li>
+        <li><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
       <div class="pg">04<small>/05</small></div>
       <div class="note">// fintech · 260B+ daily txn</div>
@@ -368,12 +422,12 @@ ul.pts li b{font-weight:700;color:var(--ink)}
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
       <ol class="tl reveal" style="--i:1">
-        <li class="is-current"><span class="dot"></span><span class="yr">09</span></li>
-        <li class="is-current"><span class="dot"></span><span class="yr">10</span></li>
-        <li><span class="dot"></span><span class="yr">11</span></li>
-        <li><span class="dot"></span><span class="yr">17</span></li>
-        <li><span class="dot"></span><span class="yr">22</span></li>
-        <li><span class="dot"></span><span class="yr">24</span></li>
+        <li><span class="dot"></span><span class="yr">2024</span></li>
+        <li><span class="dot"></span><span class="yr">2022</span></li>
+        <li><span class="dot"></span><span class="yr">2017</span></li>
+        <li><span class="dot"></span><span class="yr">2011</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">2010</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
       <div class="pg">05<small>/05</small></div>
       <div class="note">// updated 2026.05</div>
@@ -419,8 +473,8 @@ function countUp(el){
   })(t0);
 }
 
-/* === d. 卡片 spotlight 跟鼠标 === */
-document.querySelectorAll('.card').forEach(card=>{
+/* === d. 卡片 spotlight 跟鼠标 (含核心优势 .adv 卡片) === */
+document.querySelectorAll('.card,.adv').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const r=card.getBoundingClientRect();
     const x=((e.clientX-r.left)/r.width)*100;
