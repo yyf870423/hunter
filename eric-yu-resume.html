@@ -18,6 +18,10 @@ html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
   --side:#1c3a47;--side2:#15303b;--sink:#e9f1f3;--squiet:#9fb9c1;
   --bg:#f6f8f9;--paper:#ffffff;--ink:#16222b;--muted:#637079;
   --accent:#36a9bf;--accent-d:#2a8aa0;--gold:#e0a23c;
+  /* V2 副色 + brand-gradient（青绿 → 紫蓝）*/
+  --accent2:#6366F1;--accent2-d:#4F46E5;
+  --brand-gradient:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);
+  --brand-gradient-soft:linear-gradient(135deg,rgba(54,169,191,.12),rgba(99,102,241,.12));
   --line:#e2e8ec;--cardline:#e7edf0;
   --serif:"Fraunces","Noto Serif SC",serif;
   --body:"Hanken Grotesk","Noto Sans SC",sans-serif;
@@ -40,9 +44,9 @@ body{font-family:var(--body);color:var(--ink);background:var(--bg);-webkit-font-
 .sidebar::after{content:"";position:absolute;right:-40px;top:-40px;width:190px;height:190px;border-radius:50%;border:1px solid rgba(255,255,255,.07)}
 .sidebar::before{content:"";position:absolute;left:-60px;bottom:-60px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(54,169,191,.12)}
 .mono-badge{width:clamp(48px,5vw,64px);height:clamp(48px,5vw,64px);border-radius:15px;
-  background:var(--accent);color:#06222a;display:grid;place-items:center;
+  background:var(--brand-gradient);color:#fff;display:grid;place-items:center;
   font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,2.3vw,1.7rem);
-  box-shadow:0 10px 26px rgba(54,169,191,.4);position:relative;z-index:1}
+  box-shadow:0 10px 26px rgba(99,102,241,.4),0 6px 18px rgba(54,169,191,.3);position:relative;z-index:1}
 .nm{font-family:var(--serif);font-weight:600;font-size:clamp(1.45rem,2.6vw,2.1rem);line-height:1.05;position:relative;z-index:1}
 .rl{color:var(--accent);font-weight:700;font-size:clamp(.82rem,1.3vw,.98rem);margin-top:.35rem;position:relative;z-index:1}
 .sb-blk{position:relative;z-index:1}
@@ -54,20 +58,48 @@ body{font-family:var(--body);color:var(--ink);background:var(--bg);-webkit-font-
 
 /* —— 细 rail(内容页) —— */
 .rail{background:linear-gradient(165deg,var(--side),var(--side2));color:var(--sink);
-  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  padding:clamp(1.2rem,2.4vh,2rem) 0;position:relative;overflow:hidden}
+  display:flex;flex-direction:column;align-items:center;
+  padding:clamp(1.2rem,2.4vh,2rem) 0;position:relative;overflow:hidden;gap:.5rem}
+.rail .mb{flex-shrink:0}
 .rail .mb{width:clamp(34px,3.4vw,46px);height:clamp(34px,3.4vw,46px);border-radius:11px;
-  background:var(--accent);color:#06222a;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:clamp(1rem,1.7vw,1.3rem)}
+  background:var(--brand-gradient);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:clamp(1rem,1.7vw,1.3rem);
+  box-shadow:0 6px 16px rgba(99,102,241,.35)}
 .rail .vlabel{writing-mode:vertical-rl;text-orientation:mixed;font-family:var(--mono);
   font-size:clamp(.62rem,.95vw,.76rem);letter-spacing:.32em;text-transform:uppercase;color:var(--squiet)}
 .rail .pg{font-family:var(--mono);font-size:.66rem;color:var(--accent);font-weight:700}
 .rail .pg small{color:var(--squiet);font-weight:500}
 
+/* e. Timeline 时间轴 */
+.tl{list-style:none;display:flex;flex-direction:column;gap:clamp(.6rem,1.2vh,1rem);
+  align-items:center;flex:1;justify-content:center;padding:clamp(.6rem,1.4vh,1.2rem) 0;position:relative;z-index:1}
+.tl li{display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;
+  font-family:var(--mono);font-size:clamp(.54rem,.84vw,.64rem);color:var(--squiet);letter-spacing:.04em}
+.tl .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.22);transition:all .4s cubic-bezier(.16,1,.3,1)}
+.tl .yr{font-size:.92em;opacity:.85}
+.tl li.is-current{color:var(--accent);font-weight:700}
+.tl li.is-current .dot{background:var(--brand-gradient);border-color:transparent;
+  width:12px;height:12px;box-shadow:0 0 14px rgba(99,102,241,.55);
+  animation:tlDot-pulse 2.2s ease-in-out infinite}
+@keyframes tlDot-pulse{
+  0%,100%{box-shadow:0 0 14px rgba(99,102,241,.45)}
+  50%    {box-shadow:0 0 22px rgba(99,102,241,.75),0 0 32px rgba(54,169,191,.4)}
+}
+.tl li:not(:last-child)::after{content:"";position:absolute;top:calc(100% + 3px);
+  width:1px;height:clamp(.5rem,1.3vh,1rem);
+  background:linear-gradient(to bottom,rgba(255,255,255,.18),rgba(255,255,255,.04))}
+
+/* mono 注释 在 rail 底部 (vertical) */
+.rail .note{writing-mode:vertical-rl;text-orientation:mixed;font-family:var(--mono);
+  font-size:clamp(.54rem,.82vw,.62rem);letter-spacing:.16em;color:var(--squiet);opacity:.55;
+  margin-top:.5rem;position:relative;z-index:1}
+
 /* —— 主栏 —— */
 .main{padding:clamp(1.6rem,3.4vw,3.2rem);display:flex;flex-direction:column;justify-content:center;gap:clamp(.85rem,2.1vh,1.5rem);min-width:0}
 .s-head{display:flex;align-items:center;gap:.85rem}
-.num{flex:none;width:clamp(28px,3vw,38px);height:clamp(28px,3vw,38px);border-radius:9px;background:var(--ink);color:#fff;
-  display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:clamp(.74rem,1.1vw,.86rem)}
+.num{flex:none;width:clamp(28px,3vw,38px);height:clamp(28px,3vw,38px);border-radius:9px;background:var(--brand-gradient);color:#fff;
+  display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:clamp(.74rem,1.1vw,.86rem);
+  box-shadow:0 4px 12px rgba(99,102,241,.3)}
 .s-title{font-family:var(--serif);font-weight:600;font-size:clamp(1.2rem,2.4vw,1.75rem);line-height:1.1}
 .s-sub{font-family:var(--mono);font-size:clamp(.66rem,1vw,.8rem);color:var(--muted);margin-top:.4rem;margin-left:.2rem}
 .s-sub .co{color:var(--accent-d);font-weight:700}
@@ -78,11 +110,26 @@ body{font-family:var(--body);color:var(--ink);background:var(--bg);-webkit-font-
 .cards.c3{grid-template-columns:repeat(3,1fr)}
 .card{background:var(--paper);border:1px solid var(--cardline);border-radius:14px;
   padding:clamp(.75rem,1.5vw,1.15rem);box-shadow:0 6px 18px rgba(22,34,43,.05);
-  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;
+  position:relative;isolation:isolate;overflow:hidden}
+.card::before{
+  /* d. Spotlight 跟鼠标，克制版 */
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(220px circle at var(--card-mx,50%) var(--card-my,50%),
+    rgba(99,102,241,.10),rgba(54,169,191,.06) 40%,transparent 70%);
+  opacity:0;transition:opacity .4s ease;pointer-events:none;z-index:-1;border-radius:inherit}
 .card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(22,34,43,.13)}
-.card .v{font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,2.8vw,2.1rem);color:var(--accent);line-height:1;letter-spacing:-.01em}
+.card:hover::before{opacity:1}
+.card .v{font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,2.8vw,2.1rem);color:var(--accent);line-height:1;letter-spacing:-.01em;transition:text-shadow .4s ease}
 .card .v.g{color:var(--gold)}
+.card .v.is-done{animation:vNum-glow 1.4s ease-out}
+@keyframes vNum-glow{
+  0%  {text-shadow:0 0 0 transparent}
+  40% {text-shadow:0 0 22px rgba(99,102,241,.55),0 0 36px rgba(54,169,191,.35)}
+  100%{text-shadow:0 0 0 transparent}
+}
 .card .l{font-size:clamp(.64rem,.98vw,.76rem);color:var(--muted);margin-top:.4rem;line-height:1.4}
+.card .l2{font-family:var(--mono);font-size:clamp(.56rem,.85vw,.66rem);color:var(--accent2-d);margin-top:.35rem;letter-spacing:.04em;line-height:1.3;font-weight:500}
 
 /* 优势 / 经历 列表 */
 ul.pts{list-style:none;display:flex;flex-direction:column;gap:clamp(.45rem,1.1vh,.8rem)}
@@ -96,7 +143,7 @@ ul.pts li b{font-weight:700;color:var(--ink)}
 .job .jh{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
 .job .jt{font-family:var(--serif);font-weight:600;font-size:clamp(.98rem,1.6vw,1.18rem)}
 .job .jd{font-family:var(--mono);font-size:.64rem;color:var(--muted)}
-.divider{height:1px;background:var(--line);margin:.1rem 0}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(54,169,191,.45) 25%,rgba(99,102,241,.45) 75%,transparent);margin:.1rem 0}
 
 /* 教育 / 技能 行 */
 .kv{display:flex;flex-direction:column;gap:.6rem}
@@ -166,10 +213,10 @@ ul.pts li b{font-weight:700;color:var(--ink)}
     <main class="main">
       <div class="lede reveal" style="--i:1">10 年企业级产品 × 深度 AI 落地，已<em>独立做出一款被真实用户每日使用的 AI 产品</em>。</div>
       <div class="cards c4 reveal" style="--i:2">
-        <div class="card"><div class="v g" data-count="16000" data-thousands="1" data-suffix="+">0</div><div class="l">Hunter 候选人库 · 每日重度使用</div></div>
-        <div class="card"><div class="v" data-count="30" data-prefix="Top ">0</div><div class="l">1000+ 简历 2–3 分钟筛出</div></div>
-        <div class="card"><div class="v" data-count="260" data-suffix=" 亿笔">0</div><div class="l">天旦日均监控交易</div></div>
-        <div class="card"><div class="v" data-count="10" data-suffix=" 年">0</div><div class="l">企业级产品经验</div></div>
+        <div class="card"><div class="v g" data-count="16000" data-thousands="1" data-suffix="+">0</div><div class="l">Hunter 候选人库 · 每日重度使用</div><div class="l2">// + 24 万 论文 / 专利</div></div>
+        <div class="card"><div class="v" data-count="30" data-prefix="Top ">0</div><div class="l">1000+ 简历 2–3 分钟筛出</div><div class="l2">// RAG + 多维评分</div></div>
+        <div class="card"><div class="v" data-count="260" data-suffix=" 亿笔">0</div><div class="l">天旦日均监控交易</div><div class="l2">// Top 150 银行</div></div>
+        <div class="card"><div class="v" data-count="10" data-suffix=" 年">0</div><div class="l">企业级产品经验</div><div class="l2">// 字节 · 天旦 · 华讯</div></div>
       </div>
       <a class="cta reveal" style="--i:3" href="https://hunter-copilot.netlify.app/" target="_blank" rel="noopener">Hunter 产品体验<span class="ar">→</span></a>
     </main>
@@ -181,8 +228,16 @@ ul.pts li b{font-weight:700;color:var(--ink)}
   <div class="deck body">
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">CORE STRENGTHS</div><span class="draw"></span></div>
+      <ol class="tl reveal" style="--i:1">
+        <li><span class="dot"></span><span class="yr">09</span></li>
+        <li><span class="dot"></span><span class="yr">10</span></li>
+        <li><span class="dot"></span><span class="yr">11</span></li>
+        <li><span class="dot"></span><span class="yr">17</span></li>
+        <li><span class="dot"></span><span class="yr">22</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">24</span></li>
+      </ol>
       <div class="pg">01<small>/05</small></div>
+      <div class="note">// 14 yrs · 4 eng + 10 pm</div>
     </div>
     <main class="main">
       <div class="s-head reveal" style="--i:0"><span class="num">01</span><span class="s-title">核心优势</span></div>
@@ -201,17 +256,25 @@ ul.pts li b{font-weight:700;color:var(--ink)}
   <div class="deck body">
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">FLAGSHIP · HUNTER</div><span class="draw"></span></div>
+      <ol class="tl reveal" style="--i:1">
+        <li><span class="dot"></span><span class="yr">09</span></li>
+        <li><span class="dot"></span><span class="yr">10</span></li>
+        <li><span class="dot"></span><span class="yr">11</span></li>
+        <li><span class="dot"></span><span class="yr">17</span></li>
+        <li><span class="dot"></span><span class="yr">22</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">24</span></li>
+      </ol>
       <div class="pg">02<small>/05</small></div>
+      <div class="note">// indie · 0→1 · daily users</div>
     </div>
     <main class="main">
       <div class="reveal" style="--i:0"><div class="s-head"><span class="num">02</span><span class="s-title">旗舰项目 · Hunter</span></div>
         <div class="s-sub">2024.09 – 至今　<span class="co">独立 AI 产品开发 · 产品负责人 + 全栈（AI 辅助）</span></div></div>
       <div class="cards c4 reveal" style="--i:1">
-        <div class="card"><div class="v g" data-count="16000" data-thousands="1" data-suffix="+">0</div><div class="l">候选人 · 30+ 在跟岗位</div></div>
-        <div class="card"><div class="v" data-count="30" data-prefix="Top ">0</div><div class="l">1000+ 简历 2–3 分钟筛出</div></div>
-        <div class="card"><div class="v" data-count="61" data-suffix=" 份">0</div><div class="l">市场问卷有效回收</div></div>
-        <div class="card"><div class="v" data-count="70" data-suffix="%">0</div><div class="l">目标用户表达意向</div></div>
+        <div class="card"><div class="v g" data-count="16000" data-thousands="1" data-suffix="+">0</div><div class="l">候选人 · 30+ 在跟岗位</div><div class="l2">// + 24 万 论文 / 专利</div></div>
+        <div class="card"><div class="v" data-count="30" data-prefix="Top ">0</div><div class="l">1000+ 简历 2–3 分钟筛出</div><div class="l2">// RAG + 多维评分</div></div>
+        <div class="card"><div class="v" data-count="61" data-suffix=" 份">0</div><div class="l">市场问卷有效回收</div><div class="l2">// 投递 200+ 抽样</div></div>
+        <div class="card"><div class="v" data-count="70" data-suffix="%">0</div><div class="l">目标用户表达意向</div><div class="l2">// 9 位猎头深度访谈</div></div>
       </div>
       <ul class="pts">
         <li class="reveal" style="--i:2"><b>0→1 打造 AI 招聘工作台 Hunter</b>：端到端覆盖「找人 → AI 匹配 → 推进看板 → 人才地图 → 候选人库沉淀」，核心差异化为<span class="m">「数据本地存储 + AI 秒级匹配」</span>。</li>
@@ -228,16 +291,24 @@ ul.pts li b{font-weight:700;color:var(--ink)}
   <div class="deck body">
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">BYTEDANCE · CLOUD</div><span class="draw"></span></div>
+      <ol class="tl reveal" style="--i:1">
+        <li><span class="dot"></span><span class="yr">09</span></li>
+        <li><span class="dot"></span><span class="yr">10</span></li>
+        <li><span class="dot"></span><span class="yr">11</span></li>
+        <li><span class="dot"></span><span class="yr">17</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">22</span></li>
+        <li><span class="dot"></span><span class="yr">24</span></li>
+      </ol>
       <div class="pg">03<small>/05</small></div>
+      <div class="note">// cloud native · eBPF · AIOps</div>
     </div>
     <main class="main">
       <div class="reveal" style="--i:0"><div class="s-head"><span class="num">03</span><span class="s-title">字节跳动 · 云原生可观测</span></div>
         <div class="s-sub">2022.11 – 2024.08　<span class="co">云原生可观测产品经理</span></div></div>
       <div class="cards c3 reveal" style="--i:1">
-        <div class="card"><div class="v" data-count="40" data-prefix="+" data-suffix="%">0</div><div class="l">全链路观测效率</div></div>
-        <div class="card"><div class="v g" data-count="60" data-prefix="−" data-suffix="%">0</div><div class="l">用户操作步骤</div></div>
-        <div class="card"><div class="v" data-count="70" data-prefix="+" data-suffix="%">0</div><div class="l">AI 训练 GPU 运维效率</div></div>
+        <div class="card"><div class="v" data-count="40" data-prefix="+" data-suffix="%">0</div><div class="l">全链路观测效率</div><div class="l2">// 模块化配置</div></div>
+        <div class="card"><div class="v g" data-count="60" data-prefix="−" data-suffix="%">0</div><div class="l">用户操作步骤</div><div class="l2">// 流程精简</div></div>
+        <div class="card"><div class="v" data-count="70" data-prefix="+" data-suffix="%">0</div><div class="l">AI 训练 GPU 运维效率</div><div class="l2">// GPU 故障自愈</div></div>
       </div>
       <ul class="pts">
         <li class="reveal" style="--i:2"><b>全链路可观测性整合</b>（基础设施 / 网络 / 应用层）：模块化配置上线后 <span class="m">观测效率 +40%</span>、<span class="m">用户操作步骤 −60%</span>。</li>
@@ -254,15 +325,23 @@ ul.pts li b{font-weight:700;color:var(--ink)}
   <div class="deck body">
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">TENDCLOUD · HUASUN</div><span class="draw"></span></div>
+      <ol class="tl reveal" style="--i:1">
+        <li><span class="dot"></span><span class="yr">09</span></li>
+        <li><span class="dot"></span><span class="yr">10</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">11</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">17</span></li>
+        <li><span class="dot"></span><span class="yr">22</span></li>
+        <li><span class="dot"></span><span class="yr">24</span></li>
+      </ol>
       <div class="pg">04<small>/05</small></div>
+      <div class="note">// fintech · 260B+ daily txn</div>
     </div>
     <main class="main">
       <div class="s-head reveal" style="--i:0"><span class="num">04</span><span class="s-title">应用可观测 · 早期产品 / 研发</span></div>
       <div class="cards c3 reveal" style="--i:1">
-        <div class="card"><div class="v g" data-count="260" data-suffix=" 亿笔">0</div><div class="l">天旦 BPC 日均监控交易</div></div>
-        <div class="card"><div class="v" data-count="150" data-prefix="Top ">0</div><div class="l">银行客户 · Top 30 券商</div></div>
-        <div class="card"><div class="v" data-count="1.5" data-decimals="1" data-suffix=" 万/秒">0</div><div class="l">双十一 / 618 峰值交易</div></div>
+        <div class="card"><div class="v g" data-count="260" data-suffix=" 亿笔">0</div><div class="l">天旦 BPC 日均监控交易</div><div class="l2">// 五年旗舰产品</div></div>
+        <div class="card"><div class="v" data-count="150" data-prefix="Top ">0</div><div class="l">银行客户 · Top 30 券商</div><div class="l2">// 含浙商 · 银联</div></div>
+        <div class="card"><div class="v" data-count="1.5" data-decimals="1" data-suffix=" 万/秒">0</div><div class="l">双十一 / 618 峰值交易</div><div class="l2">// TeamVision 大屏</div></div>
       </div>
       <div class="job reveal" style="--i:2">
         <div class="jh"><span class="jt">上海天旦网络 · 应用可观测性产品负责人</span><span class="jd">2017.08 – 2022.11</span></div>
@@ -288,8 +367,16 @@ ul.pts li b{font-weight:700;color:var(--ink)}
   <div class="deck body">
     <div class="rail">
       <div class="mb reveal" style="--i:0">于</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.8rem"><span class="draw"></span><div class="vlabel">EDUCATION · SKILLS</div><span class="draw"></span></div>
+      <ol class="tl reveal" style="--i:1">
+        <li class="is-current"><span class="dot"></span><span class="yr">09</span></li>
+        <li class="is-current"><span class="dot"></span><span class="yr">10</span></li>
+        <li><span class="dot"></span><span class="yr">11</span></li>
+        <li><span class="dot"></span><span class="yr">17</span></li>
+        <li><span class="dot"></span><span class="yr">22</span></li>
+        <li><span class="dot"></span><span class="yr">24</span></li>
+      </ol>
       <div class="pg">05<small>/05</small></div>
+      <div class="note">// updated 2026.05</div>
     </div>
     <main class="main">
       <div class="s-head reveal" style="--i:0"><span class="num">05</span><span class="s-title">教育 & 技能</span></div>
@@ -318,7 +405,7 @@ slides.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('
   b.onclick=()=>s.scrollIntoView({behavior:'smooth'});dots.appendChild(b);});
 const dotBtns=[...dots.children];
 
-/* === 数字滚动 count-up === */
+/* === 数字滚动 count-up + 完成后 glow === */
 function countUp(el){
   if(el.dataset.done)return; el.dataset.done='1';
   const target=parseFloat(el.dataset.count),dec=parseInt(el.dataset.decimals||'0'),
@@ -326,8 +413,22 @@ function countUp(el){
   const fmt=n=>{let s=dec?n.toFixed(dec):Math.round(n).toString();if(thou)s=Number(s).toLocaleString('en-US');return pre+s+suf;};
   const dur=1200,t0=performance.now();
   (function tick(now){const p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);
-    el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(tick);else el.textContent=fmt(target);})(t0);
+    el.textContent=fmt(target*e);
+    if(p<1)requestAnimationFrame(tick);
+    else{el.textContent=fmt(target); el.classList.add('is-done');}
+  })(t0);
 }
+
+/* === d. 卡片 spotlight 跟鼠标 === */
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width)*100;
+    const y=((e.clientY-r.top)/r.height)*100;
+    card.style.setProperty('--card-mx',x+'%');
+    card.style.setProperty('--card-my',y+'%');
+  });
+});
 
 /* === 进入视口:入场动效 + count-up + 激活导航点 === */
 const io=new IntersectionObserver((entries)=>{
