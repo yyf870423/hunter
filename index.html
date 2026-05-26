@@ -284,14 +284,14 @@ img { max-width: 100%; display: block; }
           mask-image: radial-gradient(ellipse 90% 70% at 50% 45%, black 18%, transparent 75%);
 }
 
-/* 紫色主光晕 - 缓慢漂移 */
+/* 紫色主光晕 - 漂移（速度可见）*/
 .hero__glow {
   position: absolute;
   inset: -10%;
   background: radial-gradient(ellipse 720px 520px at 50% 30%,
-    rgba(124,58,237,.25), rgba(99,102,241,.16) 30%, transparent 65%);
+    rgba(124,58,237,.22), rgba(99,102,241,.14) 30%, transparent 65%);
   filter: blur(20px);
-  animation: glowDrift 28s ease-in-out infinite alternate;
+  animation: glowDrift 14s ease-in-out infinite alternate;
   mix-blend-mode: multiply;
 }
 /* 副蓝色光晕 - 反向漂移 */
@@ -299,9 +299,9 @@ img { max-width: 100%; display: block; }
   position: absolute;
   inset: -15%;
   background: radial-gradient(ellipse 600px 420px at 70% 70%,
-    rgba(37,99,235,.14), transparent 60%);
+    rgba(37,99,235,.13), transparent 60%);
   filter: blur(28px);
-  animation: glowDrift 36s ease-in-out infinite alternate-reverse;
+  animation: glowDrift 18s ease-in-out infinite alternate-reverse;
   mix-blend-mode: multiply;
 }
 @keyframes glowDrift {
@@ -310,6 +310,70 @@ img { max-width: 100%; display: block; }
   50%  { transform: translate3d(-30px,50px,0); }
   75%  { transform: translate3d(35px,20px,0); }
   100% { transform: translate3d(-20px,-30px,0); }
+}
+
+/* Aurora 多层 blob 漂浮 - 肉眼可见的微动效 */
+.hero__aurora {
+  position: absolute;
+  inset: -15%;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  filter: blur(50px);
+}
+.hero__aurora .blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: .55;
+}
+.hero__aurora .blob--1 {
+  width: 28vw; height: 28vw; min-width: 280px; min-height: 280px;
+  left: 5%; top: 8%;
+  background: radial-gradient(circle, rgba(124,58,237,.55), transparent 65%);
+  animation: blobDrift1 16s ease-in-out infinite alternate;
+}
+.hero__aurora .blob--2 {
+  width: 26vw; height: 26vw; min-width: 260px; min-height: 260px;
+  right: 8%; top: 5%;
+  background: radial-gradient(circle, rgba(37,99,235,.50), transparent 65%);
+  animation: blobDrift2 19s ease-in-out infinite alternate;
+}
+.hero__aurora .blob--3 {
+  width: 32vw; height: 32vw; min-width: 320px; min-height: 320px;
+  left: 30%; bottom: 5%;
+  background: radial-gradient(circle, rgba(99,102,241,.45), transparent 65%);
+  animation: blobDrift3 22s ease-in-out infinite alternate;
+}
+.hero__aurora .blob--4 {
+  width: 24vw; height: 24vw; min-width: 240px; min-height: 240px;
+  right: 15%; bottom: 12%;
+  background: radial-gradient(circle, rgba(168,85,247,.45), transparent 65%);
+  animation: blobDrift4 13s ease-in-out infinite alternate;
+}
+.hero__aurora .blob--5 {
+  width: 22vw; height: 22vw; min-width: 220px; min-height: 220px;
+  left: 45%; top: 30%;
+  background: radial-gradient(circle, rgba(79,70,229,.40), transparent 65%);
+  animation: blobDrift5 17s ease-in-out infinite alternate;
+}
+@keyframes blobDrift1 {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(90px,70px) scale(1.15); }
+}
+@keyframes blobDrift2 {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(-80px,90px) scale(0.92); }
+}
+@keyframes blobDrift3 {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(70px,-80px) scale(1.08); }
+}
+@keyframes blobDrift4 {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(-60px,-50px) scale(1.12); }
+}
+@keyframes blobDrift5 {
+  0%   { transform: translate(-30px,-20px) scale(.95); }
+  100% { transform: translate(50px,40px) scale(1.1); }
 }
 
 /* 顶 / 底 fade 让 hero 自然过渡到下方 section */
@@ -1555,6 +1619,10 @@ img { max-width: 100%; display: block; }
   .cap-card::before { display: none; }
   .flow::after { animation: none; }
   .scroll-progress { animation: none; }
+  /* 移动端 aurora 只保留 2 个 blob 减少 GPU 压力 */
+  .hero__aurora .blob--3,
+  .hero__aurora .blob--4,
+  .hero__aurora .blob--5 { display: none; }
   /* 保留：V4 渐变文字、V6 配色、V11 进度条本体、reveal 入场 */
 }
 
@@ -1609,9 +1677,16 @@ img { max-width: 100%; display: block; }
      §1 HERO
      ════════════════════════════════════════════════════════════ -->
 <header class="hero" id="top">
-  <!-- Linear 风浅色 hero 背景: 网格 + mask + 双光晕漂移 + 顶底 fade -->
+  <!-- Linear 风浅色 hero 背景: 网格 + mask + 多层 aurora blob 漂浮 + 顶底 fade -->
   <div class="hero__bg" aria-hidden="true">
     <div class="hero__grid"></div>
+    <div class="hero__aurora">
+      <span class="blob blob--1"></span>
+      <span class="blob blob--2"></span>
+      <span class="blob blob--3"></span>
+      <span class="blob blob--4"></span>
+      <span class="blob blob--5"></span>
+    </div>
     <div class="hero__glow"></div>
     <div class="hero__glow2"></div>
     <div class="hero__fade-top"></div>
