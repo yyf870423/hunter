@@ -424,8 +424,11 @@ a:hover { color: var(--color-accent); }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  font-weight: 700;
+}
+.callout__icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 .callout__body { flex: 1; }
 .callout__body p:last-child { margin-bottom: 0; }
@@ -689,8 +692,15 @@ a:hover { color: var(--color-accent); }
   margin: var(--space-5) 0;
 }
 .docs-stub__icon {
-  font-size: 32px;
   margin-bottom: var(--space-3);
+  color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+}
+.docs-stub__icon svg {
+  width: 36px;
+  height: 36px;
+  display: block;
 }
 .docs-stub__title {
   font-size: 20px;
