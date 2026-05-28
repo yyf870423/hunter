@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多重简历比对 · Hunter 使用手册</title>
+  <meta name="description" content="同一个人在库里可能有多份记录。学会怎么用「疑似重复」和「合并历史」把同人识别、合并、撤销做干净。">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+
+<header class="docs-nav">
+  <div class="docs-nav__inner">
+    <a href="../index.html" class="docs-nav__logo">
+      <img src="assets/logo-light.svg" alt="Hunter">
+      <span class="docs-nav__logo-sep"></span>
+      <span class="docs-nav__logo-tag">使用手册</span>
+    </a>
+    <div class="docs-nav__spacer"></div>
+    <a href="../index.html" class="docs-nav__back">← 返回主页</a>
+  </div>
+</header>
+
+<div class="docs-layout">
+
+  <aside class="docs-sidebar">
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">起步</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link docs-sidebar__link--placeholder" href="start-install.html">下载与安装</a></li>
+        <li><a class="docs-sidebar__link" href="start-quickstart.html">10 分钟上手</a></li>
+      </ul>
+    </div>
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">核心能力</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link" href="cap-candidates.html">候选人库</a></li>
+        <li><a class="docs-sidebar__link is-current" href="cap-dedup.html">多重简历比对</a></li>
+        <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案焕新</a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
+        <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访</a></li>
+        <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <article class="docs-article">
+
+      <nav class="docs-breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">使用手册</a>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span>核心能力</span>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span class="docs-breadcrumb__current">多重简历比对</span>
+      </nav>
+
+      <header class="docs-article__header">
+        <h1>多重简历比对</h1>
+        <p class="docs-article__lead">
+          候选人投过简历、被同事推过、又在你 Excel 里——同一个人在库里可能有多份记录。
+          Hunter 在多维度上识别同一人，把「疑似重复」列出来交给你拍板。
+          本文教你怎么把库里的同人识别、合并、撤销做干净。
+        </p>
+        <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
+          产品里对应两个入口：左侧 sidebar「<strong>寻访（找人）</strong>」分组下的
+          「<strong>疑似重复</strong>」（处理）和「<strong>合并历史</strong>」（回看与撤销）。
+          也可以在候选人管理页右上角点「疑似重复」按钮进入。
+        </p>
+      </header>
+
+      <!-- ============================================== -->
+      <h2 id="how-detect">Hunter 怎么发现重复</h2>
+      <p>
+        Hunter 在多个维度上做加权比对，把可能是同一人的候选人聚成一个「疑似重复组」。
+        识别维度包括：
+      </p>
+      <ul>
+        <li><strong>姓名</strong>：含中文/拼音/异形名（如 <code>王晓明</code> 和 <code>Wang Xiaoming</code>）</li>
+        <li><strong>手机/邮箱</strong>：硬匹配，命中即为强信号</li>
+        <li><strong>公司/学校</strong>：当前与历任公司、教育背景</li>
+        <li><strong>工作经历/教育经历/项目经历</strong>：经历越重合，置信度越高</li>
+        <li><strong>论文/专利</strong>：作为额外的身份锚点（学术圈/技术圈尤为有用）</li>
+      </ul>
+      <p>
+        所有维度按权重加和，得到一个 <strong>0–1 的相似度分数</strong>。
+        分数 ≥ 0.85 算「高分」，几乎可以闭眼合并；
+        中低分需要你看一眼再决定。
+      </p>
+
+      <!-- ============================================== -->
+      <h2 id="when-trigger">什么时候做去重？</h2>
+      <p>有两种触发方式：</p>
+      <ul>
+        <li>
+          <strong>自动识别（持续在跑）</strong>：每次新简历入库，Hunter 都会与库内候选人做比对，
+          命中疑似时自动加进「疑似重复」队列。日常你不必特意做任何事。
+        </li>
+        <li>
+          <strong>主动扫描全库</strong>：在「疑似重复」页右上角点
+          「<strong>扫描全库</strong>」按钮，对整个候选人库重新跑一次比对。
+          一般在你刚做完大批量导入、或半年没去重过时跑一次。
+        </li>
+      </ul>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <div class="callout__title">扫描期间可以继续做别的事</div>
+          <p>
+            点完「扫描全库」后，页面右上角会出现进度条，扫描在后台跑，你可以离开这个页面去做匹配、做 Mapping。
+            扫完后页面会出现 banner：「扫描完成：新增 N 条疑似重复建议」。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="page-overview">「疑似重复」页面长什么样</h2>
+      <p>这是日常处理疑似重复的主战场。打开后从上到下：</p>
+
+      <ul>
+        <li><strong>4 个统计卡</strong>：待处理组/涉及候选人/高分组（≥0.85）/本月已处理</li>
+        <li>
+          <strong>分数筛选</strong>：四档分桶——
+          <strong>全部</strong> · <strong>高分 ≥0.85</strong> · <strong>中分 0.70-0.85</strong> · <strong>低分 0.60-0.70</strong>
+        </li>
+        <li><strong>搜索框</strong>：按候选人姓名筛组</li>
+        <li><strong>组列表</strong>：每个待处理的疑似组一张卡，显示组员、相似度</li>
+      </ul>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/dedup-list.png" alt="疑似重复页面（4 个统计卡 + 分数筛选 + 组列表）">
+        <div class="shot__caption">左侧 sidebar →「疑似重复」</div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="process">处理一个疑似组：三选一</h2>
+      <p>点开一个组，弹出处理 modal。顶部有「<strong>处理模式</strong>」切换：</p>
+      <ul>
+        <li><strong>合并/全否</strong>（默认）：这组都是同一人 → 合并；都不是 → 全否</li>
+        <li><strong>拆分为多组</strong>：组里实际是 2-3 个人混在一起 → 拆成 A/B/C 子组</li>
+      </ul>
+
+      <h3 id="merge">合并：这就是同一个人</h3>
+      <ol class="steps">
+        <li>
+          <strong>确认成员都是同一人</strong>
+          <p>每张卡片展示候选人的姓名、公司、邮箱、电话、技能、经历等关键信息——人眼快速核对。</p>
+        </li>
+        <li>
+          <strong>选定「⭐ 主记录」</strong>
+          <p>合并的基础——把其他记录的信息合并进这条主记录里。一般选信息最全的那一条做主。</p>
+        </li>
+        <li>
+          <strong>勾选要合并的成员</strong>
+          <p>不一定要把所有成员都合并，只勾选你确信是同一人的那几个。</p>
+        </li>
+        <li>
+          <strong>点「合并为同一人」</strong>
+          <p>
+            合并规则：<strong>技能取并集，经历去重，简历追加</strong>。
+            合并后原记录在库里不再独立显示，但所有数据都保留在主记录里。
+          </p>
+        </li>
+      </ol>
+
+      <h3 id="reject">全部不是同一人</h3>
+      <p>
+        看了半天发现这组的成员只是同名或同公司，其实没有一个是同一人——点底部红色的
+        「<strong>全部不是同一人</strong>」。
+        这组从「待处理」消失，未来同样的组合不会再被推送。
+      </p>
+
+      <h3 id="split">拆分：重复人多时</h3>
+      <p>
+        有时候 Hunter 把多个相似的人放进了同一组——比如 5 张卡片里其实是 2 个张三 + 2 个李四 + 1 个独立的人。
+        这时不应该粗暴合并，也不应该全否，要 <strong>拆分</strong>。
+      </p>
+
+      <ol class="steps">
+        <li>
+          <strong>切到「拆分为多组」模式</strong>
+          <p>顶部「处理模式」按钮点一下。</p>
+        </li>
+        <li>
+          <strong>给每张卡片指派子组</strong>
+          <p>
+            可选 <strong>A/B/C</strong> 三个子组（用不同颜色标记），或选 <strong>独立</strong>（不与任何人合并）。
+            每张卡片归到哪个子组，由你判断。
+          </p>
+        </li>
+        <li>
+          <strong>提交</strong>
+          <p>同子组内的卡片合并成一条；独立的卡片保持原状。一次操作完成多组合并 + 排除。</p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/dedup-modal-split.png" alt="疑似重复组处理 modal — 拆分为多组模式（A/B/C 子组分配）">
+        <div class="shot__caption">点开疑似组 → 切到「拆分为多组」模式 → 给每张卡片指派 A/B/C 或独立</div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <div class="callout__title">A/B/C 够用</div>
+          <p>
+            实践中 3 个子组足够覆盖绝大多数复杂场景。
+            如果一组里超过 3 个人需要分开，建议先合并你最确定的几个，剩下的让下一轮扫描重新分组。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="history">合并历史与撤销误合并</h2>
+      <p>
+        合并不是不可逆的——任何时候你发现「合错了」，去「<strong>合并历史</strong>」页面找出来撤销。
+      </p>
+
+      <h3 id="history-page">合并历史页面</h3>
+      <p>从两个地方进入合并历史：</p>
+      <ul>
+        <li>「疑似重复」页右上角的「<strong>合并历史</strong>」按钮</li>
+        <li>候选人管理页右上角的「<strong>合并历史</strong>」按钮</li>
+      </ul>
+
+      <p>页面展示：</p>
+      <ul>
+        <li><strong>4 个统计卡</strong>：自动合并/用户确认合并/待处理建议/已撤销</li>
+        <li><strong>历史表格</strong>：时间/主候选人/操作类型/相似度/操作</li>
+        <li><strong>类型筛选</strong>：全部类型/自动合并/确认合并/…</li>
+        <li><strong>搜索</strong>：按候选人姓名找历史记录</li>
+      </ul>
+
+      <h3 id="undo">撤销一次合并</h3>
+      <ol class="steps">
+        <li>
+          <strong>在历史表格里找到要撤销的那一行</strong>
+          <p>支持按姓名搜索，按时间倒序排列，最近的合并在最上面。</p>
+        </li>
+        <li>
+          <strong>点「详情」</strong>
+          <p>弹出「合并变更详情」modal，展示这次合并把哪些字段合并到了主记录、哪些原始记录被合并了。</p>
+        </li>
+        <li>
+          <strong>点底部「撤销此次合并」</strong>
+          <p>
+            撤销后原始记录会重新独立显示在候选人库里，主记录回到合并前的状态。
+            这次合并在历史里会被标记为<strong>已撤销</strong>。
+          </p>
+        </li>
+      </ol>
+
+      <div class="callout callout--note">
+        <div class="callout__icon">📌</div>
+        <div class="callout__body">
+          <div class="callout__title">撤销是非破坏性的</div>
+          <p>
+            合并和撤销都不删除任何数据。即使你合错了又撤回，原始记录里的所有信息都还在。
+            放心操作。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="best-practice">最佳实践</h2>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <div class="callout__title">建议的日常节奏</div>
+          <p>
+            <strong>每周扫一次</strong>：高分组（≥0.85）扫一眼合并，速度快；中低分按需处理。
+            <strong>大批量导入后扫一次</strong>：新数据进来必然引入新的重复。
+            <strong>小团队按对标行业分工</strong>：让某人专门负责 AI 类候选人的去重，避免每个人都看 5 分钟然后看不下去。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon">⚠</div>
+        <div class="callout__body">
+          <div class="callout__title">高分不等于无脑合并</div>
+          <p>
+            <strong>同名同公司的不同人</strong>在 AI 圈/互联网圈很常见（比如有 N 个张伟在字节）。
+            合并前花 5 秒看一下手机邮箱有没有冲突，比合错了再撤更省事。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="troubleshoot">常见提示</h2>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon">!</div>
+        <div class="callout__body">
+          <div class="callout__title">扫描全库一直没结果</div>
+          <p>
+            候选人量大时初次扫描会比较慢，可能要几分钟。
+            页面顶部进度条会持续更新；扫完后会有 banner 提示。如果扫描卡住超过 10 分钟没动，
+            退出页面再回来重新点一次「扫描全库」即可，不会丢数据。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon">!</div>
+        <div class="callout__body">
+          <div class="callout__title">合并后发现某些字段没合并过来</div>
+          <p>
+            合并规则：技能取并集、经历去重、简历追加；
+            但某些<strong>互斥字段</strong>（如当前公司、电话、邮箱）只保留主记录的值。
+            如果合错了主记录，去「合并历史」撤销，重新选另一条作主再合一次。
+          </p>
+        </div>
+      </div>
+
+      <nav class="docs-pager" aria-label="page navigation">
+        <a class="docs-pager__link" href="cap-candidates.html">
+          <div class="docs-pager__dir">← 上一篇</div>
+          <div class="docs-pager__title">候选人库</div>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="cap-refresh.html">
+          <div class="docs-pager__dir">下一篇 →</div>
+          <div class="docs-pager__title">候选人档案焕新</div>
+        </a>
+      </nav>
+
+    </article>
+  </main>
+</div>
+
+<footer class="docs-footer">
+  <a href="index.html">使用手册</a>
+  <a href="../index.html">返回主页</a>
+  <a href="mailto:y.e.yyf@163.com">报告问题</a>
+</footer>
+
+</body>
+</html>

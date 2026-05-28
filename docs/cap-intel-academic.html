@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学术 &amp; 专利情报 · Hunter 使用手册</title>
+  <meta name="description" content="OpenAlex 全球学术库 + 国知局专利 Excel 导入，论文/专利双向关联候选人；研究方向聚合，对标公司团队一目了然。">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+
+<header class="docs-nav">
+  <div class="docs-nav__inner">
+    <a href="../index.html" class="docs-nav__logo">
+      <img src="assets/logo-light.svg" alt="Hunter">
+      <span class="docs-nav__logo-sep"></span>
+      <span class="docs-nav__logo-tag">使用手册</span>
+    </a>
+    <div class="docs-nav__spacer"></div>
+    <a href="../index.html" class="docs-nav__back">← 返回主页</a>
+  </div>
+</header>
+
+<div class="docs-layout">
+
+  <aside class="docs-sidebar">
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">起步</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link docs-sidebar__link--placeholder" href="start-install.html">下载与安装</a></li>
+        <li><a class="docs-sidebar__link" href="start-quickstart.html">10 分钟上手</a></li>
+      </ul>
+    </div>
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">核心能力</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link" href="cap-candidates.html">候选人库</a></li>
+        <li><a class="docs-sidebar__link" href="cap-dedup.html">多重简历比对</a></li>
+        <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案焕新</a></li>
+        <li><a class="docs-sidebar__link is-current" href="cap-intel-academic.html">学术 &amp; 专利情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
+        <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访</a></li>
+        <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <article class="docs-article">
+
+      <nav class="docs-breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">使用手册</a>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span>核心能力</span>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span class="docs-breadcrumb__current">学术 &amp; 专利情报</span>
+      </nav>
+
+      <header class="docs-article__header">
+        <h1>学术 &amp; 专利情报</h1>
+        <p class="docs-article__lead">
+          AI / 算法 / 研发岗的候选人，<strong>论文和专利就是简历之外的硬核证据</strong>。
+          Hunter 接入全球学术库（OpenAlex），支持国知局专利 Excel 导入，
+          论文 / 专利<strong>双向自动关联</strong>到候选人，做岗位匹配时还会作为额外的判断维度。
+        </p>
+        <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
+          产品里对应左侧 sidebar「<strong>寻访（找人）</strong>」分组下的「<strong>学术搜索</strong>」。
+          论文和专利的管理入口也通过工作台或候选人详情页跳转进入。
+        </p>
+      </header>
+
+      <!-- ============================================== -->
+      <h2 id="overview">三个相关页面，各管一件事</h2>
+      <ul>
+        <li>
+          <strong>学术搜索</strong>：从 OpenAlex 全球学术库按机构/时间搜论文，把候选人对标公司的研究产出捞回来
+        </li>
+        <li>
+          <strong>论文管理</strong>：库里所有论文的统一视图——搜索、上传 PDF/DOCX、翻译未译标题
+        </li>
+        <li>
+          <strong>专利管理</strong>：从国知局下载的专利 Excel 导入，统一管理
+        </li>
+      </ul>
+      <p>三个页面是<strong>同一池数据</strong>的不同入口：在哪上传都进同一个论文 / 专利库，关联候选人时也共用。</p>
+
+      <!-- ============================================== -->
+      <h2 id="scholar">学术搜索：按机构和时间捞论文</h2>
+      <p>
+        日常场景：客户想找<strong>「某个对标公司近一年发了哪些大模型论文」</strong>的人。
+        过去你要手动翻 OpenReview / arxiv / 论文数据库，现在 Hunter 直接在<strong>学术搜索</strong>页一次搞定。
+      </p>
+
+      <ol class="steps">
+        <li>
+          <strong>左侧 sidebar 进入「学术搜索」</strong>
+        </li>
+        <li>
+          <strong>添加机构</strong>（必填，可勾多个 = OR 命中）
+          <p>
+            点「+ 添加机构」，搜索框里输入机构名（<strong>中文或英文均可</strong>），比如「字节」「Microsoft」「Tsinghua」。
+            勾选要查的机构，可以一次选多个，Hunter 会用 OR 条件命中。
+          </p>
+        </li>
+        <li>
+          <strong>选时间区间</strong>（必填）
+          <p>
+            开始月 + 结束月。结束月留空 = 至今。
+            提供快捷按钮：本月 / 3 个月前 / 1 年前。
+            <strong>窄一点的时间区间</strong>（如近 6 个月、近 1 年）通常更聚焦。
+          </p>
+        </li>
+        <li>
+          <strong>跑搜索</strong>
+          <p>
+            Hunter 调 OpenAlex 接口，返回符合条件的论文列表。
+            默认上限 5000 篇（v0.10.2 调高），覆盖绝大多数实际场景。
+          </p>
+        </li>
+        <li>
+          <strong>结果里看作者机构展示</strong>
+          <p>
+            每篇论文展示标题、作者、作者机构、年份。
+            重点看作者列表——这些作者就是你的潜在候选人。
+          </p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/scholar-search-done.png" alt="学术搜索页（研究方向 + 按机构搜索表单 + 搜索任务完成态：新增 706 / 关联 211）">
+        <div class="shot__caption">左侧 sidebar →「学术搜索」— 研究方向 + 机构表单 + 任务结果</div>
+      </div>
+
+      <h3 id="topics">研究方向聚合</h3>
+      <p>
+        学术搜索页顶部有<strong>研究方向</strong> tag 列表（Top 20 方向 + 论文数）。
+        点某个方向的 tag，能看到这个方向下所有论文。
+        点右侧「全部方向 →」看完整的方向列表。
+      </p>
+      <p>
+        研究方向是 Hunter 从论文标题 / 摘要自动聚类出来的，
+        随着你库里论文增加会自动更新——
+        <strong>不用你手动维护</strong>。
+      </p>
+
+      <!-- ============================================== -->
+      <h2 id="papers">论文管理：库内所有论文的视图</h2>
+      <p>论文管理页有两个 Tab：<strong>论文列表</strong> / <strong>导入论文</strong>。</p>
+
+      <h3 id="papers-list">论文列表 Tab</h3>
+      <ul>
+        <li>
+          <strong>搜索框</strong>：placeholder「<code>搜索论文标题（支持中文）或作者姓名</code>」——
+          中英文标题都能搜
+        </li>
+        <li>
+          <strong>「翻译全部未译」按钮</strong>：库里所有中文标题或中文摘要为空的论文，一次性翻译。
+          点击弹出 modal 显示「N 篇论文待翻译」+ 确认
+        </li>
+        <li>
+          <strong>论文卡片</strong>：标题（中英文）、作者列表（命中候选人会标蓝高亮）、年份、机构、关联候选人
+        </li>
+        <li><strong>分页</strong></li>
+      </ul>
+
+      <h3 id="papers-upload">导入论文 Tab</h3>
+      <p>
+        上传论文 PDF / DOCX 文件——Hunter 自动提取<strong>标题、作者、摘要、机构等</strong>。
+        可同时选多个文件。
+      </p>
+      <ul>
+        <li>状态过滤 pills：全部 / 进行中 / 已完成 / 失败</li>
+        <li>失败 ≥ 2 时上方出现「全部重试」按钮</li>
+      </ul>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <div class="callout__title">中文标题翻译怎么用</div>
+          <p>
+            OpenAlex 返回的论文标题大多是英文；你给国内客户汇报时需要中文标题——
+            「翻译全部未译」一次性把库里所有未译的中文标题/摘要补上，下次就能直接给客户中文版本。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="patents">专利管理：导入国知局 Excel</h2>
+      <p>专利管理页有两个 Tab：<strong>专利列表</strong> / <strong>导入专利</strong>。</p>
+
+      <h3 id="patents-list">专利列表 Tab</h3>
+      <ul>
+        <li>
+          <strong>搜索框</strong>：placeholder「<code>搜索标题、专利号、发明人</code>」
+        </li>
+        <li>
+          <strong>专利卡片</strong>：标题、专利号、发明人列表（命中候选人标蓝）、申请人 / 权利人（取代旧版专利号显示）、申请日
+        </li>
+        <li><strong>分页</strong></li>
+      </ul>
+
+      <h3 id="patents-import">导入专利 Tab</h3>
+      <ol class="steps">
+        <li>
+          <strong>从国知局下载专利 Excel</strong>
+          <p>
+            国知局（国家知识产权局）官网的专利检索系统支持按检索条件导出 Excel。
+            导出 13 列标准格式（申请号、发明人、摘要等）。
+          </p>
+        </li>
+        <li>
+          <strong>在「导入专利」Tab 上传 .xlsx</strong>
+          <p>支持多文件同时上传。Hunter 自动解析每行专利信息入库。</p>
+        </li>
+        <li>
+          <strong>等待解析完成</strong>
+          <p>处理记录表格显示每个文件的状态。已知问题：如果专利申请号缺失，Hunter 会用 hash id 替代（避免入库失败）。</p>
+        </li>
+      </ol>
+
+      <!-- ============================================== -->
+      <h2 id="link">候选人与论文/专利的双向关联</h2>
+      <p>这是学术情报的核心价值——不是「拥有一堆论文」，而是「<strong>论文知道是谁写的，候选人知道发过什么</strong>」。</p>
+
+      <h3 id="auto-link">自动关联</h3>
+      <p>
+        每次有新论文或新专利入库，Hunter 会用<strong>作者/发明人姓名</strong>去候选人库匹配：
+      </p>
+      <ul>
+        <li>命中候选人 → 自动关联</li>
+        <li>姓名常见、不确定是哪个候选人 → 进入待确认（与「多重简历比对」类似的人工拍板流程）</li>
+        <li>库里没找到 → 论文 / 专利保留在库里，未来如果这个作者作为候选人入库，会自动回填关联</li>
+      </ul>
+
+      <p>
+        在论文/专利<strong>详情页</strong>，命中候选人的作者姓名会<strong>标蓝</strong>，
+        点击直接跳到那位候选人的详情页。
+      </p>
+
+      <h3 id="candidate-view">从候选人视角看 ta 的论文专利</h3>
+      <p>
+        进入<strong>任意候选人详情页</strong>，下方有一个独立 section 展示 ta 的论文和专利：
+      </p>
+      <ul>
+        <li>论文列表（默认显示 5 篇，点「查看全部」打开候选人学术页的论文 Tab）</li>
+        <li>专利列表（同样 5 篇预览，点「查看全部」打开候选人学术页的专利 Tab）</li>
+      </ul>
+      <p>
+        <strong>候选人学术页</strong>有两个 Tab 可切换：
+        <strong>论文（N）</strong>/ <strong>专利（N）</strong>，
+        显示这位候选人的全部论文 / 专利。
+      </p>
+
+      <div class="callout callout--note">
+        <div class="callout__icon">📌</div>
+        <div class="callout__body">
+          <div class="callout__title">论文专利会进岗位匹配评估</div>
+          <p>
+            岗位智能匹配做评分时，<strong>论文数 / 专利数 + 代表作</strong>会作为额外的评估维度——
+            尤其对学术圈 / 研发岗，候选人有 3 篇顶会一作 vs. 没有，分数会有明显差异。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="best-practice">最佳实践</h2>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <div class="callout__title">怎么用学术搜索做 mapping 的前置情报</div>
+          <p>
+            想给客户建一张「字节大模型团队」mapping？先到学术搜索：
+            机构选「ByteDance」，时间近 1 年，研究方向选「大模型」相关——
+            <strong>搜出的论文作者列表就是这个团队的核心成员</strong>。
+            把这些作者拉进候选人库（或确认已在库内），再回去建 mapping，节点就有了具体的人。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <div class="callout__title">姓名常见的候选人，先关联论文/专利</div>
+          <p>
+            「张伟」「王芳」这类常见姓名，仅凭名字会有大量同名干扰——
+            如果你能在候选人详情页里手动确认 ta 的论文/专利，
+            后续「档案焕新」「岗位匹配」都能用这层<strong>身份锚点</strong>排除同名干扰，准确度大幅提升。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="troubleshoot">常见提示</h2>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon">!</div>
+        <div class="callout__body">
+          <div class="callout__title">学术搜索结果偏少</div>
+          <p>
+            常见原因：① <strong>时间区间太窄</strong>（如只选了 1 个月）；
+            ② <strong>机构名拼写不对</strong>（OpenAlex 用机构标准名，搜索时输入部分关键词尝试匹配）。
+            可以先放宽时间区间到 1 年，再逐步收紧。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon">!</div>
+        <div class="callout__body">
+          <div class="callout__title">专利 Excel 上传失败：列名不对</div>
+          <p>
+            确保是从国知局下载的标准 Excel（13 列：申请号、发明人、摘要等）。
+            非国知局导出的格式 Hunter 不保证兼容——
+            可以打开 Excel 检查列名，必要时手动改成 13 列标准格式。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon">!</div>
+        <div class="callout__body">
+          <div class="callout__title">论文翻译"全部翻译"无响应</div>
+          <p>
+            「翻译全部未译」是后台任务，翻译几百篇可能需要几分钟。
+            页面点完按钮 modal 关闭后任务在后台跑，几分钟后回来刷新即可看到中文标题/摘要。
+            进度可在论文列表里直接观察（已翻译的会更新）。
+          </p>
+        </div>
+      </div>
+
+      <nav class="docs-pager" aria-label="page navigation">
+        <a class="docs-pager__link" href="cap-refresh.html">
+          <div class="docs-pager__dir">← 上一篇</div>
+          <div class="docs-pager__title">候选人档案焕新</div>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="cap-mapping.html">
+          <div class="docs-pager__dir">下一篇 →</div>
+          <div class="docs-pager__title">Mapping</div>
+        </a>
+      </nav>
+
+    </article>
+  </main>
+</div>
+
+<footer class="docs-footer">
+  <a href="index.html">使用手册</a>
+  <a href="../index.html">返回主页</a>
+  <a href="mailto:y.e.yyf@163.com">报告问题</a>
+</footer>
+
+</body>
+</html>

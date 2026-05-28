@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" role="img" aria-label="招聘工作伙伴">
+  <rect x="0" y="22" width="10" height="10" rx="1.5" fill="#2563EB"/>
+  <text x="22" y="38"
+        font-family="'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', sans-serif"
+        font-size="22"
+        font-weight="500"
+        fill="#0F172A"
+        letter-spacing="3">招聘工作伙伴</text>
+</svg>
