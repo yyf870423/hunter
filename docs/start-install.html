@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>下载与安装 · Hunter 文档</title>
-  <meta name="description" content="拿到 Hunter 安装包后怎么解压、首次启动、跑起来——试用期间我们为每位用户单独打包，具体启动方式按邮件提示。">
+  <title>安装与启动 · Hunter 文档</title>
+  <meta name="description" content="试用包直接发给你，无需下载。解压后双击 HunterStart.exe 即可启动，浏览器打开 127.0.0.1:8000 开始用。">
   <link rel="stylesheet" href="docs.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
     <div class="docs-sidebar__group">
       <h3 class="docs-sidebar__group-title">起步</h3>
       <ul class="docs-sidebar__list">
-        <li><a class="docs-sidebar__link is-current" href="start-install.html">下载与安装</a></li>
+        <li><a class="docs-sidebar__link is-current" href="start-install.html">安装与启动</a></li>
         <li><a class="docs-sidebar__link" href="start-quickstart.html">10 分钟上手</a></li>
       </ul>
     </div>
@@ -55,20 +55,252 @@
         <span class="docs-breadcrumb__sep">/</span>
         <span>起步</span>
         <span class="docs-breadcrumb__sep">/</span>
-        <span class="docs-breadcrumb__current">下载与安装</span>
+        <span class="docs-breadcrumb__current">安装与启动</span>
       </nav>
 
       <header class="docs-article__header">
-        <h1>下载与安装</h1>
-        <p class="docs-article__lead">拿到 Hunter 安装包后怎么解压、首次启动、跑起来——试用期间我们为每位用户单独打包，具体启动方式按邮件提示。</p>
+        <h1>安装与启动</h1>
+        <p class="docs-article__lead">
+          试用期间我们为每位用户<strong>单独打包</strong>，安装包直接发给你，无需自行下载。
+          整个过程很简单：<strong>解压 → 双击启动 → 浏览器打开</strong>，三步就能用。
+        </p>
       </header>
 
-      <div class="docs-stub">
-        <div class="docs-stub__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <div class="docs-stub__title">这一篇还在写</div>
-        <p class="docs-stub__desc">
-          试用期间我们为每位用户单独打包，启动方式会随邮件一起发给你。
-        </p>
+      <!-- ============================================== -->
+      <h2 id="what-you-get">你收到的是什么</h2>
+      <p>
+        你拿到的是一个 <strong>.zip 压缩包</strong>（文件名形如
+        <code>HunterTrial-XXX-版本号-win-x64.zip</code>，其中 XXX 是你的名字）。
+        里面打包了 Hunter 运行需要的<strong>全部东西</strong>——程序本体、内置浏览器、以及你的专属配置，
+        解压即用，不需要再装任何别的软件。
+      </p>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">目前是 Windows 版（64 位）</div>
+          <p>
+            试用包是为 <strong>Windows 64 位系统</strong>打的。
+            包比较大（约 400 MB，含内置浏览器），下载/拷贝时请耐心等传完整。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="step1">第 1 步：解压</h2>
+      <ol class="steps">
+        <li>
+          <strong>把 .zip 放到一个固定的位置</strong>
+          <p>
+            建议放在一个<strong>路径短、以后不会随便挪动</strong>的地方，比如
+            <code>D:\Hunter\</code> 或桌面。
+            <strong>不建议</strong>放在「下载」文件夹里——那里容易被你顺手清空。
+          </p>
+        </li>
+        <li>
+          <strong>右键 → 全部解压缩</strong>
+          <p>
+            解压会得到一个文件夹（名字和压缩包一样）。
+            里面有 <code>HunterStart.exe</code> 等几个程序和 <code>bin/</code>、<code>browsers/</code> 等文件夹。
+          </p>
+        </li>
+      </ol>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">要改文件夹名字？请在「第一次启动之前」改</div>
+          <p>
+            如果你想给解压出来的文件夹重命名（比如改成 <code>Hunter</code>），
+            <strong>一定要在第一次启动之前改好</strong>。
+            一旦启动过，程序会记住自己所在的位置，事后再改名字或挪动文件夹可能导致启动异常。
+            <strong>记住一个原则：名字和位置先定好，再双击启动。</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="step2">第 2 步：启动</h2>
+      <p>进入解压后的文件夹，你会看到三个绿色的启动程序：</p>
+
+      <div class="feat-grid">
+        <div class="feat-card">
+          <span class="feat-card__tag">启动</span>
+          <h4 class="feat-card__title">HunterStart.exe</h4>
+          <p class="feat-card__desc">双击它启动 Hunter。第一次启动会稍慢，请耐心等几十秒。</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-card__tag">停止</span>
+          <h4 class="feat-card__title">HunterStop.exe</h4>
+          <p class="feat-card__desc">双击它关闭 Hunter。用完不想让它在后台跑时用。</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-card__tag">重启</span>
+          <h4 class="feat-card__title">HunterRestart.exe</h4>
+          <p class="feat-card__desc">双击它重启 Hunter。遇到卡住或异常时，重启往往能解决。</p>
+        </div>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <strong>双击 <code>HunterStart.exe</code></strong>
+          <p>
+            会弹出一个黑色的命令行窗口，显示启动进度。
+            <strong>这个窗口不要关</strong>——它就是 Hunter 的运行窗口，关掉它 Hunter 就停了。
+            把它最小化放着即可。
+          </p>
+        </li>
+        <li>
+          <strong>等到提示启动完成</strong>
+          <p>第一次启动需要初始化，可能要等几十秒到一两分钟，之后再启动就快了。</p>
+        </li>
+      </ol>
+
+      <!-- ============================================== -->
+      <h2 id="step3">第 3 步：打开浏览器访问</h2>
+      <ol class="steps">
+        <li>
+          <strong>打开浏览器（推荐 Chrome / Edge）</strong>
+        </li>
+        <li>
+          <strong>地址栏输入 <code>127.0.0.1:8000</code> 回车</strong>
+          <p>
+            这就是 Hunter 的本机访问地址。看到工作台界面就说明启动成功了。
+            建议把它<strong>加到书签</strong>，以后直接点开。
+          </p>
+        </li>
+      </ol>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">所有数据都在你自己电脑上</div>
+          <p>
+            <code>127.0.0.1</code> 是「本机」的意思——Hunter 跑在你自己的电脑里，
+            候选人、岗位、客户信息全部存在本地，不上云。这正是 Hunter 的核心：
+            <strong>下班关机就是关门，数据不出本机</strong>。
+          </p>
+        </div>
+      </div>
+
+      <p>启动成功后，接着看「<a href="start-quickstart.html">10 分钟上手</a>」跑通第一遍完整流程。</p>
+
+      <!-- ============================================== -->
+      <h2 id="daily">日常：停止与重启</h2>
+      <ul>
+        <li><strong>不用了想关掉</strong>：双击 <code>HunterStop.exe</code>（或直接关掉那个黑色命令行窗口）</li>
+        <li><strong>遇到卡顿 / 异常</strong>：双击 <code>HunterRestart.exe</code>，等它重启完再刷新浏览器</li>
+        <li><strong>下次再用</strong>：重新双击 <code>HunterStart.exe</code>，数据都还在</li>
+      </ul>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">遇到问题先「重启」试试</div>
+          <p>
+            绝大多数小问题（页面打不开、操作没反应、上传卡住）——
+            先双击 <code>HunterRestart.exe</code> 重启一次，再刷新浏览器，往往就好了。
+            这是最省事的第一招。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="advanced">进阶：命令行启动（可选）</h2>
+      <p>如果你习惯用命令行，也可以在解压后的文件夹里用 <code>bin/hunterctl</code> 操作：</p>
+      <ul>
+        <li><code>bin/hunterctl start</code> — 启动</li>
+        <li><code>bin/hunterctl stop</code> — 停止</li>
+        <li><code>bin/hunterctl restart</code> — 重启</li>
+        <li><code>bin/hunterctl status</code> — 查看当前运行状态</li>
+        <li><code>bin/hunterctl logs</code> — 查看运行日志（排查问题时有用）</li>
+      </ul>
+      <p>不用命令行也完全没关系——双击那三个 .exe 就够日常使用了。</p>
+
+      <!-- ============================================== -->
+      <h2 id="data-safety">你的数据存在哪</h2>
+      <p>
+        Hunter 的所有数据都保存在解压文件夹内的这几个地方：
+      </p>
+      <ul>
+        <li><code>data/</code> — 候选人、岗位、匹配等核心数据</li>
+        <li><code>vault/</code> — 简历原件等文件</li>
+        <li><code>config.yaml</code> / <code>.env</code> — 你的专属配置</li>
+        <li><code>logs/</code> / <code>runtime/</code> — 运行日志与临时状态</li>
+      </ul>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">收到新版本时，别删这几个目录</div>
+          <p>
+            以后我们发新版本给你时，
+            <strong><code>data/</code>、<code>vault/</code>、<code>config.yaml</code>、<code>.env</code>、<code>logs/</code>、<code>runtime/</code></strong>
+            这几个目录和文件是你的数据，<strong>不要删除</strong>。
+            升级步骤我们会随新版本一起说明，照着做就能保留全部数据。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="troubleshoot">常见提示</h2>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">双击启动时 Windows 弹出蓝色「已保护你的电脑」</div>
+          <p>
+            这是 Windows SmartScreen 对不常见程序的默认拦截，不是病毒。
+            点窗口里的「<strong>更多信息</strong>」→「<strong>仍要运行</strong>」即可。
+            只有第一次会拦，之后就不再提示。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">浏览器打开 127.0.0.1:8000 显示「无法访问」</div>
+          <p>
+            通常是 Hunter 还没启动完或没启动。检查：① 那个黑色命令行窗口是不是还开着；
+            ② 是不是显示启动完成了。如果窗口已经关了，重新双击 <code>HunterStart.exe</code>，
+            等启动完再刷新页面。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">改了文件夹名字后启动不了</div>
+          <p>
+            如果你是<strong>启动过之后</strong>才改的文件夹名字或挪了位置，可能导致异常。
+            最稳的做法：把文件夹名字和位置<strong>改回原样</strong>再启动；
+            或者联系我们重新拿一份干净的包，这次在第一次启动前就把名字定好。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">试用包有有效期</div>
+          <p>
+            试用包有使用期限（具体日期见我们给你的邮件）。到期后想继续用，联系我们换新包即可，
+            你的数据可以保留迁移。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">遇到其他问题</div>
+          <p>
+            装不上、跑不起来、或任何疑问，直接邮件联系我们：
+            <a href="mailto:y.e.yyf@163.com">y.e.yyf@163.com</a>，把现象描述清楚（最好附上截图），我们帮你看。
+          </p>
+        </div>
       </div>
 
       <nav class="docs-pager" aria-label="page navigation">
