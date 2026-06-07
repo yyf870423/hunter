@@ -159,18 +159,22 @@
           <strong>双击 <code>HunterStart.exe</code></strong>
           <p>
             会弹出一个黑色的命令行窗口，显示启动进度。
-            <strong>这个窗口不要关</strong>——它就是 Hunter 的运行窗口，关掉它 Hunter 就停了。
-            把它最小化放着即可。
+            <strong>启动过程中不要关这个窗口</strong>——关掉它启动就会中断。
+            这个窗口只在启动阶段出现，<strong>启动完成后会自动关闭</strong>，Hunter 随后在后台继续运行。
           </p>
         </li>
         <li>
-          <strong>等到提示启动完成</strong>
-          <p>第一次启动需要初始化，可能要等几十秒到一两分钟，之后再启动就快了。</p>
+          <strong>等它自动打开浏览器</strong>
+          <p>
+            启动完成后，Hunter 会<strong>自动在你的默认浏览器里打开一个新标签页</strong>（地址 <code>127.0.0.1:8000</code>），同时那个黑色窗口自动关闭——看到工作台界面就说明启动成功了。
+            第一次启动需要初始化，可能要等几十秒到一两分钟，之后再启动就快了。
+          </p>
         </li>
       </ol>
 
       <!-- ============================================== -->
-      <h2 id="step3">第 3 步：打开浏览器访问</h2>
+      <h2 id="step3">第 3 步：没自动打开时，手动访问</h2>
+      <p>正常情况下浏览器会自动打开。万一没自动弹出来：</p>
       <ol class="steps">
         <li>
           <strong>打开浏览器（推荐 Chrome / Edge）</strong>
@@ -201,7 +205,7 @@
       <!-- ============================================== -->
       <h2 id="daily">日常：停止与重启</h2>
       <ul>
-        <li><strong>不用了想关掉</strong>：双击 <code>HunterStop.exe</code>（或直接关掉那个黑色命令行窗口）</li>
+        <li><strong>不用了想关掉</strong>：双击 <code>HunterStop.exe</code>（启动窗口已自动关闭，Hunter 在后台运行，靠这个程序来停）</li>
         <li><strong>遇到卡顿 / 异常</strong>：双击 <code>HunterRestart.exe</code>，等它重启完再刷新浏览器</li>
         <li><strong>下次再用</strong>：重新双击 <code>HunterStart.exe</code>，数据都还在</li>
       </ul>
@@ -275,9 +279,9 @@
         <div class="callout__body">
           <div class="callout__title">浏览器打开 127.0.0.1:8000 显示「无法访问」</div>
           <p>
-            通常是 Hunter 还没启动完或没启动。检查：① 那个黑色命令行窗口是不是还开着；
-            ② 是不是显示启动完成了。如果窗口已经关了，重新双击 <code>HunterStart.exe</code>，
-            等启动完再刷新页面。
+            通常是 Hunter 还没启动完或没启动。如果那个黑色启动窗口还在跑，等它跑完会自动打开页面；
+            如果启动窗口已经消失、页面却打不开（可能启动中途失败了），
+            重新双击 <code>HunterStart.exe</code>，等它启动完会自动打开。
           </p>
         </div>
       </div>
