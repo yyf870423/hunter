@@ -67,7 +67,7 @@
           一键<strong>把变动信息并入档案</strong>——你的库永远比对手快一步。
         </p>
         <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
-          产品里对应左侧 sidebar「<strong>寻访（找人）</strong>」分组下的「<strong>情报分析</strong>」。
+          产品里对应左侧「<strong>情报</strong>」分组下的「<strong>情报分析</strong>」。
         </p>
       </header>
 
@@ -78,10 +78,10 @@
           <strong>手动提交</strong>：你在某处看到的一条线索，复制粘贴 URL 或文字到 Hunter——用得最多
         </li>
         <li>
-          <strong>关键词采集</strong>：设好关键词，Hunter 定期跑公开数据源（百度 AI 搜索 / 36 氪 / 虎嗅 / 东方财富 等）抓取
+          <strong>关键词采集</strong>：设好关键词，Hunter 定期用搜索源（百度 AI 搜索 / Serper / Tushare）抓取
         </li>
         <li>
-          <strong>订阅采集</strong>：订阅特定信息源（RSSHub / 公司新闻列表），新内容自动入库
+          <strong>订阅采集</strong>：按公司订阅，订阅后自动抓取该公司在 36 氪 / 虎嗅 / 东方财富 的新动态
         </li>
       </ul>
       <p>
@@ -96,7 +96,7 @@
 
       <ol class="steps">
         <li>
-          <strong>左侧 sidebar 进入「情报分析」</strong>
+          <strong>左侧「情报」分组进入「情报分析」</strong>
         </li>
         <li>
           <strong>在顶部「快速提交区」粘贴内容</strong>
@@ -117,7 +117,7 @@
             ② AI 抽取实体（人物 / 公司 / 行业信号）→
             ③ 用人物姓名匹配候选人库 →
             ④ 给出可一键应用的字段变更建议。
-            处理一般在 10-30 秒内完成。
+            处理通常很快完成（视内容长短和抓取情况而定）。
           </p>
         </li>
         <li>
@@ -129,7 +129,7 @@
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
         <img src="assets/screenshots/intel-list.png" alt="情报分析列表页（快速提交区 + 5 维筛选 + 多条情报卡片）">
-        <div class="shot__caption">左侧 sidebar →「情报分析」— 顶部快速提交，下方筛选 + 卡片列表</div>
+        <div class="shot__caption">左侧「情报」→「情报分析」— 顶部快速提交，下方筛选 + 卡片列表</div>
       </div>
 
       <!-- ============================================== -->
@@ -157,7 +157,7 @@
       <ul>
         <li><strong>姓名</strong>：点跳到候选人详情页</li>
         <li><strong>当前公司 + 职位</strong>：库内现状</li>
-        <li><strong>匹配方式 + 置信度</strong>：告诉你为什么 AI 认为是这个人（如姓名 + 公司命中、姓名 + 经历命中）</li>
+        <li><strong>匹配方式 + 置信度</strong>：告诉你为什么 AI 认为是这个人——<strong>精确姓名命中</strong>（置信度高），或<strong>姓名 + 当前公司的模糊匹配</strong>（界面上标为 exact_name / fuzzy_name）</li>
         <li><strong>字段变更预览</strong>：AI 建议把什么改成什么（如「当前公司：腾讯 → 字节跳动」）</li>
       </ul>
 
@@ -196,21 +196,21 @@
         <li><strong>来源</strong>：手动提交 / 飞书 / 关键词采集 / 订阅采集</li>
         <li><strong>分析状态</strong>：成功 / 进行中 / 失败</li>
         <li>
-          <strong>置信度</strong>：
-          <strong>已验证</strong>（你点过「确认更新」的）·
-          <strong>高可信</strong>（AI 高置信但还没确认）·
-          <strong>待验证</strong>（低置信，需要看一眼）
+          <strong>置信度</strong>（由情报来源本身的可信度决定，也可在详情页手动调整，与是否「确认更新」候选人无关）：
+          <strong>已验证</strong>（来自高可信源或你手动标为已验证）·
+          <strong>高可信</strong>·
+          <strong>待验证</strong>（默认，建议看一眼再用）
         </li>
-        <li><strong>情报源</strong>：天眼查 / RSSHub / 百度 AI 搜索 / 36 氪 / 虎嗅 / 东方财富 等具体来源</li>
+        <li><strong>情报源</strong>：百度 AI 搜索 / Serper / Tushare / 36 氪 / 虎嗅 / 东方财富 等具体来源</li>
         <li><strong>公司 / 人物</strong>：按实体名过滤（支持搜索）</li>
       </ul>
       <p>每条情报卡片左侧有<strong>置信度颜色条</strong>（已验证 / 高可信 / 待验证 三色），扫一眼就知道哪些更重要。</p>
 
       <h3 id="badge-meaning">卡片上的标签是什么意思</h3>
       <ul>
-        <li><strong>置信度 badge</strong>：已验证（绿）/ 高可信（蓝）/ 待验证（灰）</li>
-        <li><strong>来源 badge</strong>：手动提交 / 飞书 / 订阅采集 · &lt;订阅名&gt; / 自动采集 · &lt;关键词&gt;</li>
-        <li><strong>情报源 badge</strong>：天眼查、Tushare、RSSHub、百度 AI 搜索、Serper.dev、Bing News、36 氪、虎嗅、东方财富 等</li>
+        <li><strong>置信度标签</strong>：已验证（绿）/ 高可信（蓝）/ 待验证（灰）</li>
+        <li><strong>来源标签</strong>：手动提交 / 飞书 / 订阅采集 · &lt;公司名&gt; / 自动采集 · &lt;关键词&gt;</li>
+        <li><strong>情报源标签</strong>：百度 AI 搜索、Serper.dev、Tushare、36 氪、虎嗅、东方财富 等</li>
         <li><strong>候选人计数</strong>（卡片右侧）：「N 位候选人」——AI 匹配到几位库内候选人</li>
       </ul>
 
@@ -236,17 +236,18 @@
       </p>
       <ul>
         <li>
-          <strong>关键词采集</strong>：你设好关键词（如「字节跳动 离职」「具身智能 融资」），
-          Hunter 调用百度 AI 搜索 / Bing News / Serper 等通用搜索源定期拉取
+          <strong>关键词采集（搜索源）</strong>：你设好关键词（如「字节跳动 离职」「具身智能 融资」），
+          Hunter 用百度 AI 搜索 / Serper / Tushare 等搜索源定期拉取
         </li>
         <li>
-          <strong>订阅采集</strong>：你订阅一个 RSS 源（通过 RSSHub）或专门数据源（天眼查、东方财富、Tushare、36 氪），
-          新内容入库时自动分析并入候选人匹配
+          <strong>订阅采集（订阅源）</strong>：你按<strong>公司</strong>订阅（搜公司名添加），
+          订阅后自动抓取该公司在 36 氪 / 虎嗅 / 东方财富 的新动态
         </li>
       </ul>
 
       <p>
-        关键词和订阅的具体配置在<strong>设置页面</strong>。
+        两种自动模式的配置都在「<strong>设置 → 情报采集</strong>」，分「<strong>搜索源</strong>」和「<strong>订阅源</strong>」两个标签页；
+        搜索源需要先填好对应的 API Key 才能启用，各源也有独立的启用开关。
         配好之后 Hunter 在后台跑，每次新进来的情报和你手动提交的一样进入「情报分析」列表。
       </p>
 
@@ -313,8 +314,8 @@
           <p>
             AI 把 A 公司的张三误匹配成你库里 B 公司的张三——
             点详情页里那条匹配的「<strong>忽略</strong>」按钮即可，不会影响候选人档案。
-            后续同名误匹配，重复操作几次后 AI 会逐渐准。
-            <strong>常见姓名的候选人，先关联好论文/专利</strong>能大幅减少这类误匹配。
+            匹配靠的是姓名（加当前公司辅助），所以<strong>同名的人需要你来分辨</strong>；
+            给库里的候选人补全「当前公司」、登记英文名 / 别名，能减少这类误判。
           </p>
         </div>
       </div>

@@ -71,7 +71,7 @@
           并被「岗位匹配」「Mapping」「自动寻访」等其他能力直接调用。本文教你把候选人导进来、找出来、管起来。
         </p>
         <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
-          产品里对应两个入口：左侧 sidebar「<strong>寻访（找人）</strong>」分组下的
+          产品里对应两个入口：左侧导航「<strong>寻访（找人）</strong>」分组下的
           「<strong>简历上传</strong>」（把简历导进来）和「<strong>候选人管理</strong>」（找人、管人）。
         </p>
       </header>
@@ -119,13 +119,13 @@
         <li>
           <strong>打开「简历上传」页面</strong>
           <p>
-            两种进入方式任选：左侧 sidebar 点「<strong>简历上传</strong>」；
+            两种进入方式任选：左侧导航点「<strong>简历上传</strong>」；
             或在候选人管理页右上角点蓝色主按钮「<strong>导入简历</strong>」。
           </p>
         </li>
         <li>
-          <strong>确认在「文件上传」Tab</strong>
-          <p>简历上传页顶部有两个 Tab：「文件上传」和「URL 导入」。默认就在「文件上传」。</p>
+          <strong>确认在「文件上传」标签页</strong>
+          <p>简历上传页顶部有两个标签页：「文件上传」和「URL 导入」。默认就在「文件上传」。</p>
         </li>
         <li>
           <strong>拖入文件，或点「选择文件」</strong>
@@ -149,8 +149,8 @@
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/upload-file-tab.png" alt="简历上传页（文件上传 Tab + 拖入区 + 处理记录）">
-        <div class="shot__caption">左侧 sidebar →「简历上传」→「文件上传」Tab</div>
+        <img src="assets/screenshots/upload-file-tab.png" alt="简历上传页（文件上传标签页 + 拖入区 + 处理记录）">
+        <div class="shot__caption">左侧导航 →「简历上传」→「文件上传」标签页</div>
       </div>
 
       <div class="callout callout--warn">
@@ -196,7 +196,7 @@
           </p>
         </li>
         <li>
-          <strong>用「文件上传」Tab 上传 .xlsx 文件</strong>
+          <strong>用「文件上传」标签页上传 .xlsx 文件</strong>
           <p>
             Hunter 会先做列名校验：列名必须与模板一致。
             如果你用的是更早版本的模板（22 列旧格式），也兼容，不必重做。
@@ -223,12 +223,12 @@
 
       <!-- ============================================== -->
       <h2 id="import-url">通过公开 URL 导入</h2>
-      <p>候选人有个人主页、Notion 简历、OpenReview profile 等公开档案，直接粘 URL，系统会抓取并解析。</p>
+      <p>候选人有个人主页、Notion 简历、OpenReview 主页 等公开档案，直接粘 URL，系统会抓取并解析。</p>
 
       <ol class="steps">
         <li>
-          <strong>简历上传页 → 切到「URL 导入」Tab</strong>
-          <p>这个 Tab 上有 Beta 标识，目前能力还在打磨。</p>
+          <strong>简历上传页 → 切到「URL 导入」标签页</strong>
+          <p>这个标签页上有 Beta 标识，目前能力还在打磨。</p>
         </li>
         <li>
           <strong>每行粘一个 URL，最多 20 个</strong>
@@ -252,8 +252,8 @@
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/upload-url-tab.png" alt="简历上传页 URL 导入 Tab（每行一个 URL，最多 20 个，开始提取按钮）">
-        <div class="shot__caption">简历上传页 →「URL 导入」Tab（Beta）</div>
+        <img src="assets/screenshots/upload-url-tab.png" alt="简历上传页 URL 导入标签页（每行一个 URL，最多 20 个，开始提取按钮）">
+        <div class="shot__caption">简历上传页 →「URL 导入」标签页（Beta）</div>
       </div>
 
       <!-- ============================================== -->
@@ -263,7 +263,7 @@
       <ol class="steps">
         <li>
           <strong>候选人管理页 → 点「+ 新建候选人」</strong>
-          <p>这个按钮在页面右上角操作区。点击会弹出新建候选人 modal。</p>
+          <p>这个按钮在页面右上角操作区。点击会弹出新建候选人弹窗。</p>
         </li>
         <li>
           <strong>填基本信息</strong>
@@ -314,9 +314,9 @@
 
       <h3 id="search-multi">一次搜多个关键词</h3>
       <p>
-        候选人管理页顶部的搜索框，placeholder 写着：
-        <code>搜索姓名、技能、行业（支持逗号分隔多个关键词）</code>。
-        所以你不止能搜姓名——技能（如 <code>Python</code>、<code>PyTorch</code>）和行业标签也能搜，
+        候选人管理页顶部的搜索框，提示文字写着：
+        <code>搜索姓名、手机号、职位、技能、行业（支持逗号分隔多个关键词）</code>。
+        所以你不止能搜姓名——手机号、职位、技能（如 <code>Python</code>、<code>PyTorch</code>）和行业标签也能搜，
         多个关键词用<strong>逗号分隔</strong>。
       </p>
 
@@ -330,25 +330,26 @@
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
         <img src="assets/screenshots/candidates-list.png" alt="候选人管理页（列表 + 搜索 + 已应用筛选 chip）">
-        <div class="shot__caption">候选人管理页 — 搜索框、已应用筛选 chip 行、表格</div>
+        <div class="shot__caption">候选人管理页 — 搜索框、已应用筛选标签行、表格</div>
       </div>
 
-      <h3 id="filter-dimensions">可筛维度（9 项）</h3>
+      <h3 id="filter-dimensions">可筛维度（10 项）</h3>
       <ul>
-        <li><strong>公司</strong>：AJAX 搜索 Top 100 默认 + 后端模糊匹配，按当前/历任公司过滤</li>
+        <li><strong>公司</strong>：输入即搜（默认给常见公司 Top 100）+ 模糊匹配，按当前/历任公司过滤</li>
         <li><strong>行业</strong>：标准化的 15 个一级标签 + 121 个二级标签</li>
         <li><strong>学历</strong>：博士/硕士/本科/大专 …</li>
         <li><strong>地点</strong>：当前所在城市</li>
         <li><strong>机会情况</strong>：是/否/固定看/未标注</li>
         <li><strong>流程状态</strong>：候选人在岗位推进中的当前阶段</li>
         <li><strong>职位</strong>：单值文本筛选</li>
+        <li><strong>收藏夹</strong>：全部候选人 / 全部收藏夹 / 未收藏，或筛某个具体收藏夹</li>
         <li><strong>年限</strong>：数值范围</li>
         <li><strong>年龄</strong>：数值范围</li>
       </ul>
 
       <p>
-        已应用的筛选会在折叠态也显示为 chip 行，方便你看清当前筛了什么。
-        点 chip 上的 ✕ 删除某一组；右侧「清空所有筛选」一键还原。
+        已应用的筛选会在折叠态也显示为标签行，方便你看清当前筛了什么。
+        点标签上的 ✕ 删除某一组；右侧「清空所有筛选」一键还原。
       </p>
 
       <div class="callout callout--note">
@@ -396,10 +397,10 @@
 
       <!-- ============================================== -->
       <h2 id="row-actions">单行操作</h2>
-      <p>每个候选人在列表里有一行，行尾的操作列里有：</p>
+      <p>每个候选人在列表里占一行：</p>
       <ul>
-        <li><strong>查看详情</strong>：点姓名进入候选人详情页（最常用）</li>
-        <li><strong>删除</strong>：单行删除一个候选人</li>
+        <li><strong>查看详情</strong>：点候选人<strong>姓名</strong>（蓝色链接）进入详情页（最常用）</li>
+        <li><strong>删除</strong>：行尾「操作」列里的「删除」按钮，单行删除一个候选人</li>
       </ul>
 
       <div class="callout callout--warn">

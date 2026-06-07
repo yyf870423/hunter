@@ -66,7 +66,7 @@
           第二天早上你花二十分钟过一遍待审池，确认入库即可。
         </p>
         <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
-          产品里对应左侧 sidebar「<strong>岗位（需求）</strong>」分组下的「<strong>人才寻访</strong>」（Beta）。
+          产品里对应左侧导航「<strong>岗位（需求）</strong>」分组下的「<strong>人才寻访</strong>」（Beta）。
           配置入口是岗位详情页 → 寻访配置；总览页是「人才寻访」。
         </p>
       </header>
@@ -87,15 +87,15 @@
           <div class="callout__title">需要先登录平台账号</div>
           <p>
             自动寻访用<strong>你自己的招聘平台账号</strong>跑，所以第一次用要先在 Hunter 里登录猎聘账号。
-            登录入口在配置页的「平台」section，点「启用并登录」会弹出平台登录窗口，
-            完成后状态会变成「就绪」。
+            登录入口在配置页的「平台」板块，点「启用并登录」会弹出平台登录窗口，
+            完成后状态会变成「正常」。
           </p>
         </div>
       </div>
 
       <!-- ============================================== -->
       <h2 id="config">配置一次寻访</h2>
-      <p>每次寻访绑定一个具体岗位。从岗位详情页进入「寻访配置」，里面分 6 个 section，从上到下填一遍即可。</p>
+      <p>每次寻访绑定一个具体岗位。从岗位详情页进入「寻访配置」，里面分 6 个 板块，从上到下填一遍即可。</p>
 
       <ol class="steps">
         <li>
@@ -103,7 +103,7 @@
           <p>
             勾选猎聘（其他平台已置灰，待接入）。
             如果状态显示「需要登录」「限流」「验证码」「异常」，先按按钮提示处理——
-            没就绪的平台不能开始寻访。
+            状态不是「正常」的平台不能开始寻访。
           </p>
         </li>
         <li>
@@ -125,7 +125,7 @@
             <strong>公司规模</strong>。
           </p>
           <p>
-            还有三个 toggle：<strong>隐藏已查看 / 隐藏已沟通 / 隐藏已获取联系方式</strong>——
+            还有三个开关：<strong>隐藏已查看 / 隐藏已沟通 / 隐藏已获取联系方式</strong>——
             默认勾后两个，避免你重复消耗精力在已经接触过的候选人上。
           </p>
         </li>
@@ -164,16 +164,16 @@
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/sourcing-config.png" alt="寻访配置页（左侧 6 个 section 导航 + 平台 + 关键词 + 筛选条件）">
-        <div class="shot__caption">岗位详情页 →「寻访配置」— 左侧分 section 导航 + 平台/关键词/筛选条件 等</div>
+        <img src="assets/screenshots/sourcing-config.png" alt="寻访配置页（左侧 6 个 板块 导航 + 平台 + 关键词 + 筛选条件）">
+        <div class="shot__caption">岗位详情页 →「寻访配置」— 左侧分 板块 导航 + 平台/关键词/筛选条件 等</div>
       </div>
 
       <!-- ============================================== -->
       <h2 id="running">寻访在跑时你能看什么</h2>
-      <p>左侧 sidebar 进入「人才寻访」总览页。从上到下：</p>
+      <p>左侧导航进入「人才寻访」总览页。从上到下：</p>
       <ul>
         <li>
-          <strong>3 个 KPI</strong>：今日已查看详情 · 今日待确认候选人 · 今日已入库候选人
+          <strong>3 个 关键指标</strong>：今日已查看详情 · 今日待确认候选人 · 今日已入库候选人
         </li>
         <li>
           <strong>异常处理入口</strong>（出现时）：如果任务在某个页面遇到提取异常或运行异常，
@@ -181,7 +181,7 @@
           不会继续打开详情或触达候选人——你可以放心去处理而不担心持续消耗
         </li>
         <li>
-          <strong>3 个 Tab</strong>：已寻访 / 正在寻访 / 全部
+          <strong>3 个标签页</strong>：已寻访 / 正在寻访 / 全部
         </li>
         <li>
           <strong>任务表格</strong>：每行一个寻访任务，显示岗位、状态徽章、待确认数、已入库数、操作
@@ -191,9 +191,9 @@
       <h3 id="task-status">任务状态说明</h3>
       <ul>
         <li><strong>排队中</strong>：等待资源（如平台限流冷却中）</li>
-        <li><strong>运行中</strong>：正在跑寻访</li>
-        <li><strong>已完成</strong>：达到停止条件或自然结束</li>
-        <li><strong>需要审核</strong>：完成且有待确认候选人没看</li>
+        <li><strong>寻访中</strong>：正在跑寻访</li>
+        <li><strong>寻访结束</strong>：达到停止条件或自然结束，且没有待确认项</li>
+        <li><strong>等待复核</strong>：寻访结束、且还有待确认的候选人没看</li>
         <li><strong>运行异常 / 认证失败</strong>：需要你处理（点开任务进异常处理流程）</li>
         <li><strong>已停止</strong>：你手动停止</li>
       </ul>
@@ -211,10 +211,10 @@
         <li><strong>已导入</strong>：你点过「加入系统」的候选人数</li>
         <li><strong>待确认</strong>：等你看的候选人数</li>
         <li><strong>不合适</strong>：你标过「不合适」的</li>
-        <li><strong>全部</strong>：四类合计</li>
+        <li><strong>全部</strong>：以上三类合计（已导入 + 待确认 + 不合适）</li>
       </ul>
 
-      <p>表格每行一条候选人草稿：候选人姓名、来源 URL、匹配分数、审核状态、操作。</p>
+      <p>表格每行一条候选人草稿：候选人、来源（平台）、分数、身份完整度、联系方式、审核状态、操作。</p>
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
@@ -260,7 +260,7 @@
           <p>
             待审池里的候选人，<strong>手机和邮箱默认遮挡</strong>，看到的是简介和经历。
             点「加入系统」入库后，平台上的联系方式才会同步进候选人档案。
-            这是为了让你<strong>先按业务判断再决定是否消耗平台的"看号"配额</strong>。
+            这是为了让你<strong>先按业务判断再决定是否消耗平台的「看号」配额</strong>。
           </p>
         </div>
       </div>
@@ -283,12 +283,12 @@
         不会一直撞墙浪费配额。处理方式：
       </p>
       <ul>
-        <li><strong>需要登录</strong>：点配置页平台 section 的「登录」按钮重新登录</li>
+        <li><strong>需要登录</strong>：点配置页平台 板块 的「登录」按钮重新登录</li>
         <li><strong>验证码</strong>：在平台上完成验证后回 Hunter 点「检查状态」</li>
         <li><strong>限流</strong>：等冷却时间（一般几分钟到几小时），Hunter 会自动恢复</li>
         <li>
           <strong>页面提取异常</strong>：「人才寻访」总览页顶部会出现红色横幅，
-          点「处理异常」进入异常处理 modal，逐条处理或忽略
+          点「处理异常」进入异常处理弹窗，逐条处理或忽略
         </li>
       </ul>
 
@@ -298,12 +298,12 @@
       <div class="callout callout--tip">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">"下班开跑，早上审入库"的节奏</div>
+          <div class="callout__title">「下班开跑，早上审入库」的节奏</div>
           <p>
             自动寻访最好的用法是<strong>把它和你的工作时间错开</strong>——
             上午配好任务、下班前点开始，让它整夜跑；
             第二天上午<strong>第一件事</strong>过待审池，决定哪些入库哪些拒绝。
-            这样不打断你的日常工作，但每天醒来都有"昨夜捞的新候选人"等你审。
+            这样不打断你的日常工作，但每天醒来都有「昨夜捞的新候选人」等你审。
           </p>
         </div>
       </div>
@@ -327,7 +327,7 @@
           <p>
             第一次跑某个岗位时不知道分数标准，建议把入库门槛<strong>设到 50 分</strong>跑一次——
             看待审池里 50-60 分、60-70 分、70+ 分的候选人质量分别如何，
-            找到你这个岗位的"该不该看"边界，下次再调到合适的阈值。
+            找到你这个岗位的「该不该看」边界，下次再调到合适的阈值。
           </p>
         </div>
       </div>
@@ -340,7 +340,7 @@
         <div class="callout__body">
           <div class="callout__title">「开始寻访」按钮点不下去</div>
           <p>
-            按钮旁会显示原因：通常是<strong>平台没就绪</strong>（需要登录 / 限流 / 验证码 / 异常）
+            按钮旁会显示原因：通常是<strong>平台状态不是「正常」</strong>（需要登录 / 限流 / 验证码 / 异常）
             或<strong>关键词留空</strong>。按提示先处理。
           </p>
         </div>
@@ -351,7 +351,7 @@
         <div class="callout__body">
           <div class="callout__title">猎聘账号登录窗口关掉了怎么办</div>
           <p>
-            登录窗口不小心关了 / 卡住了——回配置页平台 section 点「检查状态」，
+            登录窗口不小心关了 / 卡住了——回配置页平台 板块 点「检查状态」，
             状态会刷新成真实情况；如仍未登录，点「启用并登录」重新打开登录窗口。
           </p>
         </div>
@@ -362,7 +362,7 @@
         <div class="callout__body">
           <div class="callout__title">待审池里候选人质量差</div>
           <p>
-            常见原因：① 关键词太宽（如只填"算法"，命中泛滥）；
+            常见原因：① 关键词太宽（如只填「算法」，命中泛滥）；
             ② 筛选条件太松（不限年限、不限学历）；
             ③ 入库门槛太低（≥ 50 分进了一堆边缘人）。
             到配置页调紧任意一项，下次跑就准多了。

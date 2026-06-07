@@ -66,7 +66,7 @@
           你按分项采纳，<strong>不擅自改原档</strong>。
         </p>
         <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
-          产品里对应左侧 sidebar「<strong>寻访（找人）</strong>」分组下的「<strong>信息补全</strong>」。
+          产品里对应左侧导航「<strong>寻访（找人）</strong>」分组下的「<strong>信息补全</strong>」。
           也可以在任意候选人详情页右上角点「启动信息补全」按钮单点触发。
         </p>
       </header>
@@ -87,7 +87,7 @@
       <!-- ============================================== -->
       <h2 id="when">什么时候用？</h2>
       <ul>
-        <li><strong>沉睡候选人激活前</strong>：半年前推过的人现在到哪里了，先 refresh 再判断要不要联系</li>
+        <li><strong>沉睡候选人激活前</strong>：半年前推过的人现在到哪里了，先补全一遍再判断要不要联系</li>
         <li><strong>客户突然问起某人</strong>：库里只有 18 个月前的简历，先补全到最新再答复</li>
         <li><strong>定期巡检关键候选人</strong>：你重点跟进的 50-100 人，每季度跑一遍补全</li>
       </ul>
@@ -103,11 +103,11 @@
         </li>
         <li>
           <strong>点右上角「启动信息补全」按钮</strong>
-          <p>按钮上有 Beta 标识。如果有任务正在进行中，按钮会显示为「信息补全正在进行中」并 disabled。</p>
+          <p>按钮上有 Beta 标识。如果有任务正在进行中，按钮会显示为「信息补全正在进行中」并置灰不可点。</p>
         </li>
         <li>
-          <strong>看 modal 里的三步流程，点「开始补全」</strong>
-          <p>启动 modal 会展示完整流程：① 收集公开来源 → ② AI 汇总分析 → ③ 人工审批。点「开始补全」任务进入后台运行。</p>
+          <strong>看弹窗里的三步流程，点「开始补全」</strong>
+          <p>启动弹窗会展示完整流程：① 收集公开来源 → ② AI 汇总分析 → ③ 人工审批。点「开始补全」任务进入后台运行。</p>
         </li>
         <li>
           <strong>等任务完成，看通知</strong>
@@ -120,13 +120,13 @@
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/refresh-start-modal.png" alt="候选人详情页 + 启动信息补全 modal（三步流程）">
-        <div class="shot__caption">候选人详情页 →「启动信息补全」按钮 → 弹出三步流程 modal</div>
+        <img src="assets/screenshots/refresh-start-modal.png" alt="候选人详情页 + 启动信息补全弹窗（三步流程）">
+        <div class="shot__caption">候选人详情页 →「启动信息补全」按钮 → 弹出三步流程弹窗</div>
       </div>
 
       <h3 id="trigger-batch">在「信息补全」总览页统一管理</h3>
       <p>
-        左侧 sidebar 点「<strong>信息补全</strong>」进入总览页。
+        左侧导航点「<strong>信息补全</strong>」进入总览页。
         在这里可以看到全部任务（包括所有候选人的），统一筛选/监控/处理。
       </p>
 
@@ -135,16 +135,16 @@
       <p>从上到下：</p>
       <ul>
         <li>
-          <strong>4 个 KPI</strong>：今日运行任务/发现新信息/待处理审批项/失败任务（红色）
+          <strong>4 个 关键指标</strong>：今日运行任务/发现新信息/待处理审批项/失败任务（红色）
         </li>
         <li>
-          <strong>4 个 Tab</strong>：
+          <strong>4 个标签页</strong>：
           <strong>发现新信息</strong>（最该看）·
           <strong>补全中</strong> ·
           <strong>运行完成</strong> ·
           <strong>全部</strong>
         </li>
-        <li><strong>任务列表</strong>：每行一个 run，展示候选人、状态、补全条目数、操作按钮</li>
+        <li><strong>任务列表</strong>：每行一个补全任务，展示候选人、状态、补全条目数、操作按钮</li>
       </ul>
 
       <div class="callout callout--tip">
@@ -152,7 +152,7 @@
         <div class="callout__body">
           <div class="callout__title">建议默认看「发现新信息」</div>
           <p>
-            这个 Tab 只显示<strong>真正抓到新东西</strong>的任务，避免你逐个翻无果的任务。
+            这个标签页只显示<strong>真正抓到新东西</strong>的任务，避免你逐个翻无果的任务。
             按行点进去就能审批。
           </p>
         </div>
@@ -169,7 +169,7 @@
       <ul>
         <li><strong>顶部状态条</strong>：本次运行的整体状态（运行中、已完成、失败）+ 进度阶段（如有）</li>
         <li>
-          <strong>4 个分类 Tab</strong>：
+          <strong>4 个分类标签页</strong>：
           <strong>全部</strong>（按总数）·
           <strong>基本信息</strong>（姓名、联系方式、当前公司等）·
           <strong>经历</strong>（工作/教育/项目经历）·
@@ -177,25 +177,24 @@
           <strong>已处理</strong>
         </li>
         <li>
-          <strong>顶部操作按钮</strong>：返回候选人/查看全部证据/全部忽略/再次补全
+          <strong>顶部操作按钮</strong>：返回候选人 / 查看全部证据 / 全部忽略（有待处理项时才出现）/ 再次补全
         </li>
       </ul>
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/refresh-review.png" alt="整体补全方案审核页（4 个分类 Tab + 审批项 + 来源证据预览）">
-        <div class="shot__caption">整体补全方案审核页 — 状态条 + 4 个分类 Tab + 逐条审批项</div>
+        <img src="assets/screenshots/refresh-review.png" alt="整体补全方案审核页（4 个分类标签页 + 审批项 + 来源证据预览）">
+        <div class="shot__caption">整体补全方案审核页 — 状态条 + 4 个分类标签页 + 逐条审批项</div>
       </div>
 
       <h3 id="review-item">逐条审批</h3>
       <p>每条补全建议是一项独立的审批项，你可以分项处理。常见的处理动作：</p>
       <ul>
         <li><strong>合并</strong>：把新信息和原档合并（适合多条经历类）</li>
-        <li><strong>替换</strong>：用新值替换原值（适合"当前公司"这类单值字段）</li>
         <li><strong>追加</strong>：保留原值的同时加上新值</li>
         <li><strong>忽略</strong>：不采纳这条建议</li>
-        <li><strong>手动编辑</strong>：在 AI 建议的基础上微调后保存</li>
       </ul>
+      <p>遇到<strong>会冲突的单值字段</strong>（如「当前公司」原值和新值不一样），会弹出取舍弹窗，让你选<strong>采用外部值（替换）</strong>或<strong>保存编辑（手动调整后保存）</strong>。</p>
 
       <div class="callout callout--note">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
@@ -211,13 +210,13 @@
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/refresh-evidence.png" alt="来源证据页（全部来源 + 已参考 + 不参考 三 Tab，每个来源附 URL/抓取时间/判断依据）">
+        <img src="assets/screenshots/refresh-evidence.png" alt="来源证据页（全部来源 + 已参考 + 不参考 三标签页，每个来源附 URL/抓取时间/判断依据）">
         <div class="shot__caption">点「查看全部证据」打开 — 每个来源都有 URL、抓取时间、判断依据、参考状态</div>
       </div>
 
       <!-- ============================================== -->
       <h2 id="how-it-works">Hunter 怎么找候选人的新信息？</h2>
-      <p>启动 modal 里写得很清楚，分三步：</p>
+      <p>启动弹窗里写得很清楚，分三步：</p>
 
       <ol class="steps">
         <li>
@@ -252,7 +251,7 @@
       <h3 id="stop">停止一个任务</h3>
       <p>
         发现任务跑偏了（比如候选人是常见姓名，AI 误识别成了另一个人），可以中途停止。
-        在总览页或运行页找到该任务，点「停止」，弹出确认 modal 后点「确认停止」。
+        在总览页或运行页找到该任务，点「停止」，弹出确认弹窗后点「确认停止」。
       </p>
       <p>
         停止后系统<strong>不再继续</strong>搜索、抓取或调用 AI；
@@ -274,7 +273,7 @@
           <div class="callout__title">提前填好「公开资料链接」</div>
           <p>
             候选人详情页编辑模式下有「<strong>公开资料链接</strong>」字段——
-            如果你知道候选人的个人主页、GitHub、OpenReview profile、领英主页等公开 URL，提前填进去。
+            如果你知道候选人的个人主页、GitHub、OpenReview 主页、领英主页等公开 URL，提前填进去。
             补全会<strong>优先从这些已知链接</strong>抓信息，比 AI 凭名字搜准得多。
           </p>
         </div>

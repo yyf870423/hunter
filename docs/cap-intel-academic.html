@@ -66,8 +66,8 @@
           论文 / 专利<strong>双向自动关联</strong>到候选人，做岗位匹配时还会作为额外的判断维度。
         </p>
         <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
-          产品里对应左侧 sidebar「<strong>寻访（找人）</strong>」分组下的「<strong>学术搜索</strong>」。
-          论文和专利的管理入口也通过工作台或候选人详情页跳转进入。
+          产品里对应左侧「<strong>寻访（找人）</strong>」分组下的「<strong>学术搜索</strong>」，
+          以及「<strong>学术资产（关联信息）</strong>」分组下的「<strong>专利管理</strong>」；论文管理可从候选人详情页或工作台跳转进入。
         </p>
       </header>
 
@@ -75,7 +75,7 @@
       <h2 id="overview">三个相关页面，各管一件事</h2>
       <ul>
         <li>
-          <strong>学术搜索</strong>：从 OpenAlex 全球学术库按机构/时间搜论文，把候选人对标公司的研究产出捞回来
+          <strong>学术搜索</strong>：按企业/机构和日期搜论文（数据来自全球学术库 OpenAlex），把候选人对标公司的研究产出捞回来
         </li>
         <li>
           <strong>论文管理</strong>：库里所有论文的统一视图——搜索、上传 PDF/DOCX、翻译未译标题
@@ -95,35 +95,38 @@
 
       <ol class="steps">
         <li>
-          <strong>左侧 sidebar 进入「学术搜索」</strong>
+          <strong>左侧「寻访（找人）」分组进入「学术搜索」</strong>
         </li>
         <li>
-          <strong>添加机构</strong>（必填，可勾多个 = OR 命中）
+          <strong>填「企业/机构」</strong>（必填，英文，可多个 = OR 命中）
           <p>
-            点「+ 添加机构」，搜索框里输入机构名（<strong>中文或英文均可</strong>），比如「字节」「Microsoft」「Tsinghua」。
-            勾选要查的机构，可以一次选多个，Hunter 会用 OR 条件命中。
+            在「企业/机构」输入框里输入<strong>英文</strong>企业/机构名（如 <code>ByteDance</code>、<code>Tsinghua University</code>），
+            <strong>每输入一个要按回车、或用逗号确认</strong>，它才会变成一个标签加入搜索条件。可以加多个，命中其一即可。
           </p>
         </li>
         <li>
-          <strong>选时间区间</strong>（必填）
+          <strong>选「日期区间」</strong>（必填）
           <p>
-            开始月 + 结束月。结束月留空 = 至今。
-            提供快捷按钮：本月 / 3 个月前 / 1 年前。
-            <strong>窄一点的时间区间</strong>（如近 6 个月、近 1 年）通常更聚焦。
+            按<strong>日期</strong>选（格式 YYYY-MM-DD），<strong>默认从当年 1 月 1 日开始</strong>。
+            开始日期有「今年 1 月 1 日 / 今天」快捷按钮；结束日期可点「清空（至今）」表示截止到今天。
           </p>
         </li>
         <li>
-          <strong>跑搜索</strong>
+          <strong>（可选）填关键词</strong>
+          <p>想进一步缩小范围，可在「关键词」框加词，同样要回车或逗号确认；不填则不加关键词过滤。</p>
+        </li>
+        <li>
+          <strong>点「开始搜索」</strong>
           <p>
-            Hunter 调 OpenAlex 接口，返回符合条件的论文列表。
-            默认上限 5000 篇（v0.10.2 调高），覆盖绝大多数实际场景。
+            搜索在<strong>后台</strong>跑，抓到的论文直接入库。
+            单次最多抓 5000 条，按发表日期倒序，覆盖绝大多数实际场景。
           </p>
         </li>
         <li>
-          <strong>结果里看作者机构展示</strong>
+          <strong>在「搜索任务」表看结果</strong>
           <p>
-            每篇论文展示标题、作者、作者机构、年份。
-            重点看作者列表——这些作者就是你的潜在候选人。
+            表单下方的「搜索任务」表显示每次搜索的时间、搜索条件、状态和结果数量（<strong>新增 N 篇 / 关联 N 位候选人</strong>）。
+            任务完成后点该行的「查看」，进入论文列表看抓回来的论文。
           </p>
         </li>
       </ol>
@@ -131,7 +134,7 @@
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
         <img src="assets/screenshots/scholar-search-done.png" alt="学术搜索页（研究方向 + 按机构搜索表单 + 搜索任务完成态：新增 706 / 关联 211）">
-        <div class="shot__caption">左侧 sidebar →「学术搜索」— 研究方向 + 机构表单 + 任务结果</div>
+        <div class="shot__caption">左侧「学术搜索」— 研究方向 + 企业/机构搜索表单 + 搜索任务结果</div>
       </div>
 
       <h3 id="topics">研究方向聚合</h3>
@@ -148,32 +151,32 @@
 
       <!-- ============================================== -->
       <h2 id="papers">论文管理：库内所有论文的视图</h2>
-      <p>论文管理页有两个 Tab：<strong>论文列表</strong> / <strong>导入论文</strong>。</p>
+      <p>论文管理页有两个标签页：<strong>论文列表</strong> / <strong>导入论文</strong>。</p>
 
-      <h3 id="papers-list">论文列表 Tab</h3>
+      <h3 id="papers-list">论文列表标签页</h3>
       <ul>
         <li>
-          <strong>搜索框</strong>：placeholder「<code>搜索论文标题（支持中文）或作者姓名</code>」——
+          <strong>搜索框</strong>：提示文字「<code>搜索论文标题、作者姓名或作者机构</code>」——
           中英文标题都能搜
         </li>
         <li>
           <strong>「翻译全部未译」按钮</strong>：库里所有中文标题或中文摘要为空的论文，一次性翻译。
-          点击弹出 modal 显示「N 篇论文待翻译」+ 确认
+          点击弹出弹窗显示「N 篇论文待翻译」+ 确认
         </li>
         <li>
-          <strong>论文卡片</strong>：标题（中英文）、作者列表（命中候选人会标蓝高亮）、年份、机构、关联候选人
+          <strong>论文卡片</strong>：标题（中英文）、作者（超过 3 位显示「等」）、年份、发表刊物、被引数、关联候选人数
         </li>
         <li><strong>分页</strong></li>
       </ul>
 
-      <h3 id="papers-upload">导入论文 Tab</h3>
+      <h3 id="papers-upload">导入论文标签页</h3>
       <p>
         上传论文 PDF / DOCX 文件——Hunter 自动提取<strong>标题、作者、摘要、机构等</strong>。
         可同时选多个文件。
       </p>
       <ul>
-        <li>状态过滤 pills：全部 / 进行中 / 已完成 / 失败</li>
-        <li>失败 ≥ 2 时上方出现「全部重试」按钮</li>
+        <li>状态筛选：全部 / 进行中 / 已完成 / 失败</li>
+        <li>切到「失败」筛选、且失败数 ≥ 2 时，上方出现「全部重试」按钮</li>
       </ul>
 
       <div class="callout callout--tip">
@@ -189,20 +192,20 @@
 
       <!-- ============================================== -->
       <h2 id="patents">专利管理：导入国知局 Excel</h2>
-      <p>专利管理页有两个 Tab：<strong>专利列表</strong> / <strong>导入专利</strong>。</p>
+      <p>专利管理页有两个标签页：<strong>专利列表</strong> / <strong>导入专利</strong>。</p>
 
-      <h3 id="patents-list">专利列表 Tab</h3>
+      <h3 id="patents-list">专利列表标签页</h3>
       <ul>
         <li>
           <strong>搜索框</strong>：placeholder「<code>搜索标题、专利号、发明人</code>」
         </li>
         <li>
-          <strong>专利卡片</strong>：标题、专利号、发明人列表（命中候选人标蓝）、申请人 / 权利人（取代旧版专利号显示）、申请日
+          <strong>专利卡片</strong>：标题、权利人、发明人、申请日、摘要、关联候选人数（候选人学术页里查看时才额外显示专利号）
         </li>
         <li><strong>分页</strong></li>
       </ul>
 
-      <h3 id="patents-import">导入专利 Tab</h3>
+      <h3 id="patents-import">导入专利标签页</h3>
       <ol class="steps">
         <li>
           <strong>从国知局下载专利 Excel</strong>
@@ -212,7 +215,7 @@
           </p>
         </li>
         <li>
-          <strong>在「导入专利」Tab 上传 .xlsx</strong>
+          <strong>在「导入专利」标签页上传 .xlsx</strong>
           <p>支持多文件同时上传。Hunter 自动解析每行专利信息入库。</p>
         </li>
         <li>
@@ -223,7 +226,7 @@
 
       <!-- ============================================== -->
       <h2 id="link">候选人与论文/专利的双向关联</h2>
-      <p>这是学术情报的核心价值——不是「拥有一堆论文」，而是「<strong>论文知道是谁写的，候选人知道发过什么</strong>」。</p>
+      <p>这是这套能力的核心价值——不是「拥有一堆论文」，而是「<strong>论文知道是谁写的，候选人知道发过什么</strong>」。</p>
 
       <h3 id="auto-link">自动关联</h3>
       <p>
@@ -231,7 +234,7 @@
       </p>
       <ul>
         <li>命中候选人 → 自动关联</li>
-        <li>姓名常见、不确定是哪个候选人 → 进入待确认（与「重复候选人发现」类似的人工拍板流程）</li>
+        <li>姓名常见、不确定是哪个候选人 → 进入待确认，由你在候选人详情页或论文/专利详情页确认或拒绝</li>
         <li>库里没找到 → 论文 / 专利保留在库里，未来如果这个作者作为候选人入库，会自动回填关联</li>
       </ul>
 
@@ -245,11 +248,11 @@
         进入<strong>任意候选人详情页</strong>，下方有一个独立 section 展示 ta 的论文和专利：
       </p>
       <ul>
-        <li>论文列表（默认显示 5 篇，点「查看全部」打开候选人学术页的论文 Tab）</li>
-        <li>专利列表（同样 5 篇预览，点「查看全部」打开候选人学术页的专利 Tab）</li>
+        <li>论文列表（默认显示 5 篇，点「查看全部」打开候选人学术页的论文标签页）</li>
+        <li>专利列表（同样 5 篇预览，点「查看全部」打开候选人学术页的专利标签页）</li>
       </ul>
       <p>
-        <strong>候选人学术页</strong>有两个 Tab 可切换：
+        <strong>候选人学术页</strong>有两个标签页可切换：
         <strong>论文（N）</strong>/ <strong>专利（N）</strong>，
         显示这位候选人的全部论文 / 专利。
       </p>
@@ -326,7 +329,7 @@
           <div class="callout__title">论文翻译"全部翻译"无响应</div>
           <p>
             「翻译全部未译」是后台任务，翻译几百篇可能需要几分钟。
-            页面点完按钮 modal 关闭后任务在后台跑，几分钟后回来刷新即可看到中文标题/摘要。
+            页面点完按钮弹窗关闭后任务在后台跑，几分钟后回来刷新即可看到中文标题/摘要。
             进度可在论文列表里直接观察（已翻译的会更新）。
           </p>
         </div>

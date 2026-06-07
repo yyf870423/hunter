@@ -66,7 +66,7 @@
           每个节点自动关联到候选人库，<strong>你的库覆盖了对标公司多少人，一目了然</strong>。
         </p>
         <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
-          产品里对应左侧 sidebar「<strong>寻访（找人）</strong>」分组下的「<strong>人才地图</strong>」。
+          产品里对应左侧导航「<strong>寻访（找人）</strong>」分组下的「<strong>人才地图</strong>」。
         </p>
       </header>
 
@@ -75,7 +75,7 @@
       <ul>
         <li><strong>地图</strong>：一个独立的人才地图，对应一个调研主题（如「AI 大模型领域人才地图」「车企智驾团队地图」）。可以建多张</li>
         <li><strong>公司</strong>（树的根节点）：地图里的每个对标公司是一棵树，如「字节大模型团队」「阿里达摩院 NLP」</li>
-        <li><strong>节点</strong>：公司树下的层级，可以是部门、组、岗位、具体人名</li>
+        <li><strong>节点</strong>：公司树下的任意一层，内容自由填写（常见写法如「部门 / 组 / 岗位 / 具体人名」）</li>
         <li><strong>关联</strong>：节点上的人名如果命中候选人库里的某个人，会<strong>自动关联</strong>过去——这是 Mapping 价值的核心</li>
       </ul>
 
@@ -89,22 +89,22 @@
           <strong>进行中的导入</strong>：如果你刚上传了脑图文件，会在顶部显示导入进度卡
         </li>
         <li>
-          <strong>地图卡片网格</strong>：每张地图一张卡，显示名称、目标公司、4 个 KPI、创建日期。卡片可<strong>拖拽排序</strong>
+          <strong>地图卡片网格</strong>：每张地图一张卡，显示名称、目标公司、4 个 关键指标、创建日期。卡片可<strong>拖拽排序</strong>
         </li>
       </ul>
 
-      <p>每张地图卡上的 4 个 KPI：</p>
+      <p>每张地图卡上的 4 个 关键指标：</p>
       <ul>
         <li><strong>节点</strong>：地图里所有节点的总数</li>
-        <li><strong>强关联</strong>：已经关联到候选人库的节点数</li>
+        <li><strong>强关联</strong>：已经成功关联到候选人库的关联数（命中候选人的次数）</li>
         <li><strong>未关联候选人</strong>：节点写了人名但库里没找到，提示你可以补简历</li>
         <li><strong>待确认</strong>：系统找到候选人但不确定是否是同一人，等你确认（数字 &gt; 0 时会有橙色警告图标）</li>
       </ul>
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/mapping-list.png" alt="人才地图列表页（卡片网格，每张卡显示目标公司 + 4 个 KPI）">
-        <div class="shot__caption">左侧 sidebar →「人才地图」— 每张地图一张卡，4 KPI（节点 / 强关联 / 未关联候选人 / 待确认）</div>
+        <img src="assets/screenshots/mapping-list.png" alt="人才地图列表页（卡片网格，每张卡显示目标公司 + 4 个 关键指标）">
+        <div class="shot__caption">左侧导航 →「人才地图」— 每张地图一张卡，4 关键指标（节点 / 强关联 / 未关联候选人 / 待确认）</div>
       </div>
 
       <!-- ============================================== -->
@@ -112,7 +112,7 @@
       <ol class="steps">
         <li>
           <strong>点右上角「+ 新建地图」</strong>
-          <p>弹出新建 modal。</p>
+          <p>弹出新建弹窗。</p>
         </li>
         <li>
           <strong>填地图名称</strong>（必填）
@@ -127,7 +127,7 @@
         </li>
         <li>
           <strong>列出目标职能</strong>（可选，逗号分隔）
-          <p>如「大模型研究员, AI 算法负责人, NLP 工程师」——这是你关心的岗位，后续提取节点时会用到。</p>
+          <p>如「大模型研究员、AI 算法负责人、NLP 工程师」——这是你关心的岗位，后续提取节点时会用到。</p>
         </li>
         <li>
           <strong>点「创建地图」</strong>
@@ -140,8 +140,8 @@
       <p>详情页是建图、看图、编辑的主战场。从上到下：</p>
       <ul>
         <li><strong>顶部</strong>：标题 + 「重新提取」按钮 + 「导入」dropdown + 「导出」dropdown</li>
-        <li><strong>KPI 行</strong>：节点总数 / 已关联节点 / 未关联候选人 / 待确认</li>
-        <li><strong>公司 Tabs</strong>：地图里的每个对标公司是一个 Tab，「＋ 添加公司」按钮</li>
+        <li><strong>关键指标 行</strong>：节点总数 / 已关联节点 / 强关联 / 未关联候选人 / 待确认</li>
+        <li><strong>公司标签页</strong>：地图里的每个对标公司是一个标签页，「＋ 添加公司」按钮</li>
         <li><strong>视图切换</strong>：「思维导图」/「树视图」</li>
         <li><strong>节点搜索</strong>：在当前公司树里搜节点</li>
         <li><strong>左侧</strong>：视图区（思维导图或树视图）</li>
@@ -159,14 +159,14 @@
 
       <h3 id="view-mindmap">思维导图：适合可视化梳理</h3>
       <p>
-        左侧是 mind-elixir 思维导图（中央根节点辐射），可缩放、拖动、右键菜单。
+        左侧是可视化思维导图（中央根节点向外辐射），可缩放、拖动、右键菜单。
         适合<strong>看图比看树更直观</strong>的场景——自己梳理整体结构、看清楚库内覆盖了哪些区块。
       </p>
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/mapping-detail.png" alt="地图详情页（思维导图视图 + 4 KPI + 操作提示）">
-        <div class="shot__caption">地图详情页 — 思维导图视图与公司 Tab 切换</div>
+        <img src="assets/screenshots/mapping-detail.png" alt="地图详情页（思维导图视图 + 4 关键指标 + 操作提示）">
+        <div class="shot__caption">地图详情页 — 思维导图视图与公司标签页切换</div>
       </div>
 
       <h3 id="mindmap-keys">思维导图快捷键</h3>
@@ -211,7 +211,7 @@
           <p>
             常见情况：节点写「张伟」，库里有 3 个张伟。
             Hunter 不会乱猜，会进「待确认」队列让你自己看清楚是哪个。
-            列表页和详情页 KPI 都会有橙色警告提示。
+            列表页和详情页 关键指标 都会有橙色警告提示。
           </p>
         </li>
         <li>
@@ -228,7 +228,7 @@
       <p>
         如果你新导入了一批简历到候选人库（候选人库变大了），
         想让 mapping 里原本"未关联"的节点重新尝试关联——
-        点详情页顶部的「<strong>重新提取</strong>」按钮，会重新跑 LLM 提取所有未识别人名并尝试关联。
+        点详情页顶部的「<strong>重新提取</strong>」按钮，会重新识别所有未识别的人名并尝试关联。
       </p>
 
       <!-- ============================================== -->
@@ -290,7 +290,7 @@
         <div class="callout__body">
           <div class="callout__title">未关联节点是「猎头任务清单」</div>
           <p>
-            列表页 KPI 里的「未关联候选人」数字其实是你的<strong>下一步寻人清单</strong>——
+            列表页 关键指标 里的「未关联候选人」数字其实是你的<strong>下一步寻人清单</strong>——
             点进去看到节点上的人名你都知道在哪个公司哪个岗位，专门去找这些人的联系方式，
             找到一个就把库扩充一格，mapping 的强关联数也涨一格。
           </p>
@@ -305,9 +305,9 @@
         <div class="callout__body">
           <div class="callout__title">导入后节点没自动关联</div>
           <p>
-            常见原因：库里候选人的姓名写法跟 mapping 节点里不一致（如库里是「Wang Xiaoming」mapping 写「王晓明」）。
-            <strong>大多数情况下 Hunter 能自动识别变体</strong>，识别不到的可以手动点节点，在右侧详情面板里搜索并关联。
-            或点顶部「重新提取」让 LLM 再跑一次。
+            常见原因：节点里的人名跟库里候选人姓名<strong>不完全一致</strong>（如库里是「Wang Xiaoming」，节点写「王晓明」）——
+            自动关联要求姓名完全一致才会命中。
+            不一致时手动点该节点，在右侧详情面板里搜索并关联即可；也可点顶部「重新提取」再识别一次。
           </p>
         </div>
       </div>

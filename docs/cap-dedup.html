@@ -66,8 +66,8 @@
           本文教你怎么把库里的同人识别、合并、撤销做干净。
         </p>
         <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
-          产品里对应两个入口：左侧 sidebar「<strong>寻访（找人）</strong>」分组下的
-          「<strong>疑似重复</strong>」（处理）和「<strong>合并历史</strong>」（回看与撤销）。
+          产品里对应左侧导航「<strong>寻访（找人）</strong>」分组下的「<strong>疑似重复</strong>」（处理）；
+          「<strong>合并历史</strong>」（回看与撤销）是「疑似重复」页右上角的一个按钮，点进去查看。
           也可以在候选人管理页右上角点「疑似重复」按钮进入。
         </p>
       </header>
@@ -134,12 +134,12 @@
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
         <img src="assets/screenshots/dedup-list.png" alt="疑似重复页面（4 个统计卡 + 分数筛选 + 组列表）">
-        <div class="shot__caption">左侧 sidebar →「疑似重复」</div>
+        <div class="shot__caption">左侧导航 →「疑似重复」</div>
       </div>
 
       <!-- ============================================== -->
       <h2 id="process">处理一个疑似组：三选一</h2>
-      <p>点开一个组，弹出处理 modal。顶部有「<strong>处理模式</strong>」切换：</p>
+      <p>点开一个组，弹出处理弹窗。顶部有「<strong>处理模式</strong>」切换：</p>
       <ul>
         <li><strong>合并/全否</strong>（默认）：这组都是同一人 → 合并；都不是 → 全否</li>
         <li><strong>拆分为多组</strong>：组里实际是 2-3 个人混在一起 → 拆成 A/B/C 子组</li>
@@ -198,7 +198,7 @@
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/dedup-modal-split.png" alt="疑似重复组处理 modal — 拆分为多组模式（A/B/C 子组分配）">
+        <img src="assets/screenshots/dedup-modal-split.png" alt="疑似重复组处理弹窗 — 拆分为多组模式（A/B/C 子组分配）">
         <div class="shot__caption">点开疑似组 → 切到「拆分为多组」模式 → 给每张卡片指派 A/B/C 或独立</div>
       </div>
 
@@ -242,7 +242,7 @@
         </li>
         <li>
           <strong>点「详情」</strong>
-          <p>弹出「合并变更详情」modal，展示这次合并把哪些字段合并到了主记录、哪些原始记录被合并了。</p>
+          <p>弹出「合并变更详情」弹窗，展示这次合并的时间、主记录、操作类型、相似度、决策层级和来源描述等信息。</p>
         </li>
         <li>
           <strong>点底部「撤销此次合并」</strong>
