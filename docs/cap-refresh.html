@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>候选人档案焕新 · Hunter 文档</title>
+  <title>候选人档案补全 · Hunter 文档</title>
   <meta name="description" content="一键抓取公开资料更新候选人档案，AI 汇总后让你按分项审批，不擅自改原档。">
   <link rel="stylesheet" href="docs.css">
 </head>
@@ -27,7 +27,7 @@
     <div class="docs-sidebar__group">
       <h3 class="docs-sidebar__group-title">起步</h3>
       <ul class="docs-sidebar__list">
-        <li><a class="docs-sidebar__link docs-sidebar__link--placeholder" href="start-install.html">安装与启动</a></li>
+        <li><a class="docs-sidebar__link" href="start-install.html">安装与启动</a></li>
         <li><a class="docs-sidebar__link" href="start-quickstart.html">10 分钟上手</a></li>
       </ul>
     </div>
@@ -35,14 +35,14 @@
       <h3 class="docs-sidebar__group-title">核心能力</h3>
       <ul class="docs-sidebar__list">
         <li><a class="docs-sidebar__link" href="cap-candidates.html">候选人库</a></li>
-        <li><a class="docs-sidebar__link" href="cap-dedup.html">多重简历比对</a></li>
-        <li><a class="docs-sidebar__link is-current" href="cap-refresh.html">候选人档案焕新</a></li>
-        <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利情报</a></li>
-        <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
+        <li><a class="docs-sidebar__link" href="cap-dedup.html">重复简历发现</a></li>
+        <li><a class="docs-sidebar__link is-current" href="cap-refresh.html">候选人档案补全</a></li>
         <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
-        <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
         <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访</a></li>
         <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
+        <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
       </ul>
     </div>
   </aside>
@@ -55,21 +55,34 @@
         <span class="docs-breadcrumb__sep">/</span>
         <span>核心能力</span>
         <span class="docs-breadcrumb__sep">/</span>
-        <span class="docs-breadcrumb__current">候选人档案焕新</span>
+        <span class="docs-breadcrumb__current">候选人档案补全</span>
       </nav>
 
       <header class="docs-article__header">
-        <h1>候选人档案焕新</h1>
+        <h1>候选人档案补全</h1>
         <p class="docs-article__lead">
           库里的简历是一年前的，候选人现在跳槽了、出新论文了、晋升了——但你不知道。
-          「档案焕新」让 AI 从公开渠道抓取候选人最新动态，汇总成可审核的补全建议，
+          「档案补全」让 AI 从公开渠道抓取候选人最新动态，汇总成可审核的补全建议，
           你按分项采纳，<strong>不擅自改原档</strong>。
         </p>
         <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
-          产品里对应左侧 sidebar「<strong>寻访（找人）</strong>」分组下的「<strong>信息补全</strong>」（Beta）。
+          产品里对应左侧 sidebar「<strong>寻访（找人）</strong>」分组下的「<strong>信息补全</strong>」。
           也可以在任意候选人详情页右上角点「启动信息补全」按钮单点触发。
         </p>
       </header>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">这是 Beta 功能</div>
+          <p>
+            候选人档案补全目前处于 <strong>Beta 阶段</strong>，能力还在打磨中——
+            抓取结果可能不完整、偶尔会有同名误判。
+            <strong>所有补全建议都需要你逐条审核确认才会进档案</strong>，不会擅自改动你的原始数据，可以放心试用。
+            用下来有问题或建议，欢迎随时反馈给我们。
+          </p>
+        </div>
+      </div>
 
       <!-- ============================================== -->
       <h2 id="when">什么时候用？</h2>
@@ -273,7 +286,7 @@
           <div class="callout__title">姓名常见的候选人，先关联论文/专利再焕新</div>
           <p>
             「张伟」「王芳」这类常见姓名，单凭名字搜会有大量同名干扰。
-            如果候选人有论文或专利，先到「学术 &amp; 专利情报」页关联好，
+            如果候选人有论文或专利，先到「学术 &amp; 专利」页关联好，
             焕新时论文专利会作为强身份锚点，准确度大幅提升。
           </p>
         </div>
@@ -321,11 +334,11 @@
       <nav class="docs-pager" aria-label="page navigation">
         <a class="docs-pager__link" href="cap-dedup.html">
           <div class="docs-pager__dir">← 上一篇</div>
-          <div class="docs-pager__title">多重简历比对</div>
+          <div class="docs-pager__title">重复简历发现</div>
         </a>
-        <a class="docs-pager__link docs-pager__link--next" href="cap-intel-academic.html">
+        <a class="docs-pager__link docs-pager__link--next" href="cap-match.html">
           <div class="docs-pager__dir">下一篇 →</div>
-          <div class="docs-pager__title">学术 &amp; 专利情报</div>
+          <div class="docs-pager__title">岗位智能匹配</div>
         </a>
       </nav>
 
