@@ -2669,6 +2669,85 @@ html { overflow-x: clip; }
   100% { transform: translate(70px,-80px) scale(1.08); }
 }
 
+/* ============================================================
+   生产版 hero 同步:无横幅 + 个人AI系统琥珀 + 滑块统一紫色
+   ============================================================ */
+/* 副标题:仅电脑端单行不换行 */
+@media (min-width: 921px) {
+  .hero__layout .hero__subtitle { white-space: nowrap; font-size: clamp(16px, 1.45vw, 19px); }
+}
+/* 个人 AI 系统:行内琥珀徽章(浓描边) */
+.hero__posit-tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 14px;
+  font-size: clamp(15px, 1.4vw, 19px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #B45309;
+  -webkit-text-fill-color: #B45309;
+  background: rgba(245, 158, 11, 0.22);
+  border: 1.5px solid rgba(245, 158, 11, 0.7);
+  padding: 5px 13px;
+  border-radius: 10px;
+  white-space: nowrap;
+  position: relative;
+  top: -4px;
+}
+@media (max-width: 640px) {
+  .hero__posit-tag { display: block; width: fit-content; margin: 10px auto 0; top: 0; }
+}
+/* 本地候选人库:首图实心绿卡(居中放大) + 本地分行 + SVG 重要性标记 */
+.hero__float--solid {
+  background: linear-gradient(135deg, #10B981, #059669);
+  border-color: transparent;
+  box-shadow: 0 18px 42px rgba(16, 185, 129, 0.42);
+  padding: 13px 20px;
+}
+.hero__float--solid .hero__float-ic { background: #fff; color: #059669; width: 36px; height: 36px; }
+.hero__float--solid .hero__float-tx strong { color: #fff; font-size: 16px; }
+.hero__float--solid .hero__float-tx span { color: rgba(255, 255, 255, 0.92); }
+.hero__float--cb {
+  left: 0; right: 0;
+  margin-left: auto; margin-right: auto;
+  width: fit-content;
+  max-width: 90%;
+  bottom: 17%;
+}
+.hero__tab-local { font-weight: 800; }
+.hero__tab-flag {
+  position: absolute;
+  top: -9px; right: -7px;
+  width: 19px; height: 19px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F43F5E, #E11D48);
+  display: grid; place-items: center;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(244, 63, 94, 0.45);
+  z-index: 3;
+  pointer-events: none;
+}
+.hero__tab-flag svg { display: block; }
+.hero__switcher-pill { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (max-width: 640px) {
+  .hero__tab-local { display: block; }
+  .hero__tab-flag { top: -7px; right: -3px; width: 17px; height: 17px; }
+}
+/* 桌面端:左栏 CTA 底部 与 右栏滑块底部对齐;上半部间距微调 */
+@media (min-width: 921px) {
+  .hero__layout { align-items: stretch; }
+  .hero__layout .hero__showcase { align-self: start; }
+  .hero__content { display: flex; flex-direction: column; }
+  .hero__layout .hero__content { margin-top: 46px; }
+  .hero__layout .hero__cta-row { margin-top: auto; }
+  .hero__layout .hero__slogan { margin-bottom: 14px; }
+  .hero__layout .hero__subtitle { margin: 9px 0 0; }
+  .hero__layout .hero__features { margin-top: 2px; }
+  .hero__layout .hero__feat-label { margin-top: var(--space-5); }
+  .hero__layout .hero__feat-list { gap: 13px; }
+  .hero__layout .hero__feat-list--grid { gap: 13px 24px; }
+}
+
 </style>
 </head>
 <body>
@@ -2719,12 +2798,10 @@ html { overflow-x: clip; }
   </div>
   <div class="container hero__layout">
     <div class="hero__content">
-      <span class="hero__pill">种子用户内部验证中</span>
       <h1 class="hero__slogan">
         顶尖招聘团队打造<br>
-        <span class="accent">AI 伙伴</span>
+        <span class="accent">AI 伙伴</span><span class="hero__posit-tag">个人 AI 系统</span>
       </h1>
-      <div class="hero__positioning"><span>个人 AI 系统</span></div>
       <p class="hero__subtitle">
          告别无效寻访，专注目标价值，做数据的主人
        </p>
@@ -2766,12 +2843,12 @@ html { overflow-x: clip; }
         </div>
       </div>
         <div class="hero__float hero__float--tl" data-for="0">
-          <span class="hero__float-ic hero__float-ic--grad"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></span>
-          <div class="hero__float-tx"><strong>10 万+ 候选人</strong><span>一处收口集中管理</span></div>
+          <span class="hero__float-ic hero__float-ic--grad"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg></span>
+          <div class="hero__float-tx"><strong>10 万+ 本地候选人库</strong><span>数据本地存储，归你掌控</span></div>
         </div>
-        <div class="hero__float hero__float--br" data-for="0">
-          <span class="hero__float-ic hero__float-ic--ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
-          <div class="hero__float-tx"><strong>5 种导入方式</strong><span>中英文·拼音秒级查</span></div>
+        <div class="hero__float hero__float--cb hero__float--solid" data-for="0">
+          <span class="hero__float-ic"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5V11c0 4.2-2.9 7.4-7 8.7-4.1-1.3-7-4.5-7-8.7V5.5z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div class="hero__float-tx"><strong>候选人 100% 在你电脑上</strong><span>数据本地存储 · 隐私零上云</span></div>
         </div>
         <div class="hero__float hero__float--tr" data-for="1">
           <span class="hero__float-ic hero__float-ic--grad"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></span>
@@ -2808,7 +2885,7 @@ html { overflow-x: clip; }
       </div>
       <div class="hero__switcher">
         <span class="hero__switcher-pill" aria-hidden="true"></span>
-        <button class="hero__tab is-active" data-i="0"><span class="hero__tab-ic"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c0-3.6 2.9-5.6 6.5-5.6s6.5 2 6.5 5.6"/></svg></span><span class="hero__tab-lb">候选人库</span></button>
+        <button class="hero__tab is-active" data-i="0"><span class="hero__tab-ic"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c0-3.6 2.9-5.6 6.5-5.6s6.5 2 6.5 5.6"/></svg></span><span class="hero__tab-lb"><span class="hero__tab-local">本地</span>候选人库</span><span class="hero__tab-flag"><svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 6.9L21 9l-5.3 4.2L17.6 21 12 16.9 6.4 21l1.9-7.8L3 9l6.6-.1z"/></svg></span></button>
         <button class="hero__tab" data-i="1"><span class="hero__tab-ic"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.3"/><circle cx="12" cy="12" r="3.3"/></svg></span><span class="hero__tab-lb">岗位匹配</span></button>
         <button class="hero__tab" data-i="2"><span class="hero__tab-ic"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="4.4" height="16" rx="1"/><rect x="9.8" y="4" width="4.4" height="10" rx="1"/><rect x="16.1" y="4" width="4.4" height="13" rx="1"/></svg></span><span class="hero__tab-lb">推进看板</span></button>
         <button class="hero__tab" data-i="3"><span class="hero__tab-ic"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="4.4" rx="1"/><rect x="3" y="16.6" width="6" height="4.4" rx="1"/><rect x="15" y="16.6" width="6" height="4.4" rx="1"/><path d="M12 7.4V11.6M6 11.6H18M6 11.6V16.6M18 11.6V16.6"/></svg></span><span class="hero__tab-lb">Mapping</span></button>
