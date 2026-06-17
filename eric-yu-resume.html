@@ -227,6 +227,24 @@ ul.pts li b{font-weight:700;color:var(--ink)}
 
 @media(max-height:600px){.dots,.hint{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+
+/* ============ 移动端适配(≤720px):解除整屏吸附,纵向堆叠 ============ */
+@media (max-width:720px){
+  html{scroll-snap-type:none}
+  .slide{width:100%;height:auto;min-height:0;overflow:visible;scroll-snap-align:none}
+  .deck{display:block}
+  .main{padding:1.8rem 1.4rem;justify-content:flex-start;gap:1.05rem;min-width:0}
+  .deck.cover .sidebar{padding:1.9rem 1.4rem}
+  .deck.body .rail{display:none}
+  .cards.c4,.cards.c3{grid-template-columns:1fr 1fr}
+  .lede{max-width:none}
+  .slide+.slide{border-top:1px solid var(--cardline)}
+  .hint{display:none}
+}
+@media (max-width:430px){
+  .cards.c4,.cards.c3{grid-template-columns:1fr 1fr}
+  .cards.c4 .card .l,.cards.c3 .card .l{font-size:.72rem}
+}
 </style>
 </head>
 <body>
