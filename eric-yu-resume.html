@@ -101,6 +101,7 @@ body{font-family:var(--body);color:var(--ink);background:var(--bg);-webkit-font-
   display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:clamp(.74rem,1.1vw,.86rem);
   box-shadow:0 4px 12px rgba(99,102,241,.3)}
 .s-title{font-family:var(--serif);font-weight:600;font-size:clamp(1.2rem,2.4vw,1.75rem);line-height:1.1}
+.s-badge{font-family:var(--mono);font-size:clamp(.55rem,.85vw,.66rem);font-weight:600;letter-spacing:.06em;padding:.18rem .5rem;border-radius:6px;border:1px solid rgba(224,137,47,.55);color:#e0892f;background:rgba(224,137,47,.12);white-space:nowrap}
 .s-sub{font-family:var(--mono);font-size:clamp(.66rem,1vw,.8rem);color:var(--muted);margin-top:.4rem;margin-left:.2rem}
 .s-sub .co{color:var(--accent-d);font-weight:700}
 
@@ -273,7 +274,7 @@ ul.pts li b{font-weight:700;color:var(--ink)}
         <li><span class="dot"></span><span class="yr">2010</span></li>
         <li><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
-      <div class="pg">01<small>/05</small></div>
+      <div class="pg">01<small>/06</small></div>
       <div class="note">// 14 yrs · 4 eng + 10 pm</div>
     </div>
     <main class="main">
@@ -329,7 +330,7 @@ ul.pts li b{font-weight:700;color:var(--ink)}
         <li><span class="dot"></span><span class="yr">2010</span></li>
         <li><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
-      <div class="pg">02<small>/05</small></div>
+      <div class="pg">02<small>/06</small></div>
       <div class="note">// indie · 0→1 · daily users</div>
     </div>
     <main class="main">
@@ -351,6 +352,40 @@ ul.pts li b{font-weight:700;color:var(--ink)}
   </div>
 </section>
 
+<!-- ============ 03 · AI 开发团队（已终止）============ -->
+<section class="slide">
+  <div class="deck body">
+    <div class="rail">
+      <div class="mb reveal" style="--i:0">于</div>
+      <ol class="tl reveal" style="--i:1">
+        <li class="is-current"><span class="dot"></span><span class="yr">2024</span></li>
+        <li><span class="dot"></span><span class="yr">2022</span></li>
+        <li><span class="dot"></span><span class="yr">2017</span></li>
+        <li><span class="dot"></span><span class="yr">2011</span></li>
+        <li><span class="dot"></span><span class="yr">2010</span></li>
+        <li><span class="dot"></span><span class="yr">2009</span></li>
+      </ol>
+      <div class="pg">03<small>/06</small></div>
+      <div class="note">// 7 agents · 飞书 SoT · 已终止</div>
+    </div>
+    <main class="main">
+      <div class="reveal" style="--i:0"><div class="s-head"><span class="num">03</span><span class="s-title">AI 开发团队 · 多 Agent 系统</span><span class="s-badge">已终止</span></div>
+        <div class="s-sub">2026.02 – 2026.05　<span class="co">独立探索 · 系统设计 + Agent 编排</span></div></div>
+      <div class="cards c4 reveal" style="--i:1">
+        <div class="card"><div class="v g" data-count="7">0</div><div class="l">AI Agent 自主协作</div><div class="l2">// 从 PRD 到部署全程</div></div>
+        <div class="card"><div class="v" data-count="10916" data-thousands="1">0</div><div class="l">系统代码量 LOC</div><div class="l2">// 调度核心 2,501 行</div></div>
+        <div class="card"><div class="v" data-count="8">0</div><div class="l">Pipeline 类型</div><div class="l2">// 新建·修复·安全·UX</div></div>
+        <div class="card"><div class="v" data-count="59">0</div><div class="l">commits · 40 天迭代</div><div class="l2">// 0→生产上线</div></div>
+      </div>
+      <ul class="pts">
+        <li class="reveal" style="--i:2"><b>一个人 = 一支 AI 团队</b>：飞书私聊下达需求，7 个 AI Agent（PM / UX / 全栈 / QA / 安全 / 运维 / Planner）自主协作，<span class="m">从 PRD 到生产部署全程跑通</span>。</li>
+        <li class="reveal" style="--i:3"><b>自研三层可替换架构</b>：接口（飞书 PM Agent）/ 调度（Dispatcher · Gate Checker 门禁 · 失败自愈）/ 执行（7 Agent 隔离），以<span class="m">飞书多维表格为单一事实源</span>。</li>
+        <li class="reveal" style="--i:4"><b>方法论复用 + 收尾</b>：同一套 Agent 角色与流程沉淀为可复用方法论，支撑旗舰产品 <span class="m">Hunter</span> 等的开发；完成阶段性验证后，该独立开发系统<span class="m">已终止</span>。</li>
+      </ul>
+    </main>
+  </div>
+</section>
+
 <!-- ============ 04 · 字节跳动 ============ -->
 <section class="slide">
   <div class="deck body">
@@ -364,11 +399,11 @@ ul.pts li b{font-weight:700;color:var(--ink)}
         <li><span class="dot"></span><span class="yr">2010</span></li>
         <li><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
-      <div class="pg">03<small>/05</small></div>
+      <div class="pg">04<small>/06</small></div>
       <div class="note">// cloud native · eBPF · AIOps</div>
     </div>
     <main class="main">
-      <div class="reveal" style="--i:0"><div class="s-head"><span class="num">03</span><span class="s-title">字节跳动 · 云原生可观测</span></div>
+      <div class="reveal" style="--i:0"><div class="s-head"><span class="num">04</span><span class="s-title">字节跳动 · 云原生可观测</span></div>
         <div class="s-sub">2022.11 – 2024.08　<span class="co">云原生可观测产品经理</span></div></div>
       <div class="cards c3 reveal" style="--i:1">
         <div class="card"><div class="v" data-count="40" data-prefix="+" data-suffix="%">0</div><div class="l">全链路观测效率</div><div class="l2">// 模块化配置</div></div>
@@ -398,11 +433,11 @@ ul.pts li b{font-weight:700;color:var(--ink)}
         <li><span class="dot"></span><span class="yr">2010</span></li>
         <li><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
-      <div class="pg">04<small>/05</small></div>
+      <div class="pg">05<small>/06</small></div>
       <div class="note">// fintech · 260B+ daily txn</div>
     </div>
     <main class="main">
-      <div class="s-head reveal" style="--i:0"><span class="num">04</span><span class="s-title">应用可观测 · 早期产品 / 研发</span></div>
+      <div class="s-head reveal" style="--i:0"><span class="num">05</span><span class="s-title">应用可观测 · 早期产品 / 研发</span></div>
       <div class="cards c3 reveal" style="--i:1">
         <div class="card"><div class="v g" data-count="260" data-suffix=" 亿笔">0</div><div class="l">天旦 BPC 日均监控交易</div><div class="l2">// 五年旗舰产品</div></div>
         <div class="card"><div class="v" data-count="150" data-prefix="Top ">0</div><div class="l">银行客户 · Top 30 券商</div><div class="l2">// 含浙商 · 银联</div></div>
@@ -440,11 +475,11 @@ ul.pts li b{font-weight:700;color:var(--ink)}
         <li class="is-current"><span class="dot"></span><span class="yr">2010</span></li>
         <li class="is-current"><span class="dot"></span><span class="yr">2009</span></li>
       </ol>
-      <div class="pg">05<small>/05</small></div>
+      <div class="pg">06<small>/06</small></div>
       <div class="note">// updated 2026.05</div>
     </div>
     <main class="main">
-      <div class="s-head reveal" style="--i:0"><span class="num">05</span><span class="s-title">教育 & 技能</span></div>
+      <div class="s-head reveal" style="--i:0"><span class="num">06</span><span class="s-title">教育 & 技能</span></div>
       <div class="kv reveal" style="--i:1">
         <div class="item"><span class="ic"></span><div class="it"><span class="d">2009.09 – 2010.08</span><b>波士顿大学</b>（全日制） — 图像处理 · 硕士</div></div>
         <div class="item"><span class="ic"></span><div class="it"><span class="d">2005.09 – 2009.06</span><b>复旦大学</b> — 通信工程 · 学士</div></div>
