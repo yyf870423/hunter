@@ -38,11 +38,15 @@
         <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
         <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link is-current" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
         <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
         <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
       </ul>
     </div>
   </aside>
@@ -87,98 +91,104 @@
       <!-- ============================================== -->
       <h2 id="supported-platforms">支持的平台</h2>
       <p>
-        当前 Beta 阶段：
+        当前 Beta 阶段，寻访支持两类平台：
       </p>
       <ul>
-        <li><strong>猎聘</strong>：已接入，主力寻访渠道</li>
-        <li><strong>脉脉 / LinkedIn / BOSS 直聘</strong>：陆续接入中（每接通一个，你就多一个不眠不休的寻访伙伴）</li>
+        <li><strong>猎聘 + 脉脉</strong>：<strong>已接入的两大主力渠道</strong>，默认开启。两个平台可以同时勾选、同时跑，各自独立配置关键词和筛选条件。</li>
+        <li><strong>LinkedIn / BOSS 直聘</strong>：已在平台列表里占位，<strong>默认关闭、暂未接入</strong>。等接通后会自动变为可勾选（每接通一个，你就多一个不眠不休的寻访伙伴）。</li>
       </ul>
 
       <div class="callout callout--note">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">需要先登录平台账号</div>
+          <div class="callout__title">每个平台要先各自登录账号</div>
           <p>
-            自动寻访用<strong>你自己的招聘平台账号</strong>跑，所以第一次用要先在 Hunter 里登录猎聘账号。
-            登录入口在配置页的「平台」板块，点「启用并登录」会弹出平台登录窗口，
-            完成后状态会变成「正常」。
+            自动寻访用<strong>你自己的招聘平台账号</strong>跑，所以第一次用要先在 Hunter 里登录对应平台的账号——
+            用猎聘就登录猎聘，用脉脉就登录脉脉，<strong>两个平台的登录状态各自独立</strong>。
+            登录入口在配置页的「平台」板块，点某个平台的「启用并登录」会弹出该平台的登录窗口，
+            完成后状态会变成「正常」。你打算跑几个平台，就把哪几个登录到「正常」。
           </p>
         </div>
       </div>
 
       <!-- ============================================== -->
       <h2 id="config">配置一次寻访</h2>
-      <p>每次寻访绑定一个具体岗位。从岗位详情页进入「寻访配置」，里面分 6 个 板块，从上到下填一遍即可。</p>
+      <p>
+        每次寻访绑定一个具体岗位。从岗位详情页进入「寻访配置」，先选平台，再<strong>为每个勾选的平台各自填一遍配置</strong>。
+        猎聘和脉脉的关键词、筛选条件、停止条件、审核门槛都<strong>各自独立</strong>——
+        页面顶部有「猎聘配置 / 脉脉配置」两个标签页，切换过去分别填即可。
+      </p>
 
       <ol class="steps">
         <li>
           <strong>选平台</strong>
           <p>
-            勾选猎聘（其他平台已置灰，待接入）。
-            如果状态显示「需要登录」「限流」「验证码」「异常」，先按按钮提示处理——
-            状态不是「正常」的平台不能开始寻访。
+            勾选你要跑的平台——<strong>猎聘、脉脉可以只勾一个，也可以两个都勾</strong>（LinkedIn / BOSS 直聘暂未接入、置灰）。
+            如果某平台状态显示「需要登录」「限流」「验证码」「异常」，先按卡片上的按钮提示处理——
+            <strong>只要有一个勾选的平台状态不是「正常」，就不能开始寻访</strong>。
           </p>
         </li>
         <li>
-          <strong>设关键词</strong>
+          <strong>设关键词</strong>（每个平台各设一组）
           <p>
-            <strong>1-5 条关键词组合，每行最多 5 个词</strong>。每行作为一次猎聘搜索。
-            可以手动写，也可以点「<strong>使用 AI 生成关键词</strong>」让 Hunter 根据岗位 JD 给你一组候选关键词。
+            <strong>1-5 条关键词组合，每行最多 5 个词</strong>。每行作为该平台的一次搜索。
+            可以手动写；猎聘那栏还能点「<strong>使用 AI 生成关键词</strong>」根据岗位 JD 给你一组候选关键词。
+            此外，如果这个岗位跑过「岗位 Agent」，<strong>Agent 整理出的关键词会作为初始值自动带入</strong>寻访配置（详见
+            <a href="cap-position-agent.html">岗位 Agent</a>）。脉脉每行还能单独设「满足所有 / 满足任一」的词间关系。
           </p>
         </li>
         <li>
-          <strong>设筛选条件</strong>（对应猎聘搜索筛选）
+          <strong>设筛选条件</strong>（对应各平台的搜索筛选项）
           <p>
-            <strong>职位名称 / 公司名称</strong>（含范围：全部 / 当前 / 过往）·
-            <strong>城市</strong>（多个用逗号分隔）·
-            <strong>工作年限</strong>（不限 / 3-5 年 / 5-10 年 / 10 年以上）·
-            <strong>学历</strong>（不限 / 大专+ / 本科+ / 硕士+）·
-            <strong>排序</strong>（推荐 / 最近活跃 / 更新时间）·
-            <strong>求职状态</strong>（不限 / 当前开放机会优先）·
-            <strong>公司规模</strong>。
-          </p>
-          <p>
+            <strong>猎聘</strong>：职位名称 / 公司名称（含范围：全部 / 当前 / 过往）·
+            城市 · 工作年限（不限 / 3-5 年 / 5-10 年 / 10 年以上 / 自定义）·
+            学历（多选）· 排序（推荐 / 最近活跃 / 更新时间）· 求职状态（多选）。
             还有三个开关：<strong>隐藏已查看 / 隐藏已沟通 / 隐藏已获取联系方式</strong>——
             默认勾后两个，避免你重复消耗精力在已经接触过的候选人上。
           </p>
-        </li>
-        <li>
-          <strong>设「打开详情规则」</strong>（列表初筛，不消耗 AI）
           <p>
-            在猎聘的搜索结果列表上，<strong>什么条件的候选人值得打开详情看</strong>。
-            包括：年龄区间、学历多选、城市。
-            这一步只看列表卡片显示的字段做硬规则筛选，不调用 AI，<strong>速度快、量大不心疼</strong>。
+            <strong>脉脉</strong>：城市 · 学历 · 工作年限 · 就职公司 · 职位名称 · 毕业学校 · 年龄 · 期望月薪；
+            另有「从结果中筛选」的进阶开关（公开求职意向 / 近期有动向 / 有简历附件 / 有过意向）。
+            两个平台的筛选条件互不影响，按各自平台的字段填。
           </p>
         </li>
         <li>
-          <strong>设「停止条件」</strong>（满足任一即停）
-          <p>三个数字上限，你说哪个先到哪个停：</p>
+          <strong>设「打开详情规则」</strong>（猎聘的列表初筛）
+          <p>
+            在猎聘的搜索结果列表上，<strong>什么条件的候选人值得打开详情看</strong>。
+            包括：年龄区间、学历多选、城市。
+            这一步只看列表卡片显示的字段做硬规则筛选、速度快、量大不心疼。
+          </p>
+        </li>
+        <li>
+          <strong>设「停止条件」</strong>（满足任一即停，每个平台单独累计）
+          <p>数字上限，哪个先到哪个停。猎聘有三个、脉脉有两个：</p>
           <ul>
-            <li><strong>已初筛数上限</strong>（默认 500）：从搜索列表判断过多少候选人卡片</li>
+            <li><strong>已初筛数上限</strong>（猎聘，默认 500）：从搜索列表判断过多少候选人卡片</li>
             <li><strong>已寻访数上限</strong>（默认 100）：打开过多少候选人详情</li>
             <li><strong>待确认数上限</strong>（默认 30）：放进待审池等你看的人数</li>
           </ul>
           <p>
-            这三个数字是寻访的「天花板」，避免任务跑飞。第一次跑建议<strong>保留默认</strong>，跑完一次有感觉再调。
+            这些数字是寻访的「天花板」，避免任务跑飞。第一次跑建议<strong>保留默认</strong>，跑完一次有感觉再调。
           </p>
         </li>
         <li>
           <strong>设「审核」入库门槛</strong>
           <p>
             <strong>匹配分数 ≥ N 分</strong>（默认 60）的候选人进入待确认池，其他直接丢弃不打扰你。
-            想严格一点就调到 70-80，想多看一些就降到 50-60。
+            想严格一点就调到 70-80，想多看一些就降到 50-60。这一项也是每个平台各自设。
           </p>
         </li>
         <li>
           <strong>点右上角「开始寻访」</strong>
-          <p>任务进入后台运行。你可以离开这个页面，去做候选人管理、Mapping 都行。</p>
+          <p>任务进入后台运行。勾了几个平台就同时起几路寻访。你可以离开这个页面，去做候选人管理、Mapping 都行。</p>
         </li>
       </ol>
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/sourcing-config.png" alt="寻访配置页（左侧 6 个 板块 导航 + 平台 + 关键词 + 筛选条件）">
-        <div class="shot__caption">岗位详情页 →「寻访配置」— 左侧分 板块 导航 + 平台/关键词/筛选条件 等</div>
+        <img src="assets/screenshots/sourcing-config.png" alt="寻访配置页（平台选择 + 猎聘/脉脉配置标签页 + 关键词 + 筛选条件）">
+        <div class="shot__caption">岗位详情页 →「寻访配置」— 先选平台，再切换「猎聘配置 / 脉脉配置」分别填关键词/筛选条件等</div>
       </div>
 
       <!-- ============================================== -->
@@ -197,7 +207,8 @@
           <strong>3 个标签页</strong>：已寻访 / 正在寻访 / 全部
         </li>
         <li>
-          <strong>任务表格</strong>：每行一个寻访任务，显示岗位、状态徽章、待确认数、已入库数、操作
+          <strong>任务表格</strong>：每行一个寻访任务，显示岗位、状态徽章、待确认数、已入库数、操作。
+          一个岗位如果同时跑了猎聘和脉脉，会在该行下方展开<strong>各平台的子状态</strong>，方便你分别看哪个平台跑到哪
         </li>
       </ul>
 
@@ -227,7 +238,13 @@
         <li><strong>全部</strong>：以上三类合计（已导入 + 待确认 + 不合适）</li>
       </ul>
 
-      <p>表格每行一条候选人草稿：候选人、来源（平台）、分数、身份完整度、联系方式、审核状态、操作。</p>
+      <p>
+        表格每行一条候选人草稿，列依次是：<strong>候选人</strong>（姓名 + 职位/公司/年龄/城市）·
+        <strong>来源</strong>（猎聘 / 脉脉）· <strong>分数</strong> · <strong>身份完整度</strong>（姓名是否完整）·
+        <strong>联系方式</strong>（手机号可见 / 打码 / 未获取）· <strong>审核状态</strong> · <strong>操作</strong>。
+        操作列按状态给不同按钮：待确认给「加入系统 / 不合适」，疑似重复给「处理重复 / 不合适」，
+        已导入给「查看详情」，标过不合适的给「恢复审核」。
+      </p>
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>
@@ -238,22 +255,37 @@
       <h3 id="review-detail">逐条审核：怎么操作</h3>
       <p>点候选人姓名进入审核详情页。详情页展示：</p>
       <ul>
-        <li>从猎聘抓到的完整信息（工作经历、教育、技能、城市等草稿）</li>
-        <li>匹配分数 + AI 给出的优势 / 风险点</li>
-        <li>如果有疑似重复（库里可能已有同人），会单独提示</li>
+        <li>从平台（猎聘 / 脉脉）抓到的完整信息：基本信息、工作经历、项目经历、教育背景、技能标签、行业标签等草稿</li>
+        <li>右侧的 <strong>AI 评估摘要</strong>、<strong>岗位匹配分数</strong>、<strong>匹配理由 / 风险点</strong></li>
+        <li><strong>寻访来源</strong>卡片：平台、搜索关键词、查看时间、来源 URL；脉脉抓到的简历会以「附件简历」形式列出，可点开查看</li>
+        <li>如果有疑似重复（库里可能已有同人），会单独提示，需先处理</li>
       </ul>
 
-      <p>顶部三个核心操作按钮：</p>
+      <p>顶部核心操作按钮（随状态显隐）：</p>
       <ol class="steps">
         <li>
           <strong>「加入系统」</strong>（蓝色主按钮）
           <p>
-            确认这位候选人值得入库 → 草稿转正式记录入候选人库。
+            确认这位候选人值得入库 → 草稿转正式记录入候选人库，并写入该岗位的匹配结果。
             如果检测到疑似重复，会引导你先决定「同一个人 → 合并」或「不是 → 各自独立」。
           </p>
         </li>
         <li>
-          <strong>「标记不合适」</strong>
+          <strong>「编辑」</strong>
+          <p>
+            入库前可以直接<strong>就地修改草稿</strong>——基本信息、教育、工作经历、项目、技能、行业标签都能改，
+            保存后入库前会重新检查一次重复候选人。
+          </p>
+        </li>
+        <li>
+          <strong>「上传简历」</strong>
+          <p>
+            从其他渠道拿到这位候选人的简历（PDF/DOCX），可直接传上去<strong>覆盖草稿信息</strong>，入库后档案更完整；
+            寻访来源、来源 URL、当前岗位匹配记录不受影响。
+          </p>
+        </li>
+        <li>
+          <strong>「不合适」</strong>
           <p>
             这位不符合你的标准 → 标记为「不合适」。
             <strong>不会被继续补充、触达、查重或入库</strong>，
@@ -281,10 +313,11 @@
       <div class="callout callout--note">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">如果发现简历能上传，可以补一份</div>
+          <div class="callout__title">上传简历会覆盖草稿，来源信息保留</div>
           <p>
-            审核详情页支持<strong>上传简历</strong>——你从其他渠道拿到这位候选人的简历 PDF/DOCX，
-            可以直接传上去，Hunter 会用完整简历覆盖原本的草稿信息，入库后档案更完整。
+            在审核详情页点「上传简历」补一份 PDF/DOCX 后，Hunter 会用简历解析结果<strong>覆盖</strong>
+            基本信息、教育、工作、项目、技能/行业标签和 AI 摘要；而<strong>寻访来源、来源 URL、当前岗位匹配记录不受影响</strong>。
+            解析期间该草稿暂时不可编辑，完成后自动刷新。
           </p>
         </div>
       </div>
@@ -296,14 +329,20 @@
         不会一直撞墙浪费配额。处理方式：
       </p>
       <ul>
-        <li><strong>需要登录</strong>：点配置页平台 板块 的「登录」按钮重新登录</li>
-        <li><strong>验证码</strong>：在平台上完成验证后回 Hunter 点「检查状态」</li>
+        <li><strong>需要登录</strong>：点配置页对应平台卡片的「登录」按钮重新登录（猎聘、脉脉各自登录）</li>
+        <li><strong>验证码</strong>：点「打开平台处理」在平台上完成验证后回 Hunter 点「检查状态」</li>
         <li><strong>限流</strong>：等冷却时间（一般几分钟到几小时），Hunter 会自动恢复</li>
         <li>
-          <strong>页面提取异常</strong>：「人才寻访」总览页顶部会出现红色横幅，
-          点「处理异常」进入异常处理弹窗，逐条处理或忽略
+          <strong>页面提取异常</strong>：「人才寻访」总览页顶部会出现红色横幅「N 个样本待处理」，
+          点「处理异常」进入异常处理弹窗，可点「查看样本」跳到<strong>错误样本页</strong>
         </li>
       </ul>
+      <p>
+        错误样本页把每一条异常的证据（失败字段、失败原因、页面 URL、页面文本、DOM 片段、抽取结果 JSON、截图）都记下来。
+        你可以逐条把样本标为「<strong>处理中</strong>」或「<strong>已处理</strong>」，也可以「<strong>导出样本</strong>」
+        （默认导出「待处理 / 处理中」的样本，敏感信息如登录态、Cookie、手机号会自动脱敏）打包发给我们排查。
+        当前版本<strong>不做自动修复</strong>：系统只负责记录异常样本，人工处理完后再从配置页重启任务。
+      </p>
 
       <!-- ============================================== -->
       <h2 id="best-practice">最佳实践</h2>
@@ -353,8 +392,9 @@
         <div class="callout__body">
           <div class="callout__title">「开始寻访」按钮点不下去</div>
           <p>
-            按钮旁会显示原因：通常是<strong>平台状态不是「正常」</strong>（需要登录 / 限流 / 验证码 / 异常）
-            或<strong>关键词留空</strong>。按提示先处理。
+            按钮旁会显示原因：通常是<strong>某个勾选的平台状态不是「正常」</strong>（需要登录 / 限流 / 验证码 / 异常）、
+            <strong>一个可用平台都没选</strong>，或<strong>关键词留空</strong>。
+            注意只要有一个勾选平台没就绪，按钮就会锁住，按提示先处理即可。
           </p>
         </div>
       </div>
@@ -362,10 +402,11 @@
       <div class="callout callout--issue">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">猎聘账号登录窗口关掉了怎么办</div>
+          <div class="callout__title">平台登录窗口关掉了怎么办</div>
           <p>
-            登录窗口不小心关了 / 卡住了——回配置页平台 板块 点「检查状态」，
+            登录窗口不小心关了 / 卡住了——回配置页对应平台卡片点「检查状态」，
             状态会刷新成真实情况；如仍未登录，点「启用并登录」重新打开登录窗口。
+            猎聘、脉脉互不影响，哪个没就绪就单独处理哪个。
           </p>
         </div>
       </div>
@@ -396,13 +437,13 @@
       </div>
 
       <nav class="docs-pager" aria-label="page navigation">
-        <a class="docs-pager__link" href="cap-match.html">
+        <a class="docs-pager__link" href="cap-position-agent.html">
           <div class="docs-pager__dir">← 上一篇</div>
-          <div class="docs-pager__title">岗位智能匹配</div>
+          <div class="docs-pager__title">岗位 Agent</div>
         </a>
-        <a class="docs-pager__link docs-pager__link--next" href="cap-kanban.html">
+        <a class="docs-pager__link docs-pager__link--next" href="cap-companies.html">
           <div class="docs-pager__dir">下一篇 →</div>
-          <div class="docs-pager__title">推进看板</div>
+          <div class="docs-pager__title">公司管理</div>
         </a>
       </nav>
 

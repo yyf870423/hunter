@@ -38,11 +38,15 @@
         <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
         <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
         <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
         <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
       </ul>
     </div>
   </aside>
@@ -159,8 +163,17 @@
         </li>
         <li>
           <strong>点右上角「+ 新建岗位」按钮</strong>
-          <p>弹出新建岗位弹窗。</p>
+          <p>
+            弹出新建岗位弹窗。弹窗顶部有两个标签页——
+            <strong>「手动填写」</strong>和 <strong>「AI 解析 JD」（Beta）</strong>，
+            你可以按手上的材料二选一。
+          </p>
         </li>
+      </ol>
+
+      <h3 id="step2-manual">方式 A：手动填写（字段清楚时最快）</h3>
+      <p>手上要求很明确、或想自己逐项填时，用默认的「手动填写」标签页：</p>
+      <ol class="steps">
         <li>
           <strong>填岗位信息</strong>
           <p>核心字段：</p>
@@ -184,14 +197,67 @@
         </li>
       </ol>
 
+      <h3 id="step2-agent">方式 B：让「岗位 Agent」解析 JD（只有一段 JD 时最省事）</h3>
+      <p>
+        更常见的情形是——客户只丢给你一段 JD 或几句口述需求。
+        这时切到<strong>「AI 解析 JD」</strong>标签页，让岗位 Agent 帮你把它整理成结构化岗位：
+      </p>
+      <ol class="steps">
+        <li>
+          <strong>把 JD 整段粘进去</strong>
+          <p>
+            在文本框粘贴客户提供的完整 JD，或几句口述式需求（岗位方向、核心技能、目标背景、年限、地点、薪资、禁忌公司等都可以）。
+          </p>
+        </li>
+        <li>
+          <strong>点「开始解析」</strong>
+          <p>
+            Agent 会读懂这段文字，自动抽出职位名称、技能、年限、薪资等字段，生成一份<strong>岗位草稿</strong>。
+            解析中<strong>不会写入任何岗位</strong>，你可以放心等它跑完。
+          </p>
+        </li>
+        <li>
+          <strong>在「确认岗位草稿」页人工核对</strong>
+          <p>
+            解析完跳到草稿确认页，逐个字段看一眼——不对的地方直接改。
+            Agent 只是把 JD 转成了结构化草稿，<strong>最终以你确认的为准</strong>。
+          </p>
+        </li>
+        <li>
+          <strong>点「确认创建岗位」</strong>
+          <p>
+            确认后才真正创建岗位并跳到岗位详情页；之后跑匹配的步骤和手动创建完全一样。
+            不想要这份草稿也可以「放弃草稿」，不会留下岗位。
+          </p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/position-new-agent-tab.png" alt="新建岗位弹窗，顶部「手动填写 / AI 解析 JD（Beta）」两个标签页，切到「AI 解析 JD」显示粘贴 JD 的文本框 + 「开始解析」按钮。">
+        <div class="shot__caption">新建岗位弹窗，顶部「手动填写 / AI 解析 JD</div>
+      </div>
+
       <div class="callout callout--tip">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
         <div class="callout__body">
           <div class="callout__title">JD 写得越具体，匹配越准</div>
           <p>
-            岗位描述里写得越具体（要求年限、学历、薪资范围、关键技能、职责），
+            不管手动填还是让 Agent 解析，岗位信息越具体（要求年限、学历、薪资范围、关键技能、职责），
             AI 匹配时给出的强弱项分析就越有依据。
-            第一次跑可以<strong>把客户邮件里的 JD 原文整段贴进去</strong>，方便又准确。
+            第一次跑，<strong>把客户邮件里的 JD 原文整段贴进去</strong>最方便——
+            手动填时贴进「岗位描述（JD）」，用 Agent 时直接贴进解析框。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">Agent 给草稿，你拍板</div>
+          <p>
+            岗位 Agent 只负责把 JD 解析成草稿，<strong>确认前绝不会写入岗位</strong>。
+            想了解更多（口述式需求、禁忌公司、草稿里哪些字段可改），看「<a href="cap-position-agent.html">岗位 Agent</a>」。
           </p>
         </div>
       </div>
@@ -288,6 +354,21 @@
           <div class="docs-home__card-num">Mapping</div>
           <h3 class="docs-home__card-title">对标公司组织结构</h3>
           <p class="docs-home__card-desc">用思维导图建团队地图，自动关联库内候选人。</p>
+        </a>
+        <a href="cap-position-agent.html" class="docs-home__card">
+          <div class="docs-home__card-num">岗位 Agent</div>
+          <h3 class="docs-home__card-title">粘一段 JD · AI 解析成岗位</h3>
+          <p class="docs-home__card-desc">口述式需求也能解析，生成草稿由你确认后创建。</p>
+        </a>
+        <a href="cap-companies.html" class="docs-home__card">
+          <div class="docs-home__card-num">公司管理</div>
+          <h3 class="docs-home__card-title">把目标公司沉淀成公司库</h3>
+          <p class="docs-home__card-desc">公司简介、薪资、面试流程写一处，库内候选人自动归拢名下。</p>
+        </a>
+        <a href="cap-scholar.html" class="docs-home__card">
+          <div class="docs-home__card-num">学者主题</div>
+          <h3 class="docs-home__card-title">一句话找某机构某方向的学者</h3>
+          <p class="docs-home__card-desc">Agent 生成搜索方案、多源检索去重，给你一批候选论文。</p>
         </a>
       </div>
 

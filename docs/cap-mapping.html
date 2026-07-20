@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mapping · Hunter 文档</title>
-  <meta name="description" content="用思维导图建对标公司组织结构，5 种脑图格式互通，节点自动关联库内候选人——客户来新需求时按图定向联系。">
+  <meta name="description" content="用思维导图建对标公司组织结构，7 种格式互通（含 FreeMind 与可编辑 Excel 模板），节点自动关联库内候选人——客户来新需求时按图定向联系。">
   <link rel="stylesheet" href="docs.css">
 </head>
 <body>
@@ -38,11 +38,15 @@
         <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
         <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
         <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
         <li><a class="docs-sidebar__link is-current" href="cap-mapping.html">Mapping</a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
       </ul>
     </div>
   </aside>
@@ -86,7 +90,8 @@
         <li><strong>搜索框</strong>：按地图名搜</li>
         <li><strong>「+ 新建地图」按钮</strong>（蓝色主按钮）</li>
         <li>
-          <strong>进行中的导入</strong>：如果你刚上传了脑图文件，会在顶部显示导入进度卡
+          <strong>进行中的导入</strong>：如果你刚上传了脑图 / Excel 文件，会在顶部显示导入进度卡，
+          带进度条和状态标（<strong>处理中</strong> / <strong>待确认</strong>）——点卡片可进导入处理页看详细阶段
         </li>
         <li>
           <strong>地图卡片网格</strong>：每张地图一张卡，显示名称、目标公司、4 个 关键指标、创建日期。卡片可<strong>拖拽排序</strong>
@@ -232,11 +237,25 @@
       </p>
 
       <!-- ============================================== -->
-      <h2 id="import-export">导入 / 导出：5 种脑图格式互通</h2>
+      <h2 id="import-export">导入 / 导出：7 种格式互通</h2>
       <p>
-        你过去可能用 XMind / EdrawMind / WPS / 幕布 等工具画过对标公司组织图——
-        Mapping 支持<strong>5 种格式互导</strong>，老资产可以直接搬进来，建好的图也可以导出做备份或离线查看。
+        你过去可能用 XMind / EdrawMind / WPS / 幕布 / FreeMind 等工具画过对标公司组织图，
+        也可能有一份 Excel 表存着人才盘点——
+        Mapping 支持<strong>7 种格式互导</strong>，老资产可以直接搬进来，建好的图也可以导出做备份、离线查看或二次编辑。
       </p>
+
+      <p>7 种格式分两类：</p>
+      <ul>
+        <li>
+          <strong>脑图 / 大纲类（5 种）</strong>：EdrawMind（<code>.emmx</code>）、XMind（<code>.xmind</code>）、
+          OPML（<code>.opml</code>）、FreeMind（<code>.mm</code>）、Markdown（<code>.md</code>）——
+          导入后系统会<strong>自动识别节点里的人名并尝试关联候选人库</strong>
+        </li>
+        <li>
+          <strong>Hunter 自有结构化类（2 种）</strong>：Excel（<code>.xlsx</code>）、Hunter 备份（<code>.json</code>）——
+          这两种<strong>自带候选人关联信息</strong>，导入时直接沿用，不必重新识别人名
+        </li>
+      </ul>
 
       <h3 id="import">导入到当前地图</h3>
       <p>详情页顶部「<strong>导入</strong>」dropdown，选格式：</p>
@@ -244,31 +263,120 @@
         <li><strong>.emmx</strong>：EdrawMind / WPS 思维导图原生格式</li>
         <li><strong>.xmind</strong>：XMind 软件原生格式</li>
         <li><strong>.opml</strong>：通用大纲格式（幕布 / OmniOutliner 等）</li>
+        <li><strong>.mm</strong>：FreeMind / Freeplane 兼容格式</li>
         <li><strong>.md / .markdown</strong>：Markdown 大纲格式</li>
+        <li><strong>.xlsx</strong>：Excel 表格——可用模板从零填，也可导出后改完再导回（见下方「Excel 导入」）</li>
         <li><strong>.json</strong>：Hunter 自己导出的备份（无损含关联信息）</li>
       </ul>
 
       <div class="callout callout--note">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">导入是「追加」，不是「覆盖」</div>
+          <div class="callout__title">导入默认「追加」，同名公司会问你「保留还是替换」</div>
           <p>
-            所有 5 种格式的导入，都是<strong>追加为当前地图的新一级树</strong>——
-            不会清空你已有的内容，也不会重命名你已有的公司。
-            想从零开始的话，<strong>先新建一张空地图</strong>再导入。
+            导入的公司（一级树）默认<strong>追加</strong>到当前地图，不会清空你已有的内容。
+            但如果导入文件里有<strong>和当前地图同名的公司</strong>，写入前会弹出确认，让你二选一：
+          </p>
+          <ul>
+            <li><strong>保留两个看板</strong>：当前同名 tab 保持不变，导入的同名公司自动加「（导入）」后缀，两份都在</li>
+            <li><strong>替换同名看板</strong>：删除当前地图里的同名公司及其子节点，用导入文件里的对应公司替换；<strong>不同名的公司照常追加</strong></li>
+          </ul>
+          <p>想彻底从零开始的话，<strong>先新建一张空地图</strong>再导入即可。</p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h3 id="import-excel">Excel 导入：先下模板，填好再导回</h3>
+      <p>
+        Excel 是最适合「先离线整理、再批量入库」的格式。选「导入 → 导入 Excel」会弹出上传框，
+        上面有一行<strong>「没有模板？下载 Excel 模板」</strong>——先下模板照着填，格式一定对得上。
+      </p>
+      <p>模板是一张单表，用<strong>逐层展开的列</strong>表示组织结构，每一层一组固定列：</p>
+      <ul>
+        <li><strong>公司 / 根节点</strong>：第 1 层，写对标公司名</li>
+        <li><strong>第 2 层节点、第 3 层节点……</strong>：往右一列深一层（部门 / 组 / 岗位等，可以一直往下加层）</li>
+        <li><strong>关联人</strong>：这一层节点上要挂的人名；<strong>同一个节点有多个人，就在一格里一行写一个</strong></li>
+        <li><strong>关联信息</strong>：这个人的关联状态（已关联 / 待确认 / 未关联），Hunter 导出时自动填，你自己填模板可以留空</li>
+        <li><strong>备注</strong>：写在对应层的备注列，节点的补充说明</li>
+      </ul>
+      <p>
+        填的时候不用每一行都从第 1 层重复写公司名——<strong>上层单元格留空就表示「沿用上面那行」</strong>，
+        只在换公司 / 换部门时才填新值，和平时做 Excel 分组的习惯一致。
+      </p>
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">导出的 Excel 是「可回填」的</div>
+          <p>
+            从 Mapping 导出的 Excel 里，除了你看得到的层级和人名，还藏着几列隐藏标识——
+            正因如此，你可以<strong>把导出的 Excel 发出去让同事补充</strong>，回来直接导回 Mapping，
+            结构和已有的候选人关联都能精确还原，不会因为同名节点被搞乱。你自己新填的行和层级也能一并导入。
+          </p>
+        </div>
+      </div>
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">Excel 导入前会先校验格式</div>
+          <p>
+            上传后系统会先检查表头和层级是否合规（比如层级列必须从左到右连续、有关联信息就必须有对应关联人）。
+            格式不对会直接<strong>给出具体到单元格的报错</strong>并阻断导入——照模板填一般都能过。
+            只支持<strong>一个有内容的工作表</strong>，多余的 sheet 要先删掉。
           </p>
         </div>
       </div>
 
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/mapping-excel-import.png" alt="人才地图详情页「导入」下拉——支持 emmx / XMind / OPML / FreeMind / Markdown / Excel / JSON 共 7 种格式">
+        <div class="shot__caption">地图详情页「导入」下拉:emmx / XMind / OPML / FreeMind / Markdown / Excel / JSON 七种格式</div>
+      </div>
+
       <h3 id="export">导出当前地图</h3>
-      <p>顶部「<strong>导出</strong>」dropdown，5 种格式与导入对应：</p>
+      <p>顶部「<strong>导出</strong>」dropdown，<strong>导出的是当前正在看的那个公司标签页（tab）</strong>，7 种格式与导入一一对应：</p>
       <ul>
         <li><strong>.emmx</strong>：用 EdrawMind / WPS 打开</li>
         <li><strong>.xmind</strong>：用 XMind 打开</li>
-        <li><strong>.opml</strong>：通用大纲格式</li>
-        <li><strong>.md</strong>：纯文本，能在任意编辑器打开</li>
+        <li><strong>.opml</strong>：通用大纲格式（幕布 / OmniOutliner）</li>
+        <li><strong>.mm</strong>：FreeMind / Freeplane 兼容格式</li>
+        <li><strong>.md</strong>：纯文本大纲，能在任意编辑器打开、方便 diff</li>
+        <li><strong>.xlsx</strong>：Excel 表格，改完能重新导回（含隐藏标识，无损还原）</li>
         <li><strong>.json</strong>：Hunter 备份格式，含候选人关联信息，迁移机器时用</li>
       </ul>
+
+      <!-- ============================================== -->
+      <h3 id="import-job">导入是后台任务：看进度、必要时确认</h3>
+      <p>
+        导入不是「一点就完」，尤其是节点多、要识别人名的脑图文件——所以导入被做成<strong>后台任务</strong>：
+        上传后立刻给你一张进度卡，你不用干等着，可以先去做别的。处理分几个阶段推进：
+      </p>
+      <ol class="steps">
+        <li><strong>解析</strong>：读文件、还原组织结构</li>
+        <li><strong>识别人名</strong>：从节点文字里找出人名（脑图 / 大纲类格式才有这一步；Excel / json 自带关联信息，跳过）</li>
+        <li><strong>匹配候选人</strong>：把识别出的人名和候选人库比对，判定强关联 / 待确认 / 未关联</li>
+        <li><strong>完成</strong>：全部成功后才写入，这张地图 / 这些新节点才正式出现</li>
+      </ol>
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">要么全成功，要么全回滚</div>
+          <p>
+            所有阶段都成功才会正式写入，<strong>中途失败会整体回滚</strong>，不会给你留一张半成品地图。
+            少数人名没识别出来不算失败——地图照样建好，那些节点标成「未提取」，你之后可以在节点详情页手动重新识别。
+          </p>
+        </div>
+      </div>
+      <p>
+        <strong>遇到同名公司时，进度会停在「待确认」</strong>：进度卡的状态标变成「待确认」，
+        点进去（或回到地图）选完「保留两个看板 / 替换同名看板」，任务才继续跑完。
+        没同名冲突就一路跑到完成，不需要你操作。
+      </p>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/mapping-import-job.png" alt="导入处理页——4 阶段进度条（解析 / 识别人名 / 匹配候选人 / 完成）">
+        <div class="shot__caption">导入处理页</div>
+      </div>
 
       <!-- ============================================== -->
       <h2 id="best-practice">最佳实践</h2>
@@ -315,9 +423,9 @@
       <div class="callout callout--issue">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">XMind 导入后结构变了</div>
+          <div class="callout__title">XMind / FreeMind 导入后视觉装饰丢了</div>
           <p>
-            XMind 有一些高级元素（关系线、自由主题、boundary）在 Mapping 里没有对应概念，会被简化为普通子节点。
+            XMind、FreeMind 里的高级元素（关系线、自由主题、边界、图标、样式等）在 Mapping 里没有对应概念，会被简化为普通子节点。
             核心组织结构都能保留，但视觉装饰可能丢失，这是预期行为。
           </p>
         </div>

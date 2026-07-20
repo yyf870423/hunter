@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学者主题 · Hunter 文档</title>
+  <meta name="description" content="用一句话说清要找哪家机构、哪个方向的论文，Agent 自动生成并自检搜索方案、跑多源检索、去重分级，你只挑值得的论文导入——导入后自动关联到候选人。">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+
+<header class="docs-nav">
+  <div class="docs-nav__inner">
+    <a href="../index.html" class="docs-nav__back">← 返回主页</a>
+    <a href="index.html" class="docs-nav__logo">
+      <img src="assets/logo-light.svg" alt="Hunter">
+      <span class="docs-nav__logo-sep"></span>
+      <span class="docs-nav__logo-tag">文档</span>
+    </a>
+    <div class="docs-nav__spacer"></div>
+  </div>
+</header>
+
+<div class="docs-layout">
+
+  <aside class="docs-sidebar">
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">起步</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link" href="start-install.html">安装与启动</a></li>
+        <li><a class="docs-sidebar__link" href="start-quickstart.html">10 分钟上手</a></li>
+      </ul>
+    </div>
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">核心能力</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link" href="cap-candidates.html">候选人库</a></li>
+        <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
+        <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
+        <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
+        <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link is-current" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <article class="docs-article">
+
+      <nav class="docs-breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">文档</a>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span>核心能力</span>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span class="docs-breadcrumb__current">学者主题</span>
+      </nav>
+
+      <header class="docs-article__header">
+        <h1>学者主题</h1>
+        <p class="docs-article__lead">
+          你只说一句话——<strong>「帮我找某机构某方向近两年的论文」</strong>——剩下的交给 Agent。
+          它会自己<strong>生成并自检一套搜索方案</strong>（机构英文署名、方向召回词、时间范围），
+          再跑<strong>多源检索、去重、分级</strong>，最后给你一批带「建议导入」标注的候选论文。
+          你只挑值得的导入，导入后论文自动关联到候选人。
+        </p>
+        <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
+          产品里对应左侧「<strong>寻访（找人）</strong>」分组下的「<strong>学术搜索</strong>」——
+          进页面后顶部有两个标签页：「<strong>条件搜索</strong>」和「<strong>AI 搜索</strong>」（Beta）。
+          本篇讲的是「<strong>AI 搜索</strong>」这个自主寻访流程。
+        </p>
+      </header>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">这是 Beta 功能</div>
+          <p>
+            AI 学术搜索目前处于 <strong>Beta 阶段</strong>，能力还在打磨中——
+            机构识别、来源覆盖和分级准确度都在持续完善，偶尔会遇到方向判断偏、来源临时不可用或漏抓的情况。
+            <strong>Agent 只负责搜索和分级，不会自动写库</strong>；候选论文都先放在结果池里，
+            由你确认导入后才进论文库，可以放心试用。用下来有问题或建议，欢迎随时反馈给我们。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="vs-classic">和「条件搜索」有什么区别</h2>
+      <p>
+        同一个「学术搜索」页里有两个标签页，解决的是<strong>两种不同的场景</strong>：
+      </p>
+      <ul>
+        <li>
+          <strong>条件搜索</strong>（见 <a href="cap-intel-academic.html">学术 &amp; 专利</a>）：
+          你<strong>已经明确知道</strong>要搜哪家机构（英文名）、什么日期区间、加不加关键词，
+          填完表单直接跑，抓到的论文<strong>直接入库</strong>。适合「我就是要 ByteDance 今年的论文」这类精确检索。
+        </li>
+        <li>
+          <strong>AI 搜索</strong>（本篇）：
+          你<strong>只有一个模糊的主题</strong>，比如「上海某实验室的具身智能」——
+          机构该用哪个英文署名、方向该用哪些词、还有哪些开源来源能顺藤摸瓜，你未必都清楚。
+          Agent 帮你把这套搜索方案<strong>先想清楚、再执行</strong>，还会对结果<strong>分级</strong>，让你少看无关论文。
+        </li>
+      </ul>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">共用同一个论文库</div>
+          <p>
+            不管走「条件搜索」还是「AI 搜索」，导入的论文都进<strong>同一个论文库</strong>，
+            关联候选人时也共用一套数据。所以你不用担心两条路径会各存一份、彼此打架。
+            论文库、专利、研究方向标签的日常管理，仍在 <a href="cap-intel-academic.html">学术 &amp; 专利</a> 里讲。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="flow">整体流程：一句话到一批候选论文</h2>
+      <p>AI 搜索是一条自动流水线，你的介入点很少。从头到尾是这四步：</p>
+
+      <ol class="steps">
+        <li>
+          <strong>自然语言输入</strong>
+          <p>你在输入框里写清楚要找哪家机构、哪个方向、大概什么时间范围。</p>
+        </li>
+        <li>
+          <strong>Agent 生成并自检搜索方案</strong>
+          <p>
+            Agent 先上网确认这家机构的<strong>英文署名</strong>、旗舰项目、可用的开源来源，
+            再把这些整理成一套<strong>可执行的搜索条件</strong>，并跑一遍自检门禁——
+            条件不达标不会开跑。
+          </p>
+        </li>
+        <li>
+          <strong>多源搜索与分级</strong>
+          <p>
+            按冻结的方案跑<strong>多个学术来源</strong>，把结果<strong>合并去重</strong>，
+            再逐篇判断和目标方向的相关度，标上「强烈建议 / 建议 / 待确认」的分级。
+          </p>
+        </li>
+        <li>
+          <strong>你确认导入</strong>
+          <p>
+            结果池里的候选论文<strong>不会自动进库</strong>。你按分级挑出值得的，点导入——
+            导入后走的是和普通论文一样的去重、翻译、入库逻辑，并自动关联到候选人。
+          </p>
+        </li>
+      </ol>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">页面右侧一直有「本轮流程」提示</div>
+          <p>
+            「AI 搜索」标签页右侧有一个<strong>「本轮流程」</strong>小卡片，把上面这四步（自然语言输入 →
+            生成并检查搜索条件 → 多源搜索与分级 → 用户确认导入）钉在那儿，方便你随时对照现在走到哪一步了。
+            旁边还有一张「边界」卡片写着：<strong>Agent 自动完成搜索，但不直接写库；用户确认导入前不创建论文。</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="start">第一步：发起一次 AI 搜索</h2>
+      <p>在「学术搜索」页点顶部的「<strong>AI 搜索</strong>」标签页，你会看到一个大输入框。</p>
+
+      <ol class="steps">
+        <li>
+          <strong>在输入框里写清需求</strong>
+          <p>
+            用大白话描述<strong>机构 + 方向 +（可选）时间</strong>，越具体越准。
+            例如：<code>帮我找上海人工智能实验室具身智能方向近两年的论文</code>。
+          </p>
+        </li>
+        <li>
+          <strong>按 Enter 开始</strong>
+          <p>
+            按 <strong>Enter</strong> 直接发起（<strong>Shift + Enter</strong> 是换行），
+            或点右下角「<strong>开始 AI 搜索</strong>」按钮。
+          </p>
+        </li>
+        <li>
+          <strong>页面跳到 Agent 运行过程</strong>
+          <p>
+            提交后会跳到<strong>本次任务的 Agent 运行页</strong>，你能看到它一步步在做什么。
+            这就是「<a href="cap-agents.html">Agent 运行中心</a>」里的那条运行记录——不想盯着的话直接离开即可，
+            它在后台继续跑。
+          </p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/scholar-ai-search-input.png" alt="「学术搜索」页切到「AI 搜索」标签——大自然语言输入框（内含示例需求文案）、右下角「开始 AI 搜索」按钮，右侧「本轮流程」四步卡片和「边界」卡片">
+        <div class="shot__caption">「学术搜索」页切到「AI 搜索」标签</div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">写清「哪个机构 + 哪个方向」，成功率最高</div>
+          <p>
+            Agent 要先把你的话翻译成「英文机构署名 + 方向召回词」才能搜。
+            如果你只写「找些大模型的论文」这种没有主体的需求，它没法唯一锁定机构，
+            会<strong>请你补充</strong>而不是硬猜。
+            带上机构全称（中文英文都行）和一个清晰方向，是最省事的写法。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="track">第二步：在任务表里跟踪进度</h2>
+      <p>
+        回到「AI 搜索」标签页，下方的「<strong>学术搜索任务</strong>」表列出你发起过的每一次 AI 搜索。
+        上面一排标签页按状态分类，括号里是数量：
+      </p>
+      <ul>
+        <li><strong>全部</strong>：所有任务</li>
+        <li><strong>进行中</strong>：正在生成方案或正在搜索的任务</li>
+        <li><strong>待导入</strong>：搜索完成、有候选论文等你挑</li>
+        <li><strong>已导入</strong>：你已经导入过论文的任务</li>
+        <li><strong>异常</strong>：方案没生成出来、或搜索出错的任务</li>
+        <li><strong>已删除</strong>：你删掉的任务（软删除，仍可查看）</li>
+      </ul>
+
+      <p>每行显示时间、你输入的需求原文、状态徽章、结果摘要和操作。状态徽章的含义：</p>
+      <ul>
+        <li><strong>生成计划中</strong>：Agent 正在上网调研、拟搜索方案</li>
+        <li><strong>等待确认计划</strong>：方案已生成，需要你过一眼再放行（见下一节）</li>
+        <li><strong>搜索中</strong>：方案已定，正在多源检索</li>
+        <li><strong>待导入</strong>：搜索完成，去看结果池挑论文</li>
+        <li><strong>已导入</strong>：这次任务里你已经导过论文</li>
+        <li><strong>异常</strong>：计划生成失败或搜索失败，可重做</li>
+        <li><strong>已删除</strong>：软删除状态</li>
+      </ul>
+
+      <p>点某一行的「<strong>查看</strong>」，会根据状态自动带你去对应页面：还在等确认的进「搜索计划确认」页，已出结果的进「搜索结果」页，还在跑的进 Agent 运行页。</p>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">运行中的任务删不了</div>
+          <p>
+            状态还在「生成计划中 / 搜索中」的任务，「删除」按钮是<strong>灰的</strong>——
+            正在跑的东西不能删。等它跑完（或异常）之后再删。
+            删除是软删除，删掉的任务进「已删除」标签页，<strong>已经导入的论文不受影响</strong>。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="plan">（有时会遇到）第三步：确认搜索计划</h2>
+      <p>
+        多数情况下 Agent 自检通过就直接开搜了，你不用管。
+        但如果一次搜索需要你<strong>先过目再放行</strong>，任务会停在「<strong>等待确认计划</strong>」，
+        点「查看」进入「<strong>确认搜索计划</strong>」页。这一页把 Agent 拟好的方案摊开给你，
+        每一项都能改：
+      </p>
+      <ul>
+        <li><strong>机构搜索名</strong>：实际拿去搜论文署名的<strong>英文</strong>机构名/署名，可增删</li>
+        <li><strong>开源来源组织</strong>：Agent 判断属于这家机构、且和方向对得上的 GitHub / HuggingFace / 公开网页来源</li>
+        <li><strong>方向召回词</strong>：拿去做检索的英文关键词</li>
+        <li><strong>方向判断口径</strong>：用于扩召回和语义判断的方向短语（不是逐词硬搜的关键词，而是「怎么算相关」的口径）</li>
+        <li><strong>时间范围</strong>：起始日期（默认当年 1 月 1 日）到结束日期（可留空 = 至今），日粒度选择</li>
+      </ul>
+
+      <p>页面上每类条件都是一个个「标签」，点标签上的「×」删掉，或在下方输入框加新的。改完后底部有三个操作：</p>
+      <ol class="steps">
+        <li>
+          <strong>「确认并开始搜索」</strong>（蓝色主按钮）
+          <p>用你确认后的方案开跑，任务转入「搜索中」。</p>
+        </li>
+        <li>
+          <strong>「让 Agent 重做」</strong>
+          <p>对方案不满意 → 让 Agent 重新调研、重拟一版计划。</p>
+        </li>
+        <li>
+          <strong>「取消任务」</strong>
+          <p>这次不搜了 → 取消（会让你二次确认）。取消后任务进「已删除」，可在那里查看。</p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/scholar-plan-confirm.png" alt="「确认搜索计划」页——机构搜索名/开源来源组织/方向召回词/方向判断口径/时间范围各类可增删的标签，右侧「注意事项」，底部「确认并开始搜索」「让 Agent 重做」「取消任务」">
+        <div class="shot__caption">「确认搜索计划」页</div>
+      </div>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">机构名必须是英文</div>
+          <p>
+            论文署名在全球学术库里几乎都是英文，所以「机构搜索名」这一栏只吃<strong>英文</strong>——
+            中文机构名、网址、GitHub 账号都不算合格的署名。
+            如果计划页右侧出现「注意事项」提示，通常就是在告诉你哪一项可能识别不准，值得手动核一下再放行。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="results">第四步：在结果池里挑论文导入</h2>
+      <p>
+        任务变成「待导入」后，点「查看」进入「<strong>学术搜索结果</strong>」页。
+        页面顶部一句话点明重点：<strong>候选论文不会自动写入论文库，选好后才走去重、翻译和入库。</strong>
+      </p>
+
+      <h3 id="result-tabs">候选论文的分级标签</h3>
+      <p>候选论文按 Agent 判断的相关度分成几档，用标签页切换，括号里是数量：</p>
+      <ul>
+        <li><strong>强烈建议导入</strong>：和目标机构、目标方向都高度吻合，优先看这批</li>
+        <li><strong>建议导入</strong>：相关，值得看</li>
+        <li><strong>待确认</strong>：沾边但拿不太准，你自己判断</li>
+        <li><strong>已导入</strong>：这次任务里已经进库的（含库里本来就有的「已存在」）</li>
+        <li><strong>全部</strong>：以上合计</li>
+      </ul>
+      <p>标签页下方还有个搜索框，可以按<strong>标题、作者或机构</strong>在当前分类里进一步筛。</p>
+
+      <h3 id="result-card">每张论文卡片上有什么</h3>
+      <p>每篇候选论文一张卡，信息比普通列表更全，方便你不点开就判断：</p>
+      <ul>
+        <li><strong>中文标题 / 英文标题</strong>（英文标题可点开原文链接；未翻译时标「尚未翻译」）</li>
+        <li><strong>中文摘要 / 英文摘要</strong></li>
+        <li><strong>导入建议</strong>：Agent 为什么把它归到这一档的说明</li>
+        <li><strong>证据</strong>：这篇是从哪些来源命中的（帮你判断可信度）</li>
+        <li><strong>作者、年份、发表刊物、被引数</strong>，以及右下角的分级/状态徽章</li>
+      </ul>
+      <p>卡片左侧有<strong>勾选框</strong>——「强烈建议 / 建议」这类默认就帮你勾上了，已经处理过的（已导入/已存在）会置灰不可选。</p>
+
+      <h3 id="result-import">导入操作</h3>
+      <p>工具栏上三个按钮，配合分级用：</p>
+      <ol class="steps">
+        <li>
+          <strong>「全选当前页」</strong>
+          <p>一键勾上当前页所有可导入的论文。</p>
+        </li>
+        <li>
+          <strong>「导入已选论文」</strong>（蓝色主按钮）
+          <p>把你勾选的这些论文导入。会弹窗让你确认导入几篇。</p>
+        </li>
+        <li>
+          <strong>「导入此类全部」</strong>
+          <p>
+            懒得逐页勾选时，直接把<strong>当前分类下所有待处理论文</strong>一次导入
+            （如果加了搜索词，就是当前搜索条件下这一类的全部）。同样会弹窗确认数量。
+          </p>
+        </li>
+      </ol>
+
+      <p>
+        点确认后，导入在后台跑，页面上会出现一条<strong>进度条</strong>：显示已处理 / 总数、
+        新导入几篇、已存在几篇、失败几篇，以及当前正在处理哪一篇。跑完自动刷新页面。
+      </p>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/scholar-results-pool.png" alt="「学术搜索结果」页——顶部「强烈建议导入/建议导入/待确认/已导入/全部」分级标签（带数量），下方一张论文候选卡片（中英文标题、导入建议、证据、勾选框），工具栏「全选当前页/导入已选论文/导入此类全部」">
+        <div class="shot__caption">「学术搜索结果」页</div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">导入后会自动关联到候选人</div>
+          <p>
+            导入的论文进的是和普通论文<strong>同一个论文库</strong>——所以它会复用现有逻辑：
+            去重（库里已有就标「已存在」，不重复建）、按作者名匹配<strong>自动关联到候选人</strong>。
+            之后在候选人详情页的「学术成果」里、或论文详情页上，都能看到这层关联，做岗位匹配时也会作为判断维度。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="funnel">结果是怎么筛出来的（右侧漏斗）</h2>
+      <p>
+        结果页右侧有一张「<strong>结果筛选过程</strong>」卡片，把这批候选论文从「全网捞回来」到「进结果池」的
+        每一层数字列出来，让你知道 Agent 都过滤掉了什么：
+      </p>
+      <ul>
+        <li><strong>全渠道召回</strong>：从各来源一共捞回多少</li>
+        <li><strong>合并去重后</strong>：跨来源去掉重复后剩多少</li>
+        <li><strong>Agent 初审保留</strong>：判断相关、留下的</li>
+        <li><strong>已隐藏不建议导入</strong>：判断不相关、直接藏掉的</li>
+        <li><strong>已过滤本地已有</strong>：库里本来就有、不再重复呈现的</li>
+        <li><strong>进入结果池</strong>：最终摆到你面前的候选数</li>
+      </ul>
+      <p>下面还有「当前分类」的小结：当前标签页有多少、可导入多少、已导入多少。</p>
+
+      <!-- ============================================== -->
+      <h2 id="scholar-candidate">候选人的学术成果页</h2>
+      <p>
+        论文关联到候选人后，从<strong>候选人详情页</strong>可以进入这位候选人的「<strong>学术成果</strong>」页，
+        把 TA 的<strong>论文和专利</strong>汇总在一起看：
+      </p>
+      <ul>
+        <li>顶部「<strong>研究方向</strong>」概况：这位候选人涉及几个方向、都是哪些（可点方向 tag 跳到该方向的聚合页）</li>
+        <li><strong>论文 / 专利</strong>两个标签页，分别列出关联到 TA 的成果</li>
+        <li>右上角「<strong>搜索更多成果</strong>」：带着这位候选人跳回学术搜索，继续给 TA 补论文</li>
+        <li>配了翻译能力时，有「<strong>全部翻译</strong>」把未译的标题/摘要一次翻好</li>
+      </ul>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">研究方向标签是自动聚出来的</div>
+          <p>
+            论文进库后，Hunter 会从标题/摘要自动提取<strong>研究方向</strong>标签。
+            「学术搜索」页顶部（条件搜索标签页里）和候选人学术成果页上看到的方向 tag，
+            都指向同一套聚合——点进去能看到该方向下的所有论文和专利。库里论文越多，方向聚合越丰富。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="troubleshoot">常见提示</h2>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">任务停在「异常」了</div>
+          <p>
+            通常是<strong>没能唯一锁定机构/方向</strong>（需求太笼统），或某些来源临时不可用。
+            进任务点「查看」，如果在计划页，用「<strong>让 Agent 重做</strong>」重新生成一版；
+            或回输入框<strong>把机构全称和方向写得更明确</strong>，重新发起一次。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">结果里有些论文明显不相关</div>
+          <p>
+            先只看「<strong>强烈建议导入 / 建议导入</strong>」两档，「待确认」本来就是拿不准的。
+            如果整体偏了，多半是方案里的机构署名或方向词不够准——
+            下次发起时把<strong>机构全称、方向范围</strong>写得更收敛，或在计划确认页手动删掉跑偏的召回词再放行。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">导入后发现有重复的论文</div>
+          <p>
+            正常——导入走的是论文库统一的去重逻辑，库里已有的会标成「<strong>已存在</strong>」而不是重复建一条。
+            所以进度条里「已存在 N」是预期内的，不用担心把库搞乱。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">别让「待导入」的任务一直堆着</div>
+          <p>
+            搜完就去挑一遍、该导的导、不要的任务删掉——
+            结果池摊着不处理，下次一堆「待导入」混在一起反而难分辨。
+            保持「跑一次、挑一次」的节奏，学者主题这条线用起来最顺手。
+          </p>
+        </div>
+      </div>
+
+      <nav class="docs-pager" aria-label="page navigation">
+        <a class="docs-pager__link" href="cap-intel-academic.html">
+          <div class="docs-pager__dir">← 上一篇</div>
+          <div class="docs-pager__title">学术 &amp; 专利</div>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="cap-intel-news.html">
+          <div class="docs-pager__dir">下一篇 →</div>
+          <div class="docs-pager__title">一线情报</div>
+        </a>
+      </nav>
+
+    </article>
+  </main>
+</div>
+
+<footer class="docs-footer">
+  <a href="index.html">文档</a>
+  <a href="../index.html">返回主页</a>
+  <a href="mailto:y.e.yyf@163.com">报告问题</a>
+</footer>
+
+</body>
+</html>

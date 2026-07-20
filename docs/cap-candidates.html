@@ -41,11 +41,15 @@
         <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
         <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
         <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
         <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
       </ul>
     </div>
   </aside>
@@ -315,9 +319,9 @@
       <h3 id="search-multi">一次搜多个关键词</h3>
       <p>
         候选人管理页顶部的搜索框，提示文字写着：
-        <code>搜索姓名、手机号、职位、技能、行业（支持逗号分隔多个关键词）</code>。
-        所以你不止能搜姓名——手机号、职位、技能（如 <code>Python</code>、<code>PyTorch</code>）和行业标签也能搜，
-        多个关键词用<strong>逗号分隔</strong>。
+        <code>搜索姓名、手机号、公司、职位、技能、经历等（空格或逗号分隔）</code>。
+        所以你不止能搜姓名——手机号、公司、职位、技能（如 <code>Python</code>、<code>PyTorch</code>）和经历里的关键词都能搜，
+        多个关键词用<strong>空格或逗号分隔</strong>。
       </p>
 
       <!-- ============================================== -->
@@ -394,6 +398,126 @@
         候选人管理页右上角点「<strong>管理收藏夹</strong>」按钮，弹出抽屉。
         在抽屉里可以新建、删除、重命名收藏夹，双击进入子层级管理。
       </p>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">删除收藏夹不会删候选人</div>
+          <p>
+            删一个收藏夹前，系统会先给你一个影响预览：<strong>会连带删掉它下面的子收藏夹</strong>，
+            里面的候选人会被移到「未收藏」——但<strong>候选人本身的档案数据不会被删除</strong>。
+            所以放心整理收藏夹结构，收拾的只是「分类」，不是人。
+          </p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/candidate-folder-delete-preview.png" alt="删除收藏夹时的影响预览弹窗，展示「将连带删除 N 个子收藏夹、M 位候选人会移到未收藏，候选人数据不会删除」的确认提示">
+        <div class="shot__caption">删除收藏夹时的影响预览弹窗，展示「将连带删除 N 个子收藏夹、M 位候选人会移到未收藏，候选人数据不会删除」的确认提示</div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="detail">候选人详情页能做什么</h2>
+      <p>
+        点候选人<strong>姓名</strong>（蓝色链接）进入详情页——这是你了解、判断、行动一个人的主界面。
+        除了看基础档案、编辑资料、看技能标签，详情页还有下面几件常用的事。
+      </p>
+
+      <h3 id="detail-ai-summary">AI 评估摘要：几秒读懂一个人</h3>
+      <p>
+        详情页右上角的「<strong>AI 评估摘要</strong>」卡片，用一段话帮你快速抓住这位候选人的画像和亮点，
+        省去从头读整份简历的时间。它在候选人进库后自动生成，也会在<a href="cap-dedup.html">合并重复候选人</a>后自动重算。
+      </p>
+      <ol class="steps">
+        <li>
+          <strong>想重新生成时，点「重新生成 AI 摘要」</strong>
+          <p>
+            补全了资料、改过档案、或觉得旧摘要过时了，点卡片下方这个按钮即可。
+          </p>
+        </li>
+        <li>
+          <strong>后台生成，不用干等</strong>
+          <p>
+            摘要在后台跑，卡片会显示「正在后台生成，可以继续浏览其他页面，完成后自动刷新」。
+            你可以去看别的候选人、做别的事，生成完这张卡片会自己更新，无需手动刷新页面。
+          </p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/candidate-ai-summary.png" alt="候选人详情页右列「AI 评估摘要」卡片，展示一段摘要文字 + 下方「重新生成 AI 摘要」按钮（可用某候选人做示例，注意打码真实姓名）">
+        <div class="shot__caption">候选人详情页右列「AI 评估摘要」卡片，展示一段摘要文字 + 下方「重新生成 AI 摘要」按钮</div>
+      </div>
+
+      <h3 id="detail-preview">在线预览原始简历</h3>
+      <p>
+        想核对系统解析得对不对、或者想直接看原件排版，不必去翻本地文件夹。
+        详情页右上角「<strong>更多操作</strong>」菜单里点「<strong>简历预览</strong>」，会在新标签页里直接打开这个人的原始简历：
+      </p>
+      <ul>
+        <li><strong>PDF 简历</strong>：浏览器内直接渲染原件，和你在电脑上打开一样。</li>
+        <li><strong>Word 简历</strong>：转成网页排版展示。</li>
+        <li><strong>Excel 名单导入的候选人</strong>：没有原始文件，会显示系统解析后的文本内容作为兜底。</li>
+      </ul>
+      <p>
+        同一个菜单里还有「<strong>下载原件</strong>」，可以把原始简历文件下载到本地。
+      </p>
+
+      <h3 id="detail-recommendable">看这个人适合库里哪些岗位</h3>
+      <p>
+        经典场景：你手头有个好苗子，想知道「他能推给我库里哪些岗位」。
+        在详情页点「<strong>+ 加入岗位储备</strong>」（右上角，也在「岗位储备」卡片底部），
+        系统会把这位候选人对上<strong>当前所有开启中岗位</strong>的适配情况列出来。
+      </p>
+      <ol class="steps">
+        <li>
+          <strong>按匹配分从高到低排</strong>
+          <p>
+            列表默认按候选人与各岗位的匹配分降序排列，最合适的岗位排在最前面；
+            只显示「开启中」的岗位，已关闭的岗位不会出现。
+          </p>
+        </li>
+        <li>
+          <strong>搜岗位标题或公司快速定位</strong>
+          <p>
+            弹窗里有搜索框，可按岗位标题或公司名过滤，岗位多时更快找到目标岗位。
+          </p>
+        </li>
+        <li>
+          <strong>选中一个岗位、加入储备</strong>
+          <p>
+            单选一个岗位，可以顺手写一句初始备注，点「确认加入储备」，
+            就为这位候选人建立了一条推进记录——之后到<a href="cap-kanban.html">推进看板</a>里继续跟进。
+          </p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/candidate-recommendable-positions.png" alt="详情页「加入岗位储备」弹窗，展示按匹配分降序的开启中岗位列表 + 搜索框 + 初始备注 + 确认按钮（打码真实姓名/公司）">
+        <div class="shot__caption">详情页「加入岗位储备」弹窗，展示按匹配分降序的开启中岗位列表 + 搜索框 + 初始备注 + 确认按钮</div>
+      </div>
+
+      <h3 id="detail-public-links">公开资料链接（用于信息补全）</h3>
+      <p>
+        候选人有长期公开的个人主页、作品集等资料时，可以在详情页把这些链接<strong>挂到候选人档案上</strong>。
+        编辑档案时找到「<strong>公开资料</strong>」一行，点「<strong>+ 添加公开资料</strong>」，粘上链接、可选填个显示名称，保存即可。
+      </p>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">这是「给系统看的资料」，不是「对外分享的链接」</div>
+          <p>
+            公开资料链接是让 Hunter 在做<a href="cap-refresh.html">候选人档案补全</a>时，
+            有一份你确认过的可信公开来源可以参考、用于人工核对——它<strong>不会对外分享候选人档案、也不会生成给别人看的页面</strong>。
+            只填候选人<strong>长期公开的主页类链接</strong>；论文、专利有独立的关联入口，不要放这里。
+            <strong>保存链接本身不会立刻启动补全</strong>，补全需要你另外手动触发。
+          </p>
+        </div>
+      </div>
 
       <!-- ============================================== -->
       <h2 id="row-actions">单行操作</h2>

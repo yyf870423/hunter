@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公司管理 · Hunter 文档</title>
+  <meta name="description" content="把散落在候选人经历里的目标公司沉淀成一份可维护的公司库：公司资料、联系人、关联候选人与岗位、推进情况一处看全，候选人按公司名和包含匹配词自动归拢，也能手动补关联。">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+
+<header class="docs-nav">
+  <div class="docs-nav__inner">
+    <a href="../index.html" class="docs-nav__back">← 返回主页</a>
+    <a href="index.html" class="docs-nav__logo">
+      <img src="assets/logo-light.svg" alt="Hunter">
+      <span class="docs-nav__logo-sep"></span>
+      <span class="docs-nav__logo-tag">文档</span>
+    </a>
+    <div class="docs-nav__spacer"></div>
+  </div>
+</header>
+
+<div class="docs-layout">
+
+  <aside class="docs-sidebar">
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">起步</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link" href="start-install.html">安装与启动</a></li>
+        <li><a class="docs-sidebar__link" href="start-quickstart.html">10 分钟上手</a></li>
+      </ul>
+    </div>
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">核心能力</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link" href="cap-candidates.html">候选人库</a></li>
+        <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
+        <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link is-current" href="cap-companies.html">公司管理</a></li>
+        <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
+        <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <article class="docs-article">
+
+      <nav class="docs-breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">文档</a>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span>核心能力</span>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span class="docs-breadcrumb__current">公司管理</span>
+      </nav>
+
+      <header class="docs-article__header">
+        <h1>公司管理</h1>
+        <p class="docs-article__lead">
+          把你天天打交道的目标公司<strong>沉淀成一份能维护的公司库</strong>——
+          公司简介、融资、薪资、面试流程、Base 地点写一处，联系人存一处；
+          候选人库里所有「当前公司」对得上的人<strong>自动归拢到这家公司名下</strong>，
+          对不上的也能手动补关联。以后接到这家公司的岗位，谁在里面、谁推进到哪一步、联系人是谁，一眼看全。
+        </p>
+        <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
+          产品里对应左侧导航「<strong>岗位（需求）</strong>」分组下的「<strong>公司管理</strong>」。列表页是公司库总览，点公司名进详情页，
+          详情页顶部有「公司资料 / 推进情况 / 联系人 / 关联岗位 / 关联候选人」五个标签。
+        </p>
+      </header>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">公司管理不改候选人的数据</div>
+          <p>
+            公司库是<strong>另一层视角</strong>：它按公司名把已有候选人聚到一起，方便你以「公司」为单位看人和推进。
+            <strong>不管是自动关联还是手动关联，都不会修改候选人的当前公司、工作经历或来源</strong>——
+            候选人库仍是唯一的候选人事实来源，公司库只是换个角度看它。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="where-from">公司从哪来：三种入口</h2>
+      <p>公司列表页右上角有几个建公司的入口，覆盖不同场景：</p>
+
+      <ol class="steps">
+        <li>
+          <strong>「新建公司」</strong>（主按钮）
+          <p>
+            你手头已经有这家公司的资料，直接手动建。弹窗里一次填完公司名、行业、简介、融资、
+            薪资福利、面试流程、Base 地点、其他要求、备注，以及下面要重点讲的「<strong>包含匹配词</strong>」。
+            只有公司名称是必填，其他都可以先留空、以后再补。
+          </p>
+        </li>
+        <li>
+          <strong>「Agent 调研公司」</strong>
+          <p>
+            只知道公司名、资料还没攒齐时用。填一个公司名（可选补一句关注方向/招聘业务线），
+            Hunter 会去<strong>替你查这家公司、整理成一份公司草稿</strong>。
+            草稿生成后进入「公司草稿确认页」，<strong>你确认之前不会写入公司库</strong>。
+            调研过程可以在「Agent 运行中心」里看进度。
+          </p>
+        </li>
+        <li>
+          <strong>候选人经历自动汇聚</strong>（无需手动操作）
+          <p>
+            这是最省事的一种——你<strong>不用把候选人一个个拖进公司</strong>。
+            只要公司名对得上候选人档案里的「当前公司」，这些候选人就会自动出现在公司的「关联候选人」里。
+            规则详见下一节。
+          </p>
+        </li>
+      </ol>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">先建公司，人会自己进来</div>
+          <p>
+            因为候选人是按公司名自动归拢的，所以<strong>建公司这一步几乎零成本</strong>：
+            哪怕这家公司你现在只有资料、还没接到岗位，先建好、填上匹配词，
+            库里对得上的人就已经挂在它名下了。等以后真接到岗位，「里面有谁」的问题早就答好了。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="auto-link">自动关联：公司名 + 包含匹配词</h2>
+      <p>
+        公司和候选人、岗位怎么对上，靠<strong>两条确定性规则</strong>——不是模糊猜的，是明确的字符串匹配，可预期、可解释：
+      </p>
+      <ul>
+        <li>
+          <strong>公司名称：完全匹配</strong>。候选人「当前公司」或岗位「公司」字段，
+          和公司名<strong>一字不差</strong>时命中。
+        </li>
+        <li>
+          <strong>包含匹配词：包含即匹配</strong>。你给公司配上若干「包含匹配词」，
+          候选人「当前公司」或岗位「公司」字段里<strong>只要包含任一匹配词</strong>，就算这家公司的关联。
+        </li>
+      </ul>
+      <p>
+        为什么需要包含匹配词？因为同一家公司在不同简历里写法五花八门——
+        有的写全称、有的写简称、有的带「（中国）」「集团」「科技有限公司」后缀、有的写子品牌。
+        公司名完全匹配抓不全这些变体，<strong>配上几个匹配词就能把它们一网打尽</strong>。
+      </p>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">举个例子</div>
+          <p>
+            某公司在候选人简历里出现过「XX集团」「XX科技（中国）有限公司」「XX云」这些写法。
+            你把公司名填成常用的那个，再配上「XX」这个匹配词——
+            所有当前公司里带「XX」的候选人和岗位就都归到这家公司名下了。
+            匹配词写得越贴切，归拢越全；写得太宽（比如两个字太通用），可能会误收无关的人，配的时候把握一下颗粒度。
+          </p>
+        </div>
+      </div>
+
+      <p>关于包含匹配词的一些约束（填的时候留意）：</p>
+      <ul>
+        <li>多个匹配词用<strong>中文或英文逗号</strong>分隔，重复的会自动去重。</li>
+        <li>最多 <strong>20 个</strong>匹配词；单个匹配词长度 <strong>2–50 个字符</strong>（太短容易误伤，太长没意义）。</li>
+        <li>匹配词只影响<strong>关联范围</strong>，不改动任何候选人或岗位本身的数据。</li>
+        <li>改了公司名或匹配词并保存后，关联会<strong>按新规则重新计算</strong>，不用手动刷新。</li>
+      </ul>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">列表搜索里的公司名仍是完全匹配</div>
+          <p>
+            公司列表页顶部的搜索框，是在<strong>公司库里搜公司</strong>（按公司名、匹配词、备注找），
+            这和上面的「公司名对候选人完全匹配」是两回事，别混淆。
+            匹配词的「包含即命中」只作用在<strong>候选人和岗位</strong>的公司字段上。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="manual-link">手动关联候选人：补上自动抓不到的人</h2>
+      <p>
+        自动规则靠的是「当前公司」字段，但有些人你明知道和这家公司有关系、字段却对不上——
+        比如刚离职还没更新、简历只写了子公司、或者是这家公司的前员工/内推人。
+        这时候用<strong>手动关联</strong>把人补进来。
+      </p>
+
+      <ol class="steps">
+        <li>
+          <strong>进公司详情页 →「关联候选人」标签 → 点「手动关联候选人」</strong>
+          <p>弹出关联窗口。</p>
+        </li>
+        <li>
+          <strong>搜索候选人</strong>
+          <p>
+            输入姓名、公司、职位或关键词，点「搜索」，结果<strong>分页展示</strong>。
+            已经关联过的候选人不会再出现在结果里，避免重复。
+          </p>
+        </li>
+        <li>
+          <strong>勾选要关联的人，点「确认关联」</strong>
+          <p>
+            可以一次勾多个，也有「选择当前页 / 清空选择」两个快捷按钮。
+            确认后这些人就以「手动关联」的身份出现在公司名下。
+          </p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/company-manual-link.png" alt="公司详情页「关联候选人」标签下的「手动关联候选人」弹窗——搜索框、分页结果列表、多选勾选、「选择当前页/清空选择」和「确认关联」按钮">
+        <div class="shot__caption">公司详情页「关联候选人」标签下的「手动关联候选人」弹窗</div>
+      </div>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">关联候选人列表里的「来源」标签</div>
+          <p>
+            「关联候选人」表格每一行有一个来源标签，告诉你这个人是怎么进来的：
+          </p>
+          <ul>
+            <li><strong>自动关联</strong>：靠公司名/匹配词命中的人。</li>
+            <li><strong>手动关联</strong>：你手动补进来、但自动规则没命中的人。</li>
+            <li><strong>自动 + 手动</strong>：既符合自动规则、你又手动关联过——两种身份都有。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 id="unlink">解绑：只有手动关联能移除</h3>
+      <p>
+        表格里<strong>只有「手动关联」和「自动 + 手动」的行才有「移除关联」按钮</strong>，纯「自动关联」的人不能移除——
+        因为自动关联是规则算出来的，想让某个人不再自动出现，得改公司名或匹配词，而不是逐个移除。
+      </p>
+      <ul>
+        <li>
+          移除<strong>纯手动关联</strong>的人：该候选人不再显示在本公司名下（候选人档案本身不受影响）。
+        </li>
+        <li>
+          移除<strong>「自动 + 手动」</strong>的人：只是撤掉你加的那层手动关联，
+          <strong>他仍然会因为符合自动规则继续显示</strong>——移除时系统会明确提示这一点。
+        </li>
+      </ul>
+
+      <!-- ============================================== -->
+      <h2 id="detail">公司详情页看什么</h2>
+      <p>点公司名进详情页，顶部五个标签，各管一摊：</p>
+
+      <h3 id="tab-profile">公司资料</h3>
+      <ul>
+        <li><strong>基本信息</strong>：公司名称、包含匹配词、行业标签、备注。</li>
+        <li>
+          <strong>公司资料</strong>：简介、融资情况、公司优势和亮点、薪资结构和福利、面试流程、其他要求、Base 地点。
+          这些是你跟候选人聊、给候选人「卖」这家公司时最常用的弹药。
+        </li>
+        <li>右上角「编辑」按钮打开表单，所有字段都能改，保存后关联按新公司名/匹配词重算。</li>
+      </ul>
+
+      <h3 id="tab-progress">推进情况</h3>
+      <p>
+        以这家公司为单位，看<strong>所有候选人在这家公司相关岗位上的推进</strong>。顶部四个数字概览：
+        <strong>储备 / 推进中 / 已入职 / 失败</strong>；下面是明细表格，每行是「某候选人 · 申请某岗位 · 当前流程阶段 · 状态」。
+      </p>
+      <ul>
+        <li>上方有「全部 / 储备 / 推进中 / 已入职 / 失败」分组标签，每个标签带数量。</li>
+        <li>还能按<strong>岗位</strong>和<strong>流程阶段</strong>两个筛选器缩小范围。</li>
+        <li>每行可直接跳到对应的候选人详情或岗位详情。</li>
+      </ul>
+
+      <h3 id="tab-contacts">联系人</h3>
+      <p>存这家公司的对接人（HR、用人经理、内推人等）。点「添加联系人」有两种填法：</p>
+      <ul>
+        <li><strong>手动填写</strong>：姓名（必填）、角色、邮箱、电话、备注。</li>
+        <li>
+          <strong>关联候选人</strong>：如果这个联系人本身就是你库里的候选人（比如某位候选人同时是这家公司的内推人），
+          直接搜索并关联到那条候选人记录，联系人表里会带上跳转候选人的链接。
+        </li>
+      </ul>
+      <p>联系人支持编辑和删除，删除联系人不影响关联候选人或公司资料。</p>
+
+      <h3 id="tab-positions">关联岗位</h3>
+      <p>
+        列出公司名下的岗位——同样按<strong>公司名完全匹配 + 包含匹配词</strong>的规则命中岗位的「公司」字段。
+        表格显示岗位名、状态、地点、薪资、年限、学历、关键技能、匹配人数，以及每个岗位的
+        储备/推进中/已入职/失败进展。点岗位名跳到岗位详情。
+      </p>
+
+      <h3 id="tab-candidates">关联候选人</h3>
+      <p>
+        就是前面讲的自动 + 手动汇聚起来的人，一张候选人表，带来源标签、公司、职位、学历、技能、行业、年限、
+        年龄、地点、进行中流程等。这里是「<strong>这家公司里我手上有哪些人</strong>」的答案。
+        「手动关联候选人」和「移除关联」都在这个标签下操作。
+      </p>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/company-detail-candidates.png" alt="公司详情页——顶部「公司资料/推进情况/联系人/关联岗位/关联候选人」五个标签，展示「关联候选人」表格,重点露出每行的「自动关联/手动关联/自动+手动」来源标签">
+        <div class="shot__caption">公司详情页</div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="draft-confirm">公司草稿确认流程</h2>
+      <p>
+        用「Agent 调研公司」建公司时，结果不会直接进库，而是先落成一份<strong>公司草稿</strong>，
+        由你在「公司草稿确认页」拍板。草稿有几种状态：
+        <strong>生成中 / 待确认 / 已创建 / 已废弃 / 失败</strong>。
+      </p>
+
+      <ol class="steps">
+        <li>
+          <strong>逐字段核对、修改</strong>
+          <p>
+            确认页左侧是完整的公司草稿表单，和手动新建的字段一模一样。
+            Agent 查来的内容<strong>都可以逐字段改</strong>——写得不对的删掉，缺的补上。
+          </p>
+        </li>
+        <li>
+          <strong>自己填包含匹配词</strong>
+          <p>
+            这一点很关键：<strong>匹配词不会由 Agent 自动生成</strong>，留给你按需填。
+            因为匹配词直接决定归拢范围，太宽会误收，交给你把关最稳。
+          </p>
+        </li>
+        <li>
+          <strong>点「确认创建公司」</strong>
+          <p>
+            按当前编辑后的草稿正式写入公司库，并<strong>按公司名和你填的匹配词计算关联</strong>。
+            创建后就是一家正常的公司，进详情页管理即可。
+          </p>
+        </li>
+        <li>
+          <strong>或者「放弃草稿」</strong>
+          <p>不满意就整份放弃，不会创建公司，也不影响 Agent 的运行记录。</p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/company-draft-confirm.png" alt="「公司草稿确认页」——左侧 Agent 调研出的完整公司草稿表单（含需自己填的「包含匹配词」栏），右侧检查结果/来源类型/参考来源/注意事项，底部「确认创建公司」「放弃草稿」">
+        <div class="shot__caption">「公司草稿确认页」</div>
+      </div>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">确认前一律不进库</div>
+          <p>
+            和自动寻访的待审池是同一套思路：<strong>Agent 只负责生成草稿，写不写进公司库由你决定</strong>。
+            确认页右侧还会显示检查结果、来源类型、参考来源和注意事项，方便你判断草稿是否可信。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="delete">删除公司</h2>
+      <p>
+        公司列表页每行、以及公司详情页右上角都有「删除公司」。删除是<strong>安全的</strong>——
+        只删掉<strong>公司档案、这家公司的联系人和草稿记录</strong>，
+        <strong>不会删除任何候选人、岗位或推进记录</strong>。
+        那些人和岗位本来就在候选人库、岗位库里，删了公司只是撤掉这层「按公司看」的视角。
+      </p>
+
+      <!-- ============================================== -->
+      <h2 id="relations">和 Mapping、候选人库的关系</h2>
+      <p>三块能力经常一起用，但各有分工，别搞混：</p>
+      <ul>
+        <li>
+          <strong>候选人库</strong>是<strong>人的事实来源</strong>：每个人的经历、当前公司、联系方式都在这里。
+          公司管理不改这里的任何数据，只是按公司名换个角度聚合它。
+        </li>
+        <li>
+          <strong>公司管理</strong>是<strong>「一家真实公司」的档案 + 视角</strong>：
+          维护这家公司的资料/联系人，看谁在里面、谁在推进。适合你长期跟进的目标公司。
+        </li>
+        <li>
+          <strong>Mapping</strong>是<strong>为某个岗位/项目做的对标公司组织盘点</strong>（人才地图）：
+          围绕一次寻访任务，画出「该去哪些对标公司挖哪些人」的作战地图，更偏一次性、项目制。
+        </li>
+      </ul>
+      <p>
+        简单说：<strong>候选人库管人、公司管理管公司档案、Mapping 管一次项目的对标组织</strong>。
+        公司管理更像你日积月累的「公司资产」，Mapping 更像每个单子临时铺开的地图。
+      </p>
+
+      <!-- ============================================== -->
+      <h2 id="best-practice">用好公司管理的几个习惯</h2>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">把常打交道的公司先建起来、配好匹配词</div>
+          <p>
+            你反复挖的那几家公司，一开始就建好档案、配上匹配词——之后库里凡是这家公司的人都自动归拢，
+            接到岗位时「里面有谁」不用现查。匹配词是这里最省事的杠杆，值得花几分钟配准。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">资料和薪酬/面试信息随手往里存</div>
+          <p>
+            每次跟这家公司对接学到的东西——面试几轮、卡什么、薪资结构、谁是对接人——
+            随手记进公司资料和联系人。下次给候选人介绍这家公司、准备面试，直接调档，不用翻聊天记录。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">自动抓漏了就手动补，不用改候选人</div>
+          <p>
+            某个明明相关的人自动没进来（离职、写法特殊），别去改候选人的当前公司字段——
+            直接在「关联候选人」里手动关联即可。手动关联是「本公司视角下的补充」，不动候选人本身的数据。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="troubleshoot">常见疑问</h2>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">明明有这家公司的人，关联候选人却是空的</div>
+          <p>
+            多半是<strong>公司名和候选人简历里的写法对不上</strong>（完全匹配很严格）。
+            去公司资料里<strong>加几个包含匹配词</strong>（如公司简称、去掉后缀的核心词），保存后再看，
+            对得上的人就自动进来了。个别特殊的人再手动关联补上。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">关联候选人里混进了无关的人</div>
+          <p>
+            通常是<strong>匹配词太宽</strong>，命中了别的公司。把过泛的匹配词删掉或改具体一点（比如两个字太通用就换更长的词），
+            保存后关联会重算。注意：<strong>自动进来的人不能逐个移除</strong>，只能靠调匹配词收窄范围。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">某个人的「移除关联」按钮点不了</div>
+          <p>
+            那一行是<strong>纯自动关联</strong>，本来就没有移除按钮——因为它是规则算出来的。
+            想让他不再显示，去改公司名或匹配词，让规则不再命中他，而不是逐个删。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">删公司会不会连带删掉候选人？</div>
+          <p>
+            不会。删公司<strong>只删公司档案、联系人和草稿记录</strong>，
+            候选人、岗位、推进记录都在各自的库里安然无恙。放心删。
+          </p>
+        </div>
+      </div>
+
+      <nav class="docs-pager" aria-label="page navigation">
+        <a class="docs-pager__link" href="cap-sourcing.html">
+          <div class="docs-pager__dir">← 上一篇</div>
+          <div class="docs-pager__title">自动寻访</div>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="cap-kanban.html">
+          <div class="docs-pager__dir">下一篇 →</div>
+          <div class="docs-pager__title">推进看板</div>
+        </a>
+      </nav>
+
+    </article>
+  </main>
+</div>
+
+<footer class="docs-footer">
+  <a href="index.html">文档</a>
+  <a href="../index.html">返回主页</a>
+  <a href="mailto:y.e.yyf@163.com">报告问题</a>
+</footer>
+
+</body>
+</html>

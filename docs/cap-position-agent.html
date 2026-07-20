@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>岗位 Agent · Hunter 文档</title>
+  <meta name="description" content="把一段 JD 或几句口述需求丢给 Hunter，AI 自动查资料、看懂陌生岗位、拆出关键要求和寻访关键词，生成一份可编辑的岗位草稿——你确认后才写入，再联动匹配和寻访。">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+
+<header class="docs-nav">
+  <div class="docs-nav__inner">
+    <a href="../index.html" class="docs-nav__back">← 返回主页</a>
+    <a href="index.html" class="docs-nav__logo">
+      <img src="assets/logo-light.svg" alt="Hunter">
+      <span class="docs-nav__logo-sep"></span>
+      <span class="docs-nav__logo-tag">文档</span>
+    </a>
+    <div class="docs-nav__spacer"></div>
+  </div>
+</header>
+
+<div class="docs-layout">
+
+  <aside class="docs-sidebar">
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">起步</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link" href="start-install.html">安装与启动</a></li>
+        <li><a class="docs-sidebar__link" href="start-quickstart.html">10 分钟上手</a></li>
+      </ul>
+    </div>
+    <div class="docs-sidebar__group">
+      <h3 class="docs-sidebar__group-title">核心能力</h3>
+      <ul class="docs-sidebar__list">
+        <li><a class="docs-sidebar__link" href="cap-candidates.html">候选人库</a></li>
+        <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
+        <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link is-current" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
+        <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
+        <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <article class="docs-article">
+
+      <nav class="docs-breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">文档</a>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span>核心能力</span>
+        <span class="docs-breadcrumb__sep">/</span>
+        <span class="docs-breadcrumb__current">岗位 Agent</span>
+      </nav>
+
+      <header class="docs-article__header">
+        <h1>岗位 Agent</h1>
+        <p class="docs-article__lead">
+          接到一个陌生岗位，先别急着一个字一个字读 JD。
+          把 <strong>完整 JD，或客户几句口述式的需求</strong> 丢给 Hunter，
+          AI 会替你上网查资料、看懂这岗位到底做什么、上下游是谁、哪些相邻背景能迁移，
+          再拆出关键要求、对标企业和一组<strong>寻访关键词</strong>，
+          最后生成一份<strong>可编辑的岗位草稿</strong>。你确认后它才写入岗位，
+          并顺手把关键词种给寻访、把解析喂给匹配。
+        </p>
+        <p class="docs-article__lead" style="font-size: 14px; color: var(--color-muted); margin-top: 12px;">
+          产品里对应左侧导航「<strong>岗位（需求）</strong>」分组下的「<strong>岗位管理</strong>」。
+          新建岗位时在弹窗里切到「<strong>AI 解析 JD</strong>」标签即可用；
+          对已有岗位，则在岗位详情页右侧的「<strong>AI 岗位解析</strong>」卡片上发起。
+        </p>
+      </header>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">这是 Beta 功能</div>
+          <p>
+            岗位 Agent 目前处于 <strong>Beta 阶段</strong>，解析质量还在持续打磨中——
+            对小众或全新方向的岗位，偶尔会漏掉或猜错一些内容。
+            但它的产出<strong>都只是「草稿」和「建议」，确认前绝不会写进你的岗位</strong>，
+            你可以逐字段改、逐条挑，放心试用。用下来有问题或建议，欢迎随时反馈给我们。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="what">它到底替你做了什么</h2>
+      <p>
+        你给一段 JD 或几句需求，Agent 会先<strong>上网查公开资料</strong>把岗位研究一遍，
+        再产出下面这些内容（都进草稿，等你确认）：
+      </p>
+      <ul>
+        <li>
+          <strong>基础字段</strong>：职位名称、公司、工作地点、薪资范围、最低年限、学历要求。
+          原文没写、公开资料也查不到的，它会留空，而不是硬编一个。
+        </li>
+        <li>
+          <strong>一份专业 JD</strong>：如果你给的只是几句口述需求，它会补成一份结构完整的岗位描述
+          （岗位概述、岗位职责、任职要求、加分项）。
+        </li>
+        <li>
+          <strong>岗位解析</strong>：这是最值钱的部分——岗位定位、上下游关系、可迁移背景、
+          对标企业、目标职级、文化 / 团队偏好、薪酬构成、到岗时间，
+          以及用大白话写的<strong>「软性和隐性要求」</strong>（这岗位真正难在哪、要什么样的人）。
+        </li>
+        <li>
+          <strong>寻访关键词</strong>：最多 <strong>5 组，每组最多 2 个词</strong>，
+          直接就是拿去招聘平台搜索用的。确认后会成为这个岗位<strong>自动寻访的初始关键词</strong>。
+        </li>
+        <li>
+          <strong>需要确认 / 补充条件</strong>：资料不足、拿不准的地方，它会明确列出来提醒你核实，
+          而不是含糊带过。
+        </li>
+      </ul>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">年龄、性别只当「客户偏好」，不进硬规则</div>
+          <p>
+            如果 JD 或客户要求里提到年龄、性别这类偏好，Agent 会把它作为
+            <strong>补充条件 / 提醒</strong>展示给你参考，
+            <strong>不会</strong>把它写成自动筛选或人岗匹配的硬门槛。
+            要不要按这些偏好取舍，由你自己判断。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="relation">和「匹配」「寻访」是什么关系</h2>
+      <p>三件事分工很清楚，岗位 Agent 是最前面那一步：</p>
+      <ul>
+        <li>
+          <strong>岗位 Agent（本篇）</strong> = <em>看懂并配置这个岗位</em>。
+          把岗位分析清楚，产出解析和关键词，是后面两件事的「弹药」。
+        </li>
+        <li>
+          <strong>岗位智能匹配</strong> = <em>在你自己库里找人</em>。
+          用岗位（包括这份解析）去跑候选人库，给出匹配分和优势 / 风险。见
+          <a href="cap-match.html">岗位智能匹配</a>。
+        </li>
+        <li>
+          <strong>自动寻访</strong> = <em>上招聘平台找新人</em>。
+          用关键词和筛选条件去平台捞人进待审池。岗位 Agent 生成的关键词，
+          正是寻访第一次配置时的<strong>初始关键词</strong>。见
+          <a href="cap-sourcing.html">自动寻访</a>。
+        </li>
+      </ul>
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">推荐的顺序：先解析，再匹配 / 寻访</div>
+          <p>
+            拿到新岗位，<strong>先用岗位 Agent 解析一遍</strong>，
+            确认后岗位信息更完整、还带上了关键词——
+            这时候再去「开始匹配」或「寻访配置」，效果会明显更好。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="create">用法一：新建岗位时让 AI 解析 JD</h2>
+      <p>适合手头拿到一个新岗位、还没建进 Hunter 的情况。</p>
+
+      <ol class="steps">
+        <li>
+          <strong>打开新建弹窗，切到 AI 标签</strong>
+          <p>
+            在「岗位管理」页点右上角「<strong>+ 新建岗位</strong>」，
+            弹窗顶部有两个标签：默认是「手动填写」，点右边的
+            「<strong>AI 解析 JD</strong>」（带 Beta 标）切过去。
+          </p>
+        </li>
+        <li>
+          <strong>粘 JD 或写几句需求</strong>
+          <p>
+            在「<strong>JD 或岗位需求</strong>」里，粘贴客户给的完整 JD，
+            <strong>或者几句口述式的岗位需求</strong>（岗位方向、核心技能、目标背景、年限、地点、薪资、禁忌公司等都行）。
+            下面的「<strong>补充说明</strong>」可选，用来补客户偏好、禁忌公司、必须保留的字段等。
+          </p>
+        </li>
+        <li>
+          <strong>点「开始解析」</strong>
+          <p>
+            提交后进入 Agent 运行页，你可以离开去做别的。弹窗里也写明了两条底线：
+            <strong>Agent 只生成草稿、确认前不写入岗位</strong>；
+            <strong>年龄性别只作偏好展示、不进筛选和匹配硬规则</strong>。
+          </p>
+        </li>
+        <li>
+          <strong>到「确认岗位草稿」页逐字段过一遍</strong>
+          <p>
+            解析完成后进入草稿确认页。左边是基础字段、JD 和岗位解析，
+            右边是关键技能、寻访关键词、可迁移背景、对标企业、目标职级、禁忌注意事项，
+            以及一块「<strong>需要确认</strong>」列出 AI 拿不准的点。
+            <strong>每个字段都能直接改</strong>，改到你满意为止。
+          </p>
+        </li>
+        <li>
+          <strong>点「确认创建岗位」</strong>
+          <p>
+            右上角点「<strong>确认创建岗位</strong>」，弹窗再确认一次。
+            确认后 Hunter 才正式创建这个岗位，并<strong>自动触发一次岗位分析</strong>，
+            为后面的匹配做好准备。不想要就点「<strong>放弃草稿</strong>」，什么都不会写入。
+          </p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/position-agent-parse-tab.png" alt="新建岗位弹窗切到「AI 解析 JD」标签（JD/需求输入框、补充说明、Beta 标和开始解析按钮）">
+        <div class="shot__caption">「岗位管理」→「新建岗位」→「AI 解析 JD」标签页（Beta）</div>
+      </div>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/position-agent-draft-confirm.png" alt="「确认岗位草稿」页——左侧基础字段+JD+岗位解析、右侧关键技能/寻访关键词/对标企业/「需要确认」栏，以及右上角「确认创建岗位」按钮">
+        <div class="shot__caption">「确认岗位草稿」页</div>
+      </div>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">草稿页的状态含义</div>
+          <p>
+            草稿页顶部有个状态条：<strong>解析中</strong>（还在跑，页面会自动刷新）·
+            <strong>待确认</strong>（可以改、可以确认创建）·
+            <strong>失败</strong>（会给出原因，回岗位管理重新发起即可）。
+            只有「待确认」状态下才能编辑和确认创建。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="update">用法二：对已有岗位重新解析</h2>
+      <p>
+        岗位已经在库里了，但信息不全、或客户改了要求——用这个。
+        入口在<strong>岗位详情页右侧的「AI 岗位解析」卡片</strong>。
+      </p>
+
+      <ol class="steps">
+        <li>
+          <strong>点「重新解析」</strong>
+          <p>
+            在「AI 岗位解析」卡片上点「<strong>重新解析</strong>」，弹出输入框。
+          </p>
+        </li>
+        <li>
+          <strong>决定要不要连 JD 一起更新</strong>
+          <p>
+            弹窗里有个「<strong>同时更新岗位 JD</strong>」开关：
+          </p>
+          <ul>
+            <li>
+              <strong>关着（默认）</strong>：Agent 基于当前岗位资料重新解析，
+              <strong>不动你现有的 JD</strong>，只更新岗位解析、关键词等其他字段。
+            </li>
+            <li>
+              <strong>打开</strong>：需要你填「新版 JD 或补充说明」，
+              Agent 会连<strong>完整 JD 建议</strong>一起给出来。
+            </li>
+          </ul>
+          <p>另有一个可选的「补充说明」，用来指定这次想重点更新什么、哪些字段必须保留。</p>
+        </li>
+        <li>
+          <strong>点「开始解析」，等它跑完</strong>
+          <p>同样进入后台运行，弹窗里也标明：<strong>只生成待确认差异，确认前不会覆盖当前岗位</strong>。</p>
+        </li>
+        <li>
+          <strong>到「确认岗位更新」页逐条勾选</strong>
+          <p>
+            这次是<strong>差异对比</strong>视图：每一行一个字段，左边「当前」、右边「建议」，
+            还附上 AI 的改动理由。你<strong>逐条勾选</strong>想采纳哪些——
+            顶部有「全选 / 取消全选」，右侧是「新版岗位解析摘要」和「需要确认」。
+          </p>
+        </li>
+        <li>
+          <strong>点「应用选中更新」</strong>
+          <p>
+            <strong>只有勾选的字段才会覆盖岗位</strong>，没勾的保持原样。
+            保存后会触发一次岗位重新分析；如果这个岗位之前跑过匹配，
+            匹配卡片会提示你<strong>可能需要重新匹配</strong>（因为岗位口径变了）。
+          </p>
+        </li>
+      </ol>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/position-agent-update-diff.png" alt="确认岗位更新差异对比页（每个字段的「当前 / 建议」两栏对照 + 逐条勾选框 + 应用选中更新按钮）">
+        <div class="shot__caption">「确认岗位更新」：逐字段对照「当前 / 建议」，勾选后点右上角「应用选中更新」</div>
+      </div>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">更新 = 覆盖，不是叠加</div>
+          <p>
+            勾选采纳某个字段，意味着用「建议」<strong>覆盖</strong>掉「当前」的值。
+            所以对拿不准的字段，先看清楚「当前 / 建议」两栏再勾。
+            不想动的字段<strong>不要勾</strong>，它就原封不动。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="keywords">寻访关键词：种下去、还能自己改</h2>
+      <p>
+        岗位 Agent 生成的<strong>寻访关键词</strong>（最多 5 组、每组最多 2 个词）确认后，
+        会成为这个岗位<strong>第一次配置自动寻访时的初始关键词</strong>——
+        省得你从零想搜索词。到了寻访配置页，这些词还可以再调。
+      </p>
+      <p>
+        另外，在<strong>岗位详情页进入「编辑」模式</strong>后，
+        「岗位解析」里的「寻访关键词」也能<strong>直接手动增删改</strong>：
+        点「+ 添加一组」加一组、每组填不超过两个词、点行尾「×」删一组，上限 5 组。
+        不想跑一次 AI 也能手工维护这份关键词。
+      </p>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">每组两个词，正好卡在平台搜索的甜区</div>
+          <p>
+            关键词每组最多两个词，是因为招聘平台搜索<strong>词太多会把结果搜没</strong>。
+            5 组关键词相当于 5 种不同的切法（比如按核心技能、按相邻岗位名、按对标方向），
+            覆盖面比单一组词广得多。第一次觉得不够，回岗位编辑或寻访配置里补几组。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="where">哪里能看到解析结果</h2>
+      <ul>
+        <li>
+          <strong>岗位详情页 →「岗位解析」卡片</strong>：确认后，岗位定位、上下游、可迁移方向、
+          对标企业、目标职级、文化偏好、软性和隐性要求、寻访关键词都在这里，随时可看、可编辑。
+        </li>
+        <li>
+          <strong>岗位详情页 →「AI 岗位解析」卡片</strong>：显示当前状态
+          （未解析 / 解析中 / 建议待确认 / 已写入 / 解析失败）、待确认项数、最近解析时间，
+          以及「查看运行」「查看并确认」「重新解析」入口。
+        </li>
+        <li>
+          <strong>Agent 运行中心</strong>：每次解析都是一次 Agent 运行，
+          过程和结果可以在这里回看。见 <a href="cap-agents.html">Agent 运行中心</a>。
+        </li>
+      </ul>
+
+      <!-- ============================================== -->
+      <h2 id="best-practice">最佳实践</h2>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">口述式需求也能用，别只当它是 JD 解析器</div>
+          <p>
+            很多时候客户只给你几句话（「要个能带团队、做过大模型落地的，最好来自大厂」）。
+            这种<strong>口述式需求</strong>直接丢进去也行——Agent 会先认出里面的明确事实，
+            再靠公开资料补出完整岗位方向、职责结构和可迁移背景，最后给你一份专业 JD。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">先看「需要确认」那一栏</div>
+          <p>
+            确认前，<strong>优先扫一眼「需要确认」里列的点</strong>——
+            那是 Agent 主动标出来「我拿不准、你核一下」的地方（比如薪资、到岗时间没有依据）。
+            把这些补实，草稿质量立刻上一个台阶。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">客户改需求了，用「重新解析」而不是手改一堆字段</div>
+          <p>
+            岗位要求变了，与其自己一个个改字段，不如把新要求写进「重新解析」的补充说明，
+            让 Agent 生成一份<strong>差异建议</strong>，你逐条勾选采纳。
+            改动清清楚楚，也不容易漏。
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <h2 id="troubleshoot">常见提示</h2>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">解析失败了怎么办</div>
+          <p>
+            草稿页 / 卡片会显示「<strong>解析失败</strong>」并给出原因。
+            这通常是临时问题，回到岗位管理（新建）或岗位详情页（重新解析）<strong>重新发起一次</strong>即可，
+            不会留下任何脏数据。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">有些字段是空的 / 薪资没填</div>
+          <p>
+            这是<strong>刻意的</strong>——原文没提、公开资料也确认不了的事实（薪资、到岗时间、学历、年限等），
+            Agent 宁可留空也不硬编，并把它放进「需要确认」提醒你。你手动补上即可。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--issue">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">寻访关键词一组填多了保存不了</div>
+          <p>
+            每组关键词<strong>最多两个词</strong>、最多 5 组。
+            填超了会提示你「每组最多填写两个词」——把长词拆成两组，或删掉多余的词即可。
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">解析是助手，不是最终拍板人</div>
+          <p>
+            岗位 Agent 会上网查资料、做交叉判断，但公开信息本身可能过时或有营销水分。
+            <strong>它给的是一份「已经帮你做了大量功课」的草稿，最终判断仍在你手里</strong>——
+            尤其是薪资、禁忌公司、隐性要求这类关键项，确认前务必自己再核一遍。
+          </p>
+        </div>
+      </div>
+
+      <nav class="docs-pager" aria-label="page navigation">
+        <a class="docs-pager__link" href="cap-match.html">
+          <div class="docs-pager__dir">← 上一篇</div>
+          <div class="docs-pager__title">岗位智能匹配</div>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="cap-sourcing.html">
+          <div class="docs-pager__dir">下一篇 →</div>
+          <div class="docs-pager__title">自动寻访</div>
+        </a>
+      </nav>
+
+    </article>
+  </main>
+</div>
+
+<footer class="docs-footer">
+  <a href="index.html">文档</a>
+  <a href="../index.html">返回主页</a>
+  <a href="mailto:y.e.yyf@163.com">报告问题</a>
+</footer>
+
+</body>
+</html>

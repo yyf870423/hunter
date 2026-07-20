@@ -38,11 +38,15 @@
         <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
         <li><a class="docs-sidebar__link is-current" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
         <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
         <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
       </ul>
     </div>
   </aside>
@@ -112,8 +116,14 @@
         <li>
           <strong>等任务完成，看通知</strong>
           <p>
-            任务完成后，候选人详情页右侧的「信息补全」卡片会更新状态徽章：
-            <strong>补全中</strong>、<strong>发现新信息</strong>、<strong>处理完成</strong>。
+            任务完成后，候选人详情页右侧的「信息补全」卡片会更新状态徽章。常见状态：
+            <strong>补全中</strong>、<strong>发现新信息</strong>、<strong>处理完成</strong>、
+            <strong>无新信息</strong>、<strong>运行失败</strong>、<strong>资料不足</strong>、<strong>已停止</strong>。
+          </p>
+          <p>
+            卡片下方有三个入口：<strong>查看结果</strong>（进审核页）、<strong>再次补全</strong>、
+            <strong>任务总览</strong>（进「Agent 运行中心」看这次运行的事件明细，详见
+            <a href="cap-agents.html">Agent 运行中心</a>）。
           </p>
         </li>
       </ol>
@@ -124,11 +134,31 @@
         <div class="shot__caption">候选人详情页 →「启动信息补全」按钮 → 弹出三步流程弹窗</div>
       </div>
 
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/refresh-candidate-card.png" alt="候选人详情页右侧「信息补全」卡片 —— 状态徽章 + 来源/审批项/高风险指标 + 「查看结果 / 再次补全 / 任务总览」三个入口。">
+        <div class="shot__caption">候选人详情页右侧「信息补全」卡片</div>
+      </div>
+
       <h3 id="trigger-batch">在「信息补全」总览页统一管理</h3>
       <p>
         左侧导航点「<strong>信息补全</strong>」进入总览页。
         在这里可以看到全部任务（包括所有候选人的），统一筛选/监控/处理。
       </p>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">运行明细也在「Agent 运行中心」能看到</div>
+          <p>
+            每次补全其实是 Hunter 派出的一个后台 AI 助手在跑。
+            想看某次运行的<strong>阶段进度、抓取事件、失败原因</strong>，
+            除了在这里，也可以去「<a href="cap-agents.html">Agent 运行中心</a>」——
+            那是所有后台运行（岗位解析、学术搜索、公司调研、档案补全等）的统一总控台。
+            补全的<strong>结果始终只回到审核页</strong>，Agent 运行中心本身不改动任何档案。
+          </p>
+        </div>
+      </div>
 
       <!-- ============================================== -->
       <h2 id="overview">「信息补全」总览页长什么样</h2>
@@ -144,7 +174,7 @@
           <strong>运行完成</strong> ·
           <strong>全部</strong>
         </li>
-        <li><strong>任务列表</strong>：每行一个补全任务，展示候选人、状态、补全条目数、操作按钮</li>
+        <li><strong>任务列表</strong>：每行一个补全任务，展示候选人、状态、来源数、审批项数、最近事件、操作按钮（查看结果 / 停止 / 再次补全）</li>
       </ul>
 
       <div class="callout callout--tip">
@@ -201,12 +231,26 @@
         <div class="callout__body">
           <div class="callout__title">每项都可以追溯证据</div>
           <p>
-            每条审批项都附带<strong>来源证据</strong>——哪个网页、哪段文字、什么时候抓到的。
-            顶部「查看全部证据」按钮可以一次性看所有来源。
+            每条审批项都附带<strong>来源证据</strong>——原始引文、来源、置信度。
+            审批项下方直接显示前几条证据片段（带可点开的来源链接），
+            点该项的「查看证据」按钮可看这条建议的全部证据。
             不放心时点开看一眼再决定。
           </p>
         </div>
       </div>
+
+      <h3 id="review-evidence">来源证据页：逐个来源核对</h3>
+      <p>
+        审核页顶部或右侧的「<strong>查看全部证据</strong>」进入独立的<strong>来源证据页</strong>，
+        把本次运行抓到的<strong>每一个来源</strong>单独列成卡片，让你从来源层面核对可信度。
+        顶部三个标签页按参考状态分：
+      </p>
+      <ul>
+        <li><strong>全部来源</strong>：这次运行看过的所有网页</li>
+        <li><strong>已参考来源</strong>：判定为同一人、且真正用于生成补全建议的来源</li>
+        <li><strong>不参考</strong>：抓到了但被排除的来源（同名不同人、可信度不足等），会写明<strong>不参考的原因</strong></li>
+      </ul>
+      <p>每个来源卡片给出：<strong>来源 URL、发现原因（怎么搜到的）、抓取时间、身份判断、参考状态、判断依据、支撑了哪些字段、证据片段</strong>。点「查看详情」展开完整信息。</p>
 
       <div class="shot">
         <div class="shot__chrome"><span></span><span></span><span></span></div>

@@ -38,11 +38,15 @@
         <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
         <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
         <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
         <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link is-current" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
       </ul>
     </div>
   </aside>
@@ -81,7 +85,7 @@
           <strong>关键词采集</strong>：设好关键词，Hunter 定期用搜索源（百度 AI 搜索 / Serper / Tushare）抓取
         </li>
         <li>
-          <strong>订阅采集</strong>：按公司订阅，订阅后自动抓取该公司在 36 氪 / 虎嗅 / 东方财富 的新动态
+          <strong>订阅采集</strong>：按公司订阅，订阅后自动抓取该公司在 36 氪（文章 / 快讯）/ 虎嗅 / 东方财富 的新动态
         </li>
       </ul>
       <p>
@@ -234,18 +238,18 @@
       </p>
       <ul>
         <li>
-          <strong>关键词采集（搜索源）</strong>：你设好关键词（如「字节跳动 离职」「具身智能 融资」），
+          <strong>关键词采集（搜索源）</strong>：你按<strong>目标公司 / 目标人物 / 行业关键词</strong>三类分别设好要盯的词（如公司填「字节跳动」、人物填某位高管、行业填「具身智能」），
           Hunter 用百度 AI 搜索 / Serper / Tushare 等搜索源定期拉取
         </li>
         <li>
           <strong>订阅采集（订阅源）</strong>：你按<strong>公司</strong>订阅（搜公司名添加），
-          订阅后自动抓取该公司在 36 氪 / 虎嗅 / 东方财富 的新动态
+          订阅后自动抓取该公司在 36 氪（文章 / 快讯）/ 虎嗅 / 东方财富 的新动态
         </li>
       </ul>
 
       <p>
-        两种自动模式的配置都在「<strong>设置 → 情报采集</strong>」，分「<strong>搜索源</strong>」和「<strong>订阅源</strong>」两个标签页；
-        搜索源需要先填好对应的 API Key 才能启用，各源也有独立的启用开关。
+        两种自动模式的关键词、订阅和采集节奏都在「<strong>设置 → 情报采集</strong>」，分「<strong>搜索源</strong>」（按关键词搜）和「<strong>订阅源</strong>」（盯固定公司）两个标签页。
+        各个数据源的凭据和启用开关则统一放在「<strong>设置 → 数据源</strong>」页——搜索源需要先在那里填好对应凭据并打开开关才能启用（订阅源无需凭据）。
         配好之后 Hunter 在后台跑，每次新进来的情报和你手动提交的一样进入「情报分析」列表。
       </p>
 
@@ -254,9 +258,9 @@
         <div class="callout__body">
           <div class="callout__title">关键词选哪些划算</div>
           <p>
-            选<strong>对标公司 + 动作词</strong>组合最有 ROI——比如「字节跳动 离职」「OpenAI 中国 加入」。
-            纯公司名（如「字节跳动」）会捞到太多无关内容；纯动作词（如「离职」）漫无目的。
-            <strong>10-20 个关键词</strong>是个合理的起点。
+            最有 ROI 的是<strong>对标公司</strong>和<strong>你在盯的核心人物</strong>——把它们分别填进「目标公司」「目标人物」。
+            「行业关键词」尽量选<strong>具体的细分方向</strong>（如「具身智能」），太宽泛的大词会捞到一堆无关内容。
+            三类加起来 <strong>10-20 个</strong>是个合理的起点。
           </p>
         </div>
       </div>
@@ -331,11 +335,14 @@
       </div>
 
       <nav class="docs-pager" aria-label="page navigation">
-        <a class="docs-pager__link" href="cap-intel-academic.html">
+        <a class="docs-pager__link" href="cap-scholar.html">
           <div class="docs-pager__dir">← 上一篇</div>
-          <div class="docs-pager__title">学术 &amp; 专利</div>
+          <div class="docs-pager__title">学者主题</div>
         </a>
-        <span class="docs-pager__link docs-pager__link--empty"></span>
+        <a class="docs-pager__link docs-pager__link--next" href="cap-agents.html">
+          <div class="docs-pager__dir">下一篇 →</div>
+          <div class="docs-pager__title">Agent 运行中心</div>
+        </a>
       </nav>
 
     </article>

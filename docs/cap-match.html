@@ -38,11 +38,15 @@
         <li><a class="docs-sidebar__link" href="cap-dedup.html">重复候选人发现</a></li>
         <li><a class="docs-sidebar__link" href="cap-refresh.html">候选人档案补全 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link is-current" href="cap-match.html">岗位智能匹配</a></li>
+        <li><a class="docs-sidebar__link" href="cap-position-agent.html">岗位 Agent <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-sourcing.html">自动寻访 <span class="docs-sidebar__beta">Beta</span></a></li>
+        <li><a class="docs-sidebar__link" href="cap-companies.html">公司管理</a></li>
         <li><a class="docs-sidebar__link" href="cap-kanban.html">推进看板</a></li>
         <li><a class="docs-sidebar__link" href="cap-mapping.html">Mapping</a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-academic.html">学术 &amp; 专利</a></li>
+        <li><a class="docs-sidebar__link" href="cap-scholar.html">学者主题 <span class="docs-sidebar__beta">Beta</span></a></li>
         <li><a class="docs-sidebar__link" href="cap-intel-news.html">一线情报</a></li>
+        <li><a class="docs-sidebar__link" href="cap-agents.html">Agent 运行中心</a></li>
       </ul>
     </div>
   </aside>
@@ -61,7 +65,7 @@
       <header class="docs-article__header">
         <h1>岗位智能匹配</h1>
         <p class="docs-article__lead">
-          客户给你一个岗位 JD，你想知道库里 1000 多人谁最合适——
+          岗位配好之后，你想知道库里 1000 多人谁最合适——
           AI 几分钟评出一份按匹配度排序的候选人列表，每个人有评分、推荐结论、强弱项分析。
           新简历进来时，还能<strong>只跑新人</strong>不重跑全库。
         </p>
@@ -71,6 +75,19 @@
           <strong>查看结果</strong>在左侧导航「岗位（需求）」分组下的「<strong>匹配结果</strong>」。
         </p>
       </header>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">先配好岗位，本篇只讲「跑匹配、看结果」</div>
+          <p>
+            岗位的<strong>创建与 AI 解析</strong>（看懂岗位、拆出关键要求、生成寻访关键词）现在由
+            <a href="cap-position-agent.html">岗位 Agent</a> 完成——匹配依据的正是这份岗位解析。
+            本篇假设你已经把岗位配好，只讲<strong>配好之后怎么跑匹配、怎么读结果</strong>。
+            岗位信息越完整（尤其跑过一次岗位解析），匹配的强弱项分析越有依据。
+          </p>
+        </div>
+      </div>
 
       <!-- ============================================== -->
       <h2 id="start">发起一次匹配</h2>
@@ -94,9 +111,13 @@
         <li>
           <strong>点「开始匹配」</strong>
           <p>
-            AI 会读取岗位 JD（标题、要求、技能、年限、学历、薪资、地点等），
+            AI 会读取岗位信息和<a href="cap-position-agent.html">岗位解析</a>（标题、要求、技能、年限、学历、薪资、地点，以及岗位定位、可迁移背景等），
             与候选人库里每个人做多维度评估，按综合分排序。
             <strong>1000 人量级几分钟跑完</strong>，过程中你可以去做别的事。
+          </p>
+          <p style="font-size: 13px; color: var(--color-muted);">
+            如果这个岗位的 AI 解析正在进行，按钮会显示「分析中…」并暂时不可点——
+            等解析跑完（或它自动重试完）再开始匹配即可。
           </p>
         </li>
         <li>
@@ -130,13 +151,25 @@
         </li>
         <li>
           <strong>点「只匹配新人」按钮</strong>
-          <p>系统识别出"上次匹配后新增的候选人"，只对这部分跑评分。</p>
+          <p>系统识别出"上次匹配后新增的候选人"，只对这部分跑评分，追加进原有结果。</p>
         </li>
         <li>
           <strong>看新人合并到结果列表里</strong>
-          <p>本次新匹配的候选人会有 <strong>NEW</strong> 角标，方便你一眼看出这次新增的人是谁。</p>
+          <p>本次新匹配的候选人会有 <strong>NEW</strong> 角标，方便你一眼看出这次新增的人是谁。到「匹配结果」页可以切「新增」筛选只看这批。</p>
         </li>
       </ol>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">有时它会自动改成全量重跑</div>
+          <p>
+            个别情况下点「只匹配新人」会自动改成全量重跑：比如这个岗位<strong>从没匹配过</strong>（没有可比的老结果），
+            或产品升级后<strong>评分口径已经更新</strong>（老结果和新人不在一把尺子上，混着看会失真）。
+            这时全量重跑是为了保证所有人用同一套标准打分——你不用做任何额外操作。
+          </p>
+        </div>
+      </div>
 
       <div class="callout callout--tip">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
@@ -231,17 +264,37 @@
       </ul>
 
       <!-- ============================================== -->
+      <h2 id="from-candidate">反过来：从候选人找适合的岗位</h2>
+      <p>
+        岗位智能匹配是「岗位 → 找人」。反方向也走得通——
+        在<a href="cap-candidates.html">候选人</a>详情页点「<strong>+ 加入岗位储备</strong>」，
+        会弹出一个岗位列表，<strong>按这个人对各岗位的匹配分从高到低排序</strong>、只显示开启中的岗位。
+        这份匹配分正是来自你之前跑过的匹配结果，所以<strong>先把相关岗位都匹配一遍，这里的排序才准</strong>。
+      </p>
+      <p>
+        候选人详情页还有一块「<strong>最近匹配记录</strong>」，列出这个人被匹配过的岗位、每个岗位上的评分和推荐结论——
+        一眼看清"这个人手上有哪些机会"。
+      </p>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/candidate-recommendable-positions.png" alt="候选人详情页「加入岗位储备」弹窗（岗位按匹配分排序）">
+        <div class="shot__caption">候选人详情页「加入岗位储备」弹窗</div>
+      </div>
+
+      <!-- ============================================== -->
       <h2 id="best-practice">最佳实践</h2>
 
       <div class="callout callout--tip">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">岗位 JD 写得越好，匹配越准</div>
+          <div class="callout__title">岗位配得越全，匹配越准</div>
           <p>
-            AI 评估的依据是岗位详情页里的 JD 信息——
+            AI 评估的依据是岗位详情页里的信息——
             <strong>技能要求</strong>、<strong>年限</strong>、<strong>学历</strong>、
             <strong>薪资范围</strong>、<strong>工作地点</strong>都填齐，再做匹配。
-            JD 越具体，AI 给出的强弱项分析越有依据。
+            最省事的办法是先跑一次 <a href="cap-position-agent.html">岗位 Agent</a> 把岗位解析补全，
+            岗位越具体，AI 给出的强弱项分析越有依据。
           </p>
         </div>
       </div>
@@ -266,9 +319,10 @@
         <div class="callout__body">
           <div class="callout__title">匹配结果基于旧岗位要求</div>
           <p>
-            如果你改了岗位 JD（如调整了技能要求、薪资范围），
-            页面会显示横幅：「当前匹配结果基于旧岗位要求生成」。
-            <strong>回到岗位详情页点「重新匹配」</strong>，用新 JD 重新跑一次。
+            如果岗位要求变了（你手动改了技能 / 薪资范围，或用
+            <a href="cap-position-agent.html">岗位 Agent</a> 重新解析后应用了更新），
+            「匹配结果」页会显示横幅：「当前匹配结果基于旧岗位要求生成」。
+            <strong>回到岗位详情页点「重新匹配」</strong>，用新口径重新跑一次。
           </p>
         </div>
       </div>
@@ -279,8 +333,9 @@
           <div class="callout__title">匹配失败</div>
           <p>
             匹配卡片显示「✕ 匹配失败」时，点「重试」即可重新发起。
-            如果反复失败，检查岗位 JD 是否极端简略（只有标题，没有任何要求），
-            AI 没有依据时会拒绝匹配。
+            如果反复失败，检查岗位是否极端简略（只有标题，没有任何要求）——
+            没有可评估的依据时匹配容易失败。补齐岗位信息（或先跑一次
+            <a href="cap-position-agent.html">岗位 Agent</a> 解析）再试。
           </p>
         </div>
       </div>
@@ -302,9 +357,9 @@
           <div class="docs-pager__dir">← 上一篇</div>
           <div class="docs-pager__title">候选人档案补全</div>
         </a>
-        <a class="docs-pager__link docs-pager__link--next" href="cap-sourcing.html">
+        <a class="docs-pager__link docs-pager__link--next" href="cap-position-agent.html">
           <div class="docs-pager__dir">下一篇 →</div>
-          <div class="docs-pager__title">自动寻访</div>
+          <div class="docs-pager__title">岗位 Agent</div>
         </a>
       </nav>
 
