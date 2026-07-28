@@ -66,15 +66,16 @@
         <h1>安装与启动</h1>
         <p class="docs-article__lead">
           试用期间我们为每位用户<strong>单独打包</strong>，安装包直接发给你，无需自行下载。
-          整个过程很简单：<strong>解压 → 双击启动 → 浏览器打开</strong>，三步就能用。
+          <strong>Windows 和 macOS 都支持</strong>。整个过程很简单：<strong>解压 → 双击启动 → 浏览器打开</strong>，三步就能用。
         </p>
       </header>
 
       <!-- ============================================== -->
       <h2 id="what-you-get">你收到的是什么</h2>
       <p>
-        你拿到的是一个 <strong>.zip 压缩包</strong>（文件名形如
-        <code>HunterTrial-XXX-版本号-win-x64.zip</code>，其中 XXX 是你的名字）。
+        你拿到的是一个 <strong>.zip 压缩包</strong>，文件名形如
+        <code>HunterTrial-你的名字-v0.12.43-beta.1-windows-x64.zip</code>（Windows）
+        或 <code>HunterTrial-你的名字-v0.12.43-beta.1-macos-arm64.zip</code>（Mac）。
         里面打包了 Hunter 运行需要的<strong>全部东西</strong>——程序本体、内置浏览器、以及你的专属配置，
         解压即用，不需要再装任何别的软件。
       </p>
@@ -82,10 +83,11 @@
       <div class="callout callout--note">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">目前是 Windows 版（64 位）</div>
+          <div class="callout__title">支持 Windows 和 macOS，包比较大</div>
           <p>
-            试用包是为 <strong>Windows 64 位系统</strong>打的。
-            包比较大（约 400 MB，含内置浏览器），下载/拷贝时请耐心等传完整。
+            提供两个版本：<strong>Windows 64 位</strong>（<code>windows-x64</code>，约 <strong>555 MB</strong>）
+            和 <strong>macOS Apple 芯片版</strong>（<code>macos-arm64</code>，约 <strong>353 MB</strong>，适用 M1/M2/M3 等）。
+            包里含内置浏览器所以体积偏大，下载 / 拷贝时请耐心等传完整。
           </p>
         </div>
       </div>
@@ -117,8 +119,8 @@
         <li>
           <strong>右键 → 全部解压缩</strong>
           <p>
-            解压会得到一个文件夹（名字和压缩包一样）。
-            里面有 <code>HunterStart.exe</code> 等几个程序和 <code>bin/</code>、<code>browsers/</code> 等文件夹。
+            解压会得到一个名为 <code>Hunter</code> 的文件夹。
+            里面有 <code>HunterStart.exe</code>（Mac 上对应 <code>HunterStart.app</code>）等几个程序和 <code>bin/</code>、<code>browsers/</code> 等文件夹。
           </p>
         </li>
       </ol>
@@ -126,11 +128,11 @@
       <div class="callout callout--warn">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div class="callout__body">
-          <div class="callout__title">要改文件夹名字？请在「第一次启动之前」改</div>
+          <div class="callout__title">要移动或改名？请在「第一次启动之前」做</div>
           <p>
-            如果你想给解压出来的文件夹重命名（比如改成 <code>Hunter</code>），
-            <strong>一定要在第一次启动之前改好</strong>。
-            一旦启动过，程序会记住自己所在的位置，事后再改名字或挪动文件夹可能导致启动异常。
+            如果你想把 <code>Hunter</code> 文件夹挪到别的位置、或者改个名字，
+            <strong>一定要在第一次启动之前做好</strong>。
+            一旦启动过，程序会记住自己所在的位置，事后再挪动或改名可能导致启动异常。
             <strong>记住一个原则：名字和位置先定好，再双击启动。</strong>
           </p>
         </div>
@@ -138,7 +140,7 @@
 
       <!-- ============================================== -->
       <h2 id="step2">第 2 步：启动</h2>
-      <p>进入解压后的文件夹，你会看到三个绿色的启动程序：</p>
+      <p>进入 <code>Hunter</code> 文件夹，你会看到三个启动程序（Windows 是 <code>.exe</code>，Mac 是对应的 <code>.app</code>）：</p>
 
       <div class="feat-grid">
         <div class="feat-card">
@@ -160,9 +162,9 @@
 
       <ol class="steps">
         <li>
-          <strong>双击 <code>HunterStart.exe</code></strong>
+          <strong>双击 <code>HunterStart.exe</code>（Mac 上双击 <code>HunterStart.app</code>）</strong>
           <p>
-            会弹出一个黑色的命令行窗口，显示启动进度。
+            会弹出一个启动窗口，显示启动进度。
             <strong>启动过程中不要关这个窗口</strong>——关掉它启动就会中断。
             这个窗口只在启动阶段出现，<strong>启动完成后会自动关闭</strong>，Hunter 随后在后台继续运行。
           </p>
@@ -175,6 +177,53 @@
           </p>
         </li>
       </ol>
+
+      <!-- ============================================== -->
+      <h2 id="first-run-security">第一次启动：系统会拦一下，点「仍要运行」放行</h2>
+      <p>
+        试用包<strong>没有做商业代码签名</strong>，所以第一次双击启动时，系统可能弹出安全提示——
+        这是操作系统对「未知来源程序」的常规拦截，<strong>不是病毒、也不是出错</strong>，放行一次即可，之后再启动就不会再拦。
+      </p>
+
+      <div class="callout callout--warn">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">Windows 10 / 11：点「更多信息」→「仍要运行」</div>
+          <p>双击 <code>HunterStart.exe</code> 时，如果弹出「<strong>Windows 已保护你的电脑</strong>」的提示框：</p>
+          <ol class="steps">
+            <li>
+              <strong>先点提示框里的「更多信息」</strong>
+              <p>默认它只显示一个「不运行」按钮——点了「更多信息」之后，才会出现「仍要运行」。</p>
+            </li>
+            <li>
+              <strong>再点「仍要运行」</strong>
+              <p>Hunter 就会正常启动。这一步只有第一次需要，以后不会再弹。</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <img src="assets/screenshots/win-smartscreen.png" alt="Windows SmartScreen 提示框：先点「更多信息」，再点「仍要运行」，放行 HunterStart.exe">
+        <div class="shot__caption">Windows 10 / 11 首次启动的 SmartScreen 提示 —— 先点「更多信息」，再点「仍要运行」</div>
+      </div>
+
+      <div class="callout callout--note">
+        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="callout__body">
+          <div class="callout__title">macOS：如果提示「无法验证开发者」</div>
+          <p>
+            Mac 上双击 <code>HunterStart.app</code>，若提示<strong>「无法打开，因为无法验证开发者」</strong>，
+            同样是未签名程序的常规拦截。两种放行方式任选其一：
+          </p>
+          <ul>
+            <li><strong>右键点 <code>HunterStart.app</code> →「打开」</strong>，在弹出的对话框里再点一次「打开」；</li>
+            <li>或到 <strong>「系统设置 → 隐私与安全性」</strong>，找到刚被拦下的提示，点「仍要打开」。</li>
+          </ul>
+          <p>只有第一次需要，之后正常双击即可。</p>
+        </div>
+      </div>
 
       <!-- ============================================== -->
       <h2 id="step3">第 3 步：没自动打开时，手动访问</h2>
