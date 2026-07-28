@@ -99,6 +99,15 @@
       <!-- ============================================== -->
       <h2 id="trigger">怎么触发补全</h2>
 
+      <div class="shot shot--video">
+        <div class="shot__chrome"><span></span><span></span><span></span></div>
+        <video controls preload="metadata" poster="assets/videos/refresh-poster.jpg">
+          <source src="assets/videos/refresh.mp4" type="video/mp4">
+          您的浏览器不支持视频播放。
+        </video>
+        <div class="shot__caption">完整演示 · 一键补全档案（含 Agent 运行过程）</div>
+      </div>
+
       <h3 id="trigger-single">单个候选人：从详情页启动</h3>
       <ol class="steps">
         <li>
@@ -128,17 +137,7 @@
         </li>
       </ol>
 
-      <div class="shot">
-        <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/refresh-start-modal.png" alt="候选人详情页 + 启动信息补全弹窗（三步流程）">
-        <div class="shot__caption">候选人详情页 →「启动信息补全」按钮 → 弹出三步流程弹窗</div>
-      </div>
 
-      <div class="shot">
-        <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/refresh-candidate-card.png" alt="候选人详情页右侧「信息补全」卡片 —— 状态徽章 + 来源/审批项/高风险指标 + 「查看结果 / 再次补全 / 任务总览」三个入口。">
-        <div class="shot__caption">候选人详情页右侧「信息补全」卡片</div>
-      </div>
 
       <h3 id="trigger-batch">在「信息补全」总览页统一管理</h3>
       <p>
@@ -211,11 +210,6 @@
         </li>
       </ul>
 
-      <div class="shot">
-        <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/refresh-review.png" alt="整体补全方案审核页（4 个分类标签页 + 审批项 + 来源证据预览）">
-        <div class="shot__caption">整体补全方案审核页 — 状态条 + 4 个分类标签页 + 逐条审批项</div>
-      </div>
 
       <h3 id="review-item">逐条审批</h3>
       <p>每条补全建议是一项独立的审批项，你可以分项处理。常见的处理动作：</p>
@@ -252,11 +246,6 @@
       </ul>
       <p>每个来源卡片给出：<strong>来源 URL、发现原因（怎么搜到的）、抓取时间、身份判断、参考状态、判断依据、支撑了哪些字段、证据片段</strong>。点「查看详情」展开完整信息。</p>
 
-      <div class="shot">
-        <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/refresh-evidence.png" alt="来源证据页（全部来源 + 已参考 + 不参考 三标签页，每个来源附 URL/抓取时间/判断依据）">
-        <div class="shot__caption">点「查看全部证据」打开 — 每个来源都有 URL、抓取时间、判断依据、参考状态</div>
-      </div>
 
       <!-- ============================================== -->
       <h2 id="how-it-works">Hunter 怎么找候选人的新信息？</h2>

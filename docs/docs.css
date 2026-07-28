@@ -762,3 +762,22 @@ a:hover { color: var(--color-accent); }
   margin: 0 var(--space-3);
 }
 .docs-footer a:hover { color: var(--color-ink); }
+/* 视频演示块:复用截图卡的浏览器边框 */
+.shot video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0b1020;
+}
+.shot--video .shot__caption {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.shot--video .shot__caption::before {
+  content: '▶';
+  font-size: 11px;
+  color: var(--color-primary);
+}
