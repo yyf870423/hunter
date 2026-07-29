@@ -157,6 +157,9 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
   line-height: 1.6;
 }
+/* 演示区导语：桌面强制单行不换行；窄屏(手机)恢复自然换行，避免横向溢出 */
+.demo-lead-nowrap { white-space: nowrap; }
+@media (max-width: 768px) { .demo-lead-nowrap { white-space: normal; } }
 .section-head {
   text-align: center;
   margin-bottom: var(--space-9);
@@ -3056,7 +3059,7 @@ html { overflow-x: clip; }
     <div class="section-head reveal">
       <span class="eyebrow">产品演示</span>
       <h2 class="section-title">看它怎么帮你跑通完整工作流</h2>
-      <p class="section-lead" style="max-width:900px">读懂岗位、智能匹配、自动寻访、联网补全，到人才地图与看板推进——AI 替你干最累的活，一段跑给你看。</p>
+      <p class="section-lead demo-lead-nowrap" style="max-width:900px">读懂岗位、智能匹配、自动寻访、联网补全，到人才地图与看板推进——AI 替你干最累的活，跑给你看。</p>
     </div>
     <div class="video-frame reveal reveal-delay-1">
       <video controls preload="metadata" poster="assets/videos/hunter-hero-poster.jpg">
