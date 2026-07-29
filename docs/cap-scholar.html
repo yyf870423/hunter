@@ -236,7 +236,6 @@
       <p>每行显示时间、你输入的需求原文、状态徽章、结果摘要和操作。状态徽章的含义：</p>
       <ul>
         <li><strong>生成计划中</strong>：Agent 正在上网调研、拟搜索方案</li>
-        <li><strong>等待确认计划</strong>：方案已生成，需要你过一眼再放行（见下一节）</li>
         <li><strong>搜索中</strong>：方案已定，正在多源检索</li>
         <li><strong>待导入</strong>：搜索完成，去看结果池挑论文</li>
         <li><strong>已导入</strong>：这次任务里你已经导过论文</li>
@@ -244,7 +243,7 @@
         <li><strong>已删除</strong>：软删除状态</li>
       </ul>
 
-      <p>点某一行的「<strong>查看</strong>」，会根据状态自动带你去对应页面：还在等确认的进「搜索计划确认」页，已出结果的进「搜索结果」页，还在跑的进 Agent 运行页。</p>
+      <p>点某一行的「<strong>查看</strong>」，会根据状态自动带你去对应页面：已出结果的进「搜索结果」页，还在跑的进 Agent 运行页。</p>
 
       <div class="callout callout--note">
         <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
@@ -259,57 +258,7 @@
       </div>
 
       <!-- ============================================== -->
-      <h2 id="plan">（有时会遇到）第三步：确认搜索计划</h2>
-      <p>
-        多数情况下 Agent 自检通过就直接开搜了，你不用管。
-        但如果一次搜索需要你<strong>先过目再放行</strong>，任务会停在「<strong>等待确认计划</strong>」，
-        点「查看」进入「<strong>确认搜索计划</strong>」页。这一页把 Agent 拟好的方案摊开给你，
-        每一项都能改：
-      </p>
-      <ul>
-        <li><strong>机构搜索名</strong>：实际拿去搜论文署名的<strong>英文</strong>机构名/署名，可增删</li>
-        <li><strong>开源来源组织</strong>：Agent 判断属于这家机构、且和方向对得上的 GitHub / HuggingFace / 公开网页来源</li>
-        <li><strong>方向召回词</strong>：拿去做检索的英文关键词</li>
-        <li><strong>方向判断口径</strong>：用于扩召回和语义判断的方向短语（不是逐词硬搜的关键词，而是「怎么算相关」的口径）</li>
-        <li><strong>时间范围</strong>：起始日期（默认当年 1 月 1 日）到结束日期（可留空 = 至今），日粒度选择</li>
-      </ul>
-
-      <p>页面上每类条件都是一个个「标签」，点标签上的「×」删掉，或在下方输入框加新的。改完后底部有三个操作：</p>
-      <ol class="steps">
-        <li>
-          <strong>「确认并开始搜索」</strong>（蓝色主按钮）
-          <p>用你确认后的方案开跑，任务转入「搜索中」。</p>
-        </li>
-        <li>
-          <strong>「让 Agent 重做」</strong>
-          <p>对方案不满意 → 让 Agent 重新调研、重拟一版计划。</p>
-        </li>
-        <li>
-          <strong>「取消任务」</strong>
-          <p>这次不搜了 → 取消（会让你二次确认）。取消后任务进「已删除」，可在那里查看。</p>
-        </li>
-      </ol>
-
-      <div class="shot">
-        <div class="shot__chrome"><span></span><span></span><span></span></div>
-        <img src="assets/screenshots/scholar-plan-confirm.png" alt="「确认搜索计划」页——机构搜索名/开源来源组织/方向召回词/方向判断口径/时间范围各类可增删的标签，右侧「注意事项」，底部「确认并开始搜索」「让 Agent 重做」「取消任务」">
-        <div class="shot__caption">「确认搜索计划」页</div>
-      </div>
-
-      <div class="callout callout--note">
-        <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
-        <div class="callout__body">
-          <div class="callout__title">机构名必须是英文</div>
-          <p>
-            论文署名在全球学术库里几乎都是英文，所以「机构搜索名」这一栏只吃<strong>英文</strong>——
-            中文机构名、网址、GitHub 账号都不算合格的署名。
-            如果计划页右侧出现「注意事项」提示，通常就是在告诉你哪一项可能识别不准，值得手动核一下再放行。
-          </p>
-        </div>
-      </div>
-
-      <!-- ============================================== -->
-      <h2 id="results">第四步：在结果池里挑论文导入</h2>
+      <h2 id="results">第三步：在结果池里挑论文导入</h2>
       <p>
         任务变成「待导入」后，点「查看」进入「<strong>学术搜索结果</strong>」页。
         页面顶部一句话点明重点：<strong>候选论文不会自动写入论文库，选好后才走去重、翻译和入库。</strong>
@@ -425,8 +374,7 @@
           <div class="callout__title">任务停在「异常」了</div>
           <p>
             通常是<strong>没能唯一锁定机构/方向</strong>（需求太笼统），或某些来源临时不可用。
-            进任务点「查看」，如果在计划页，用「<strong>让 Agent 重做</strong>」重新生成一版；
-            或回输入框<strong>把机构全称和方向写得更明确</strong>，重新发起一次。
+            回输入框<strong>把机构全称和方向写得更明确</strong>，重新发起一次。
           </p>
         </div>
       </div>
@@ -438,7 +386,7 @@
           <p>
             先只看「<strong>强烈建议导入 / 建议导入</strong>」两档，「待确认」本来就是拿不准的。
             如果整体偏了，多半是方案里的机构署名或方向词不够准——
-            下次发起时把<strong>机构全称、方向范围</strong>写得更收敛，或在计划确认页手动删掉跑偏的召回词再放行。
+            下次发起时把<strong>机构全称、方向范围</strong>写得更收敛，重新发起一次。
           </p>
         </div>
       </div>
